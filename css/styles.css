@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: grey;
+}
+
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+
+    color: #FFFFFF;
+}
+
+h2 {
+    /* h2 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    
+
+
+    color: #FFFFFF;
+}
+
+h3 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+p {
+    /* "body */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    
+
+
+    color: #FFFFFF;
+}
+
+.textLabel {
+    /* label */
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 163.02%;
+}
+
+.section_padding {
+    padding: 4rem 6rem;
+}
+
+.section_margin {
+    margin: 4rem 6rem;
+}
+
+
+
+
+.center-div {
+
+}
+
+
+.header {
+    height: 60rem;
+    background: linear-gradient(-65deg,#2C8287, #A0000C , #2C8287 70%  );
+    background-size: 400% 100%;
+    animation: gradient 25s ease infinite;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+        
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.noise-image {  
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-image: url("https://stackdiary.com/wp-content/uploads/2022/10/noise_img.png");
+    background-position: 0px 0px;
+    background-size: auto;
+    opacity: 0.2;
+    
+  }
+
+.center-div {
+    margin: 0;
+    padding: 8rem 12rem;
+}
+
+.header-text {
+    
+}
+
+.header-text h1 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 115.02%;
+
+    color: #fff;
+}
+
