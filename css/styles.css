@@ -76,12 +76,12 @@ p {
     margin: 4rem 6rem;
 }
 
-
-
-
-.center-div {
-
+section {
+    display: flex;
+    justify-content: center;
 }
+
+
 
 
 .header {
@@ -121,8 +121,8 @@ p {
   }
 
 .center-div {
-    margin: 0;
-    padding: 8rem 12rem;
+    max-width: 960px;
+    padding: 0 6rem;
 }
 
 .header-text {
@@ -141,7 +141,7 @@ p {
 
 .about {
     background: #111111;
-    
+    padding: 12rem;
 }
 
 .section-container {
@@ -186,12 +186,14 @@ p {
     flex-direction: row;
     align-items: center;
     gap: 2rem;
+    
 }
 
 .email-icon {
     
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .email-icon img {
@@ -203,6 +205,7 @@ p {
     
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .linkedin-icon img {
@@ -212,6 +215,8 @@ p {
 
 .cv {
     background: #1D1D1D;
+    padding: 12rem;
+
 }
 
 
@@ -307,6 +312,8 @@ p {
 
 .portfolio {
     background: #111111;
+    padding: 6rem 12rem 12rem;
+
 }
 
 .portfolio-wrapper {
@@ -333,12 +340,13 @@ p {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    padding: 32px 0px ;
-    gap: 63px;
+    
+    
+    
     isolation: isolate;
 
-    width: 932px;
-    height: 293px;
+    max-width: 932px;
+    height: 294px;
 
     background: #2C2C2C;
     border-radius: 24px;
@@ -346,7 +354,17 @@ p {
 
 .imageDiv {
     
+    
+
 }
+
+.imageDiv img {
+    width: 450px;
+    height: 294px;
+    border-radius: 24px 0 0 24px;
+}
+
+
 
 .case-content {
     display: flex;
@@ -354,7 +372,93 @@ p {
     align-items: flex-start;
     padding: 0px;
     gap: 32px;
+    margin: 32px;
+    justify-content: space-between;
+    height: 230px;
 }
 
 
+.caseHead {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+}
 
+.caseLabel p {
+    font-family: 'Inter',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+
+    color: #949494;
+}
+
+.caseText {
+    margin-top: 8px;
+}
+
+.caseLink a {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 160%;
+    /* identical to box height, or 32px */
+    text-decoration: none;
+
+    color: #FFFFFF;
+}
+
+.footer {
+    background: #000000;
+    padding: 6rem 12rem 4rem 12rem;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+}
+
+.footer-contact_headline h2 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+.footer-contact_links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+}
+
+.contact-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+}
+
+.footer-container {
+    margin: 0;
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
