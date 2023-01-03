@@ -7,6 +7,8 @@
 body {
     margin: 0;
     background: grey;
+    overflow-x: hidden; 
+    width: 100%;
 }
 
 h1 {
@@ -146,14 +148,16 @@ section {
 
 .section-container {
     margin: 0;
-    padding: 8rem 12rem;
+    padding: 8rem 8rem;
     display: flex;
     flex-direction: row;
     gap: 3rem;
 }
 
 .about-image {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .about-content {
@@ -163,7 +167,7 @@ section {
     gap: 1rem;
 
     max-width: 34rem;
-    min-width: 25rem;
+    min-width: 360px;
 }
 
 .section-title {
@@ -215,7 +219,7 @@ section {
 
 .cv {
     background: #1D1D1D;
-    padding: 12rem;
+    padding: 12rem 0;
 
 }
 
@@ -228,7 +232,7 @@ section {
     gap: 1rem;
 
     max-width: 34rem;
-    min-width: 25rem;
+    min-width: 20rem;
 }
 
 .cv-button {
@@ -264,6 +268,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-width: 300px;
     padding: 0px;
     gap: 34px;
 }
@@ -312,7 +317,7 @@ section {
 
 .portfolio {
     background: #111111;
-    padding: 6rem 12rem 12rem;
+    padding: 6rem 0 12rem;
 
 }
 
@@ -322,14 +327,14 @@ section {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 80px;
+    gap: 40px;
     
 }
 
 .case-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
     padding: 0px;
     gap: 52px;
@@ -337,31 +342,42 @@ section {
 
 .caseCard {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    
-    
-    
-    isolation: isolate;
+    align-items: center;
 
-    max-width: 932px;
-    height: 294px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    
+    
+    
+    
+
+    width: 360px;
+    
 
     background: #2C2C2C;
     border-radius: 24px;
 }
 
 .imageDiv {
-    
-    
+    display: flex;
+    flex-direction: row;
+    width: 360px;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 24px 24px 0 0;
+    align-items: center;
+    justify-content: center;
 
 }
 
 .imageDiv img {
-    width: 450px;
-    height: 294px;
-    border-radius: 24px 0 0 24px;
+    
+    width:130%;
+    height: 130%;
+    
+
 }
 
 
@@ -374,7 +390,7 @@ section {
     gap: 32px;
     margin: 32px;
     justify-content: space-between;
-    height: 230px;
+    height: 160px;
 }
 
 
@@ -461,4 +477,103 @@ section {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+}
+
+
+@media screen and (max-width: 960px) {
+    .case-container {
+        flex-direction: column;
+    }
+    .about-image img {
+        width: 250px;
+        height: auto;
+    }
+    
+    
+    
+}
+
+@media screen and (max-width: 770px) {
+
+
+    h1 {
+
+        font-size: 54px;
+        line-height: 67px;
+
+    }
+
+    h2 {
+    
+        font-size: 28px;
+        line-height: 35px;
+        
+    }
+
+    h3 {
+        
+        font-size: 20px;
+        line-height: 26px;
+        /* identical to box height */
+
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 150%;
+    
+    }
+
+    .jobYear p, .jobEmployer p {
+        font-size: 14px;
+        line-height: 150%;
+
+    }
+
+    .section-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .center-div {
+        padding: 0 2rem;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .section-container {
+        padding: 6rem .5rem;
+    }
+
+    .about-content {
+        min-width: 300px;
+    }
+
+    .cv-content {
+        min-width:none;
+        width: 300px;
+    }
+
+    .cv-timeline {
+        gap: 1.5rem;
+    }
+
+    .caseCard {
+        width: 300px;
+    }
+
+    .imageDiv {
+        width: 300px;
+    }
+    
+    .footer-contact h2 {
+        font-size: 24px;
+    }
+
+    .footer-contact h3{
+        font-size: 20px;
+    }
 }
