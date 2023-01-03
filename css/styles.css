@@ -88,7 +88,7 @@ p {
     height: 60rem;
     background: linear-gradient(-65deg,#2C8287, #A0000C , #2C8287 70%  );
     background-size: 400% 100%;
-    animation: gradient 25s ease infinite;
+    animation: gradient 35s ease infinite;
     display: flex;
     align-items: center;
 }
@@ -116,6 +116,7 @@ p {
     background-position: 0px 0px;
     background-size: auto;
     opacity: 0.2;
+    height: 60rem;
     
   }
 
@@ -137,4 +138,223 @@ p {
 
     color: #fff;
 }
+
+.about {
+    background: #111111;
+    
+}
+
+.section-container {
+    margin: 0;
+    padding: 8rem 12rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.about-image {
+
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1rem;
+
+    max-width: 34rem;
+    min-width: 25rem;
+}
+
+.section-title {
+    
+}
+
+.content-text {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.content-text p {
+    
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.email-icon {
+    
+    display: flex;
+    align-items: center;
+}
+
+.email-icon img {
+    height: 32px;
+    width: 32px;
+}
+
+.linkedin-icon {
+    
+    display: flex;
+    align-items: center;
+}
+
+.linkedin-icon img {
+    height: 32px;
+    width: 32px;
+}
+
+.cv {
+    background: #1D1D1D;
+}
+
+
+
+.cv-content {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1rem;
+
+    max-width: 34rem;
+    min-width: 25rem;
+}
+
+.cv-button {
+    align-items: center;
+}
+
+
+
+.cv-button button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 14px 40px;
+    
+
+    background: #CFCFCF;
+    border-radius: 50px;
+
+    border: none;
+    outline: none;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    
+    color: #000000;
+
+}
+
+.cv-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 34px;
+}
+
+.cv-timeline_job {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+}
+
+.jobWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+}
+
+.jobTitle {
+    
+}
+
+.jobYear p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #919191;
+
+    
+}
+
+.jobEmployer p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #919191;
+}
+
+.portfolio {
+    background: #111111;
+}
+
+.portfolio-wrapper {
+  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 80px;
+    
+}
+
+.case-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 52px;
+}
+
+.caseCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 0px ;
+    gap: 63px;
+    isolation: isolate;
+
+    width: 932px;
+    height: 293px;
+
+    background: #2C2C2C;
+    border-radius: 24px;
+}
+
+.imageDiv {
+    
+}
+
+.case-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+}
+
+
 
