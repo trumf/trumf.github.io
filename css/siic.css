@@ -1,0 +1,481 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Inter:400');
+
+html {font-size: 100%;} /*16px*/
+
+body {
+  background: #0000;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+p {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+  
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 5.653rem;
+}
+
+h2 {font-size: 3.998rem;}
+
+h3 {font-size: 2.827rem;}
+
+h4 {font-size: 1.999rem;}
+
+h5 {font-size: 1.414rem;}
+
+small, .text_small {font-size: 0.707rem;}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+
+
+.section_padding {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 200px 320px;
+    gap: 160px;
+}
+
+.footer_padding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 320px;
+    gap: 160px;
+}
+
+
+.footer-container {
+    width: 100%;
+}
+
+.copyright {
+    width: 100%;
+}
+
+.section_short {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 200px 320px;
+    gap: 160px;
+}
+
+.bg_black {
+    background: #000000;
+}
+
+.bg_dark {
+    background: #111111;
+}
+
+.bg_light {
+   background: #1D1D1D;
+}
+
+.youtube {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.youtube iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+}
+
+.content-headline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+
+    
+}
+
+.content-container img {
+    
+    margin-top: 0.5rem;
+   
+}
+
+.content-image {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.content-image p {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    
+
+    max-height: 400px;
+    overflow: hidden;
+    object-fit: cover;
+    justify-content: center;
+    
+}
+
+.image-wrapper img {
+    max-width: 120%;
+    max-height: 120%;
+    
+    align-items: center;
+    
+}
+
+.image-wrapper p {
+    margin-top: 0.5rem;
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+
+.content-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0;
+    gap: 16px;
+}
+
+
+
+
+
+.content-container-reversed {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items:flex-start;
+    padding: 0px;
+    gap: 32px;
+}
+
+
+
+
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 32px;
+}
+
+
+.uxwelcome  {
+    
+}
+
+.uxScreens img {
+    justify-items: center;
+}
+
+.youtube-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+    width: 100%;
+}
+
+
+
+
+.siic_header {
+    background-image: url(../public/images/siicheroL.png);
+    background-position: center center;
+    background-size: cover;
+    
+}
+
+.siic_brief img {
+    margin-top: 0.5rem;
+}
+
+
+.siic-moodboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    
+
+}
+
+.siic-moodboards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+
+}
+
+.moodboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+.moodboard-images {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    object-fit: cover;
+}
+
+.moodboard-images img {
+    width: 100%;
+    height: auto;
+}
+
+.moodboard p {
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+.siic__content-container_design {
+ 
+    display: flex;
+    flex-direction: column;
+    
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+}
+
+.siic__image-wrapper_design {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.siic__image-wrapper_design img {
+    max-width: 100%;
+    height: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:1400px) {
+
+    .section_padding {
+        
+        padding: 200px 250px;
+        
+    }
+}
+
+@media screen and (max-width:1120px) {
+
+    .section_padding {
+        
+        padding: 200px 160px;
+        
+    }
+
+
+    .content-container {
+        flex-direction: column;
+    }
+
+    .content-container-reversed {
+        flex-direction: column;
+    }
+
+    .section_short {
+        
+        padding: 200px 160px 100px;
+        gap: 160px;
+    }
+
+    .footer_padding {
+        
+        padding: 100px 160px;
+        
+    }
+
+}
+
+@media screen and (max-width:800px) {
+
+    .section_padding {
+        
+        padding: 200px 64px;
+        
+    }
+
+    .section_short {
+        
+        padding: 200px 64px 64px;
+        gap: 160px;
+    }
+
+    .footer_padding {
+        
+        padding: 100px 64px;
+        
+    }
+
+    .siic_header {
+        background-image: url(../public/images/siicHeroM.png);
+        
+        
+    }
+
+
+
+}
+
+
+/* mobile */
+
+@media screen and (max-width:550px) {
+        
+
+    @import url('https://fonts.googleapis.com/css?family=Inter:400');
+
+    html {font-size: 100%;} /*16px*/
+
+    body {
+    background: #0000;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #fff;
+    }
+
+    p {margin-bottom: 1rem;}
+
+    h1, h2, h3, h4, h5 {
+    margin: 3rem 0 1.38rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+    }
+
+    h1 {
+    margin-top: 0;
+    font-size: 3.052rem;
+    }
+
+    h2 {font-size: 2.441rem;}
+
+    h3 {font-size: 1.953rem;}
+
+    h4 {font-size: 1.563rem;}
+
+    h5 {font-size: 1.25rem;}
+
+    small, .text_small {font-size: 0.8rem;}
+
+
+    .section_padding {
+        
+        padding: 200px 32px;
+        
+    }
+
+    .section_short {
+        
+        padding: 200px 32px 64px;
+        
+    }
+
+    .footer_padding {
+        
+        padding: 40px 32px;
+        gap: 40px;
+        
+    }
+
+    .siic_header {
+        background-image: url(../public/images/siicHeroS.png);
+        background-position: right center;
+        background-size: cover;
+        
+    }
+
+    .siic-moodboards {
+        
+        flex-direction: column;
+        
+    
+    }
+
+    
+}
