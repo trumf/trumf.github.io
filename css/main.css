@@ -255,7 +255,7 @@ a:link, a:visited, a:active {
 
 
 .main__header {
-    
+    position: relative;
     background: linear-gradient(-65deg,#2C8287, #A0000C , #2C8287 70%  );
     background-size: 400% 100%;
     animation: gradient 35s ease infinite;
@@ -285,11 +285,14 @@ a:link, a:visited, a:active {
     top: 0%;
     right: 0%;
     bottom: 0%;
+   
     background-image: url("https://stackdiary.com/wp-content/uploads/2022/10/noise_img.png");
     background-position: 0px 0px;
     background-size: auto;
-    opacity: 0.2;
-    height: 48rem
+    
+    opacity: 0.25;
+    height: 100%;
+    width: 100%;
         
    
     
@@ -795,9 +798,7 @@ a:link, a:visited, a:active {
 
 
 
-    .noise-image {
-        height: 45rem;
-    }
+    
 
 
     .caseCard {
