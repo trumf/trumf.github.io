@@ -512,6 +512,11 @@ a:link, a:visited, a:active {
     gap: 32px;
 }
 
+.volvo__header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 
 .uxScreens img {
