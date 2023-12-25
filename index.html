@@ -1,158 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rosenqvist</title>
 
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-    <div class="navbar"><a href="/"></a><h4>Rosenqvist</h4></div>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/"></a>
+      <h4>Rosenqvist</h4>
+    </div>
     <section class="main__header section_padding">
-        
-            <div class="noise-image"></div>
-            <div class="navbar"><a href="/"></a><h4>Rosenqvist</h4></div>
+      <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <filter id="noiseFilter">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.65"
+              numOctaves="3"
+              stitchTiles="stitch"
+            />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+        </svg>
+      </div>
+      <div class="navbar">
+        <a href="/"></a>
+        <h4>Rosenqvist</h4>
+      </div>
 
-            <div class="main__header-content">
-                <h1 class="header-text">I’m Simon,<br> I design and research user’s experiences</h1>
-            </div>
-       
+      <div class="main__header-content">
+        <h1 class="header-text" style="line-height: 115%">
+          I’m Simon,<br />
+          I design and research user’s experiences
+        </h1>
+      </div>
     </section>
-
-
-
 
     <section class="section_padding bg_dark">
-        <div class="content-headline">
-            <h3>About Me</h3>
-            <div class="content-container">
-                <div class="content-text">
-                    
-                    <p>As a UX designer with five years of experience and a background in cognitive science, I excel in designing products that align with human behavior.</p>
-                        
-                    <p>My industry experience includes automotive and fintech, both as a people manager and lead designer. I have a strong background in user research and have established good design practices through agile product development.</p>
-                    
-                    <div class="main__contact" style="margin-top: 16px;">
-                    <h5>Get in touch:</h5>
-                    <div class="main__contact-icon">
-                        <a href="mailto:info@rosenqvist.design"><img src="public/images/icons8-secured-letter-50.png" alt="email"></a>                        
-                    </div>
-                    <div class="main__contact-icon">
-                        <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img src="public/images/icons8-linkedin-50.png" alt="Linkedin"></a>
-                    </div>
-    
-                    </div>
-                </div>
+      <div class="content-headline">
+        <h3>About Me</h3>
+        <div class="content-container">
+          <div class="content-text">
+            <p>
+              As a UX designer with five years of experience and a background in
+              cognitive science, I excel in designing products that align with
+              human behavior.
+            </p>
 
-                <div class="experience" >
-                    <h5>Experience:</h5>
-                    <div class="main__cv-timeline">
-                        
-                        <div class="main__cv-timeline_job">
-                            <div class="jobWrapper">
-                                <div class="jobTitle"><p>Senior Product Designer</p></div>
-                                <div class="jobYear"><p>2022</p></div>
-                            </div>
-                            <div class="jobEmployer"><p>Utopia</p></div>
-                        </div>
-                        <div class="cv-timeline_job">
-                            <div class="jobWrapper">
-                                <div class="jobTitle"><p>Design Manager</p></div>
-                                <div class="jobYear"><p>2020</p></div>
-                            </div>
-                            <div class="jobEmployer"><p>Volvo Cars</p></div>
-                        </div>
-                        <div class="cv-timeline_job">
-                            <div class="jobWrapper">
-                                <div class="jobTitle"><p>UX Designer & Researcher</p></div>
-                                <div class="jobYear"><p>2018</p></div>
-                            </div>
-                            <div class="jobEmployer"><p>Volvo Cars</p></div>
-                        </div>
-                        <div class="cv-timeline_job">
-                            <div class="jobWrapper">
-                                <div class="jobTitle"><p>Human Factors Specialist</p></div>
-                                <div class="jobYear"><p>2017</p></div>
-                            </div>
-                            <div class="jobEmployer"><p>Semcon</p></div>
-                        </div>
+            <p>
+              My industry experience includes automotive and fintech, both as a
+              people manager and lead designer. I have a strong background in
+              user research and have established good design practices through
+              agile product development.
+            </p>
 
-                        
-                    </div>
-                </div>
+            <div class="main__contact" style="margin-top: 16px">
+              <h5>Get in touch:</h5>
+              <div class="main__contact-icon">
+                <a href="mailto:info@rosenqvist.design"
+                  ><img
+                    src="public/images/icons8-secured-letter-50.png"
+                    alt="email"
+                /></a>
+              </div>
+              <div class="main__contact-icon">
+                <a
+                  href="https://www.linkedin.com/in/simon-rosenqvist/"
+                  target="_blank"
+                  ><img
+                    src="public/images/icons8-linkedin-50.png"
+                    alt="Linkedin"
+                /></a>
+              </div>
             </div>
+          </div>
+
+          <div class="experience">
+            <h5>Experience:</h5>
+            <div class="main__cv-timeline">
+              <div class="main__cv-timeline_job">
+                <div class="jobWrapper">
+                  <div class="jobTitle"><p>Senior Product Designer</p></div>
+                  <div class="jobYear"><p>2022</p></div>
+                </div>
+                <div class="jobEmployer"><p>Utopia</p></div>
+              </div>
+              <div class="cv-timeline_job">
+                <div class="jobWrapper">
+                  <div class="jobTitle"><p>Design Manager</p></div>
+                  <div class="jobYear"><p>2020</p></div>
+                </div>
+                <div class="jobEmployer"><p>Volvo Cars</p></div>
+              </div>
+              <div class="cv-timeline_job">
+                <div class="jobWrapper">
+                  <div class="jobTitle"><p>UX Designer & Researcher</p></div>
+                  <div class="jobYear"><p>2018</p></div>
+                </div>
+                <div class="jobEmployer"><p>Volvo Cars</p></div>
+              </div>
+              <div class="cv-timeline_job">
+                <div class="jobWrapper">
+                  <div class="jobTitle"><p>Human Factors Specialist</p></div>
+                  <div class="jobYear"><p>2017</p></div>
+                </div>
+                <div class="jobEmployer"><p>Semcon</p></div>
+              </div>
+            </div>
+          </div>
         </div>
-
+      </div>
     </section>
-
 
     <section class="section_padding bg_light">
-        <div class="content-headline" style="align-self: center;">
-            <h3>Case Studies</h3>
-            <div class="content-container">
-                <div class="caseCard">
-                    <div class="imageDiv">
-                        <a href="volvo.html"><img src="public/images/305709_Volvo_EX90.png" alt="Accelerate app product shots"></a>
-                    </div>
-                    
-                    <div class="case-content">
-                        
-                        <div class="caseLabel"><P>Leadership</P></div>
-                        <div class="CaseName"><h4>Volvo Cars</h4></div>
-                        <div class="caseText"><p>Examples of my work as a design manager at Volvo Cars</p></div>
-
-                    </div>
-
-                </div>
-                <div class="caseCard">
-                    <div class="imageDiv">
-                        <a href="siic.html"><img src="public/images/siicHeroS.png" alt="Volvo EX90"></a>
-                    </div>
-                    <div class="case-content">
-                        <div class="caseLabel"><P class="caseLabel">Research</P></div>
-                        <div class="CaseName"><h4>Sound in Intelligent Cars</h4></div>
-                        <div class="caseText"><p>How might we improve the experience of self-driving cars through the use of sound?</p></div>
-                    </div>
-                    
-
-                </div>
-                
+      <div class="content-headline" style="align-self: center">
+        <h3>Case Studies</h3>
+        <div class="content-container">
+          <div class="caseCard">
+            <div class="imageDiv">
+              <a href="volvo.html"
+                ><img
+                  style="margin-top: 0.5rem"
+                  src="public/images/305709_Volvo_EX90.png"
+                  alt="Product picture of Volvo EX90"
+              /></a>
             </div>
 
+            <div class="case-content">
+              <div class="caseLabel"><p>Leadership</p></div>
+              <div class="CaseName"><h4>Volvo Cars</h4></div>
+              <div class="caseText">
+                <p>Examples of my work as a design manager at Volvo Cars</p>
+              </div>
+            </div>
+          </div>
+          <div class="caseCard">
+            <div class="imageDiv">
+              <a href="siic.html"
+                ><img
+                  style="margin-top: 0.5rem"
+                  src="public/images/siicHeroS.png"
+                  alt="3D rendered cars are driving along a road. There is some sort of signal comming fom them"
+              /></a>
+            </div>
+            <div class="case-content">
+              <div class="caseLabel"><p class="caseLabel">Research</p></div>
+              <div class="CaseName"><h4>Sound in Intelligent Cars</h4></div>
+              <div class="caseText">
+                <p>
+                  How might we improve the experience of self-driving cars
+                  through the use of sound?
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-
+      </div>
     </section>
-
-
 
     <section class="footer_padding bg_black">
-        <div class="footer__contact">
-
-            
-                <h4>Get in touch:</h4>
-                <div class="main__contact-icon">
-                    <a href="mailto:info@rosenqvist.design"><img src="public/images/icons8-secured-letter-50.png" alt="email"><p>info@rosenqvist.design</p></a>                        
-                </div>
-                <div class="main__contact-icon">
-                    <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img src="public/images/icons8-linkedin-50.png" alt="Linkedin"><p>LinkedIn</p></a>
-                </div>
-
-            
-            
-
+      <div class="footer__contact">
+        <h4>Get in touch:</h4>
+        <div class="main__contact-icon">
+          <a href="mailto:info@rosenqvist.design"
+            ><img
+              src="public/images/icons8-secured-letter-50.png"
+              alt="email"
+            />
+            <p>info@rosenqvist.design</p></a
+          >
         </div>
-
-        <div class="copyright">
-            <p>©2023, Simon Rosenqvist</p>
+        <div class="main__contact-icon">
+          <a
+            href="https://www.linkedin.com/in/simon-rosenqvist/"
+            target="_blank"
+            ><img src="public/images/icons8-linkedin-50.png" alt="Linkedin" />
+            <p>LinkedIn</p></a
+          >
         </div>
+      </div>
 
+      <div class="copyright">
+        <p>©2023, Simon Rosenqvist</p>
+      </div>
     </section>
-
-
-
-    
-</body>
+  </body>
 </html>
