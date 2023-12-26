@@ -76,6 +76,8 @@ a:active {
   align-items: flex-start;
   padding: 200px 320px;
   gap: 160px;
+  position: relative;
+  overflow: hidden;
 }
 
 .section_short {
@@ -104,27 +106,52 @@ a:active {
   left: 40px;
 }
 
-.footer_padding {
+.main__header {
+  position: relative;
+  background: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
+  background-size: 400% 100%;
+  -webkit-animation: gradientAnim 30s ease infinite;
+  -moz-animation: gradientAnim 30s ease infinite;
+  animation: gradientAnim 35s ease infinite;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 100px 320px;
-  gap: 160px;
+  overflow: hidden;
 }
 
-.footer__contact {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+@keyframes gradientAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.footer__contact a {
-  gap: 16px;
+@-webkit-keyframes gradientAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.copyright {
-  width: 100%;
+@-moz-keyframes gradientAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .youtube {
@@ -218,54 +245,6 @@ a:active {
   padding: 0px;
   gap: 32px;
   width: 100%;
-}
-
-.main__header {
-  position: relative;
-  background: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
-  background-size: 400% 100%;
-  -webkit-animation: gradientAnim 30s ease infinite;
-  -moz-animation: gradientAnim 30s ease infinite;
-  animation: gradientAnim 35s ease infinite;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-@keyframes gradientAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@-webkit-keyframes gradientAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@-moz-keyframes gradientAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .main__about-image {
@@ -536,6 +515,31 @@ a:active {
   height: auto;
 }
 
+.footer_padding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 320px;
+  gap: 160px;
+}
+
+.footer__contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__contact a {
+  gap: 16px;
+}
+
+.copyright {
+  width: 100%;
+}
+
+/* ----------- media queries --------------- */
+
 @media screen and (max-width: 1400px) {
   .section_padding {
     padding: 200px 250px;
@@ -569,7 +573,7 @@ a:active {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
   .navbar {
     left: 64px;
   }
@@ -590,13 +594,15 @@ a:active {
   .siic__header {
     background-image: url(../public/images/siicHeroM.png);
   }
+  h1 {
+    margin-top: 0;
+    font-size: 4.5rem;
+  }
 }
 
 /* mobile */
 
 @media screen and (max-width: 550px) {
-  @import url("https://fonts.googleapis.com/css?family=Inter:400");
-
   html {
     font-size: 100%;
   } /*16px*/
@@ -700,7 +706,7 @@ a:active {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   opacity: 0.45;
   mix-blend-mode: multiply;
 }
