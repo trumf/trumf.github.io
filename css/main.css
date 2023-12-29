@@ -112,7 +112,7 @@ p {
   left: 40px;
 }
 
-.hero {
+.heroSection {
   position: relative;
   background: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
   background-size: 400% 100%;
