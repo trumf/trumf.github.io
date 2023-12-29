@@ -1,28 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:400");
 
-html {
-  font-size: 100%;
-  background-color: black;
-} /*16px*/
-
-body {
-  background: #0000;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  line-height: 1.75;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-}
-
-p {
-  display: block;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-}
+/* -----  typography ----- */
 
 h1,
 h2,
@@ -70,6 +48,32 @@ a:active {
   cursor: pointer;
 }
 
+html {
+  font-size: 100%;
+  background-color: black;
+} /*16px*/
+
+body {
+  background: #0000;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+p {
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/* ----- main layout ------- */
+
 .section_padding {
   display: flex;
   flex-direction: column;
@@ -100,13 +104,15 @@ a:active {
   background: #191919;
 }
 
+/* ----- hero ----- */
+
 .navbar {
   position: absolute;
   top: 16px;
   left: 40px;
 }
 
-.main__header {
+.hero {
   position: relative;
   background: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
   background-size: 400% 100%;
@@ -154,20 +160,26 @@ a:active {
   }
 }
 
-.youtube {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-
-.youtube iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.svg-container {
+  position: absolute; /* Set the SVG container to absolute positioning */
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+  mix-blend-mode: multiply;
 }
+
+svg {
+  width: 100%; /* Make the SVG element fill the entire width of its container */
+  height: 100%; /* Make the SVG element fill the entire height of its container */
+}
+
+.hero-text {
+  width: 640px;
+}
+
+/* ----- about ------ */
 
 .content-headline {
   display: flex;
@@ -175,7 +187,7 @@ a:active {
   gap: 1rem;
 }
 
-.content-container {
+.about-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -192,59 +204,13 @@ a:active {
   gap: 32px;
 }
 
-.content-image {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  flex: 1;
-}
-
-.content-image p {
-  font-size: 14px;
-  font-style: italic;
-}
-
-.image-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-
-  max-height: 400px;
-  overflow: hidden;
-  object-fit: cover;
-  justify-content: center;
-}
-
-.image-wrapper img {
-  max-width: 120%;
-  max-height: 120%;
-
-  align-items: center;
-}
-
-.image-wrapper p {
-  margin-top: 0.5rem;
-  font-size: 14px;
-  font-style: italic;
-}
-
-.content-text {
+.about-text {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 0;
   gap: 16px;
-}
-
-.content-youtube {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 32px;
-  width: 100%;
+  width: 360px;
 }
 
 .main__about-image {
@@ -257,14 +223,14 @@ a:active {
   max-width: 100%;
 }
 
-.main__contact {
+.about__contact {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2rem;
 }
 
-.main__contact-icon {
+.contact-icon {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -272,28 +238,32 @@ a:active {
   align-items: center;
 }
 
-.main__contact-icon a {
+.contact-icon a {
   display: flex;
   align-items: center;
 }
 
-.main__contact-icon img {
+.contact-icon img {
   height: 32px;
   width: 32px;
   margin: 0;
 }
 
-.main__cv-timeline {
+.experience {
+  min-width: 300px;
+}
+
+.cv-timeline {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-width: 300px;
+
   padding: 0px;
   gap: 24px;
   margin-top: 8px;
 }
 
-.main__cv-timeline_job {
+.cv-timeline_job {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -307,9 +277,6 @@ a:active {
   align-items: center;
   padding: 0px;
   gap: 8px;
-}
-
-.jobTitle {
 }
 
 .jobYear p {
@@ -332,8 +299,29 @@ a:active {
   color: #919191;
 }
 
+/* ------ case studies ------- */
+
+.cases_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  gap: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cases-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+}
+
 .caseCard {
-  flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -341,6 +329,7 @@ a:active {
   justify-content: center;
   align-items: center;
 
+  min-width: 300px;
   max-width: 360px;
   height: auto;
 
@@ -388,21 +377,32 @@ a:active {
   color: #949494;
 }
 
-.caseText {
-  margin-top: 8px;
+/* ------ footer ------- */
+
+.footer_padding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 320px;
+  gap: 160px;
 }
 
-.caseLink a {
-  font-family: "Inter", sans-serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 160%;
-  /* identical to box height, or 32px */
-  text-decoration: none;
-
-  color: #ffffff;
+.footer__contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
+.footer__contact a {
+  gap: 16px;
+}
+
+.copyright {
+  width: 100%;
+}
+
+/* ------- Volvo ------ */
 
 .header {
   display: flex;
@@ -421,6 +421,70 @@ a:active {
 .uxScreens img {
   justify-items: center;
 }
+
+.content-image {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.content-image p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+
+  max-height: 400px;
+  overflow: hidden;
+  object-fit: cover;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  max-width: 120%;
+  max-height: 120%;
+
+  align-items: center;
+}
+
+.image-wrapper p {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.youtube iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.content-youtube {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+  width: 100%;
+}
+
+/* ------ SIIC ------- */
 
 .siic__header {
   background-image: url(../public/images/siicheroL.png);
@@ -516,30 +580,14 @@ a:active {
   height: auto;
 }
 
-.footer_padding {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 100px 320px;
-  gap: 160px;
-}
-
-.footer__contact {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.footer__contact a {
-  gap: 16px;
-}
-
-.copyright {
-  width: 100%;
-}
-
 /* ----------- media queries --------------- */
+
+/* - 320px - `320px` being the minimum smartphone viewport width
+-390px
+- 480px - Approximate boundary between smartphone and tablet
+- 768px - The original iPad had a resolution of 768x1024px
+- 1024px - as above
+- 1280px - Standard width for a 16:9 720p (HD) display */
 
 @media screen and (max-width: 1400px) {
   .section_padding {
@@ -583,6 +631,10 @@ a:active {
     padding: 200px 64px;
   }
 
+  .cases-container {
+    gap: 16px;
+  }
+
   .section_short {
     padding: 200px 64px 64px;
     gap: 160px;
@@ -598,6 +650,12 @@ a:active {
   h1 {
     margin-top: 0;
     font-size: 4.5rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cases-container {
+    flex-direction: column;
   }
 }
 
@@ -703,19 +761,4 @@ a:active {
   .siic-moodboards {
     flex-direction: column;
   }
-}
-
-.svg-container {
-  position: absolute; /* Set the SVG container to absolute positioning */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.45;
-  mix-blend-mode: multiply;
-}
-
-svg {
-  width: 100%; /* Make the SVG element fill the entire width of its container */
-  height: 100%; /* Make the SVG element fill the entire height of its container */
 }
