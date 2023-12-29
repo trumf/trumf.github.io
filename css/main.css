@@ -122,7 +122,6 @@ p {
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin-top: 100rem;
 }
 
 @keyframes gradientAnim {
