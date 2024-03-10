@@ -123,7 +123,7 @@ p {
   -moz-animation: gradientAnim 30s ease infinite;
   animation: gradientAnim 35s ease infinite;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
 }
 
@@ -263,7 +263,7 @@ svg {
   align-items: flex-start;
 
   padding: 0px;
-  gap: 24px;
+  gap: 1rem;
   margin-top: 8px;
 }
 
@@ -272,7 +272,7 @@ svg {
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 4px;
+  gap: 0px;
 }
 
 .jobWrapper {
@@ -639,6 +639,9 @@ svg {
 
 @media screen and (max-width: 800px) {
   .cases-container {
+    flex-direction: column;
+  }
+  .about-container {
     flex-direction: column;
   }
   .hero-text {
