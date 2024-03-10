@@ -27,7 +27,7 @@
             modestbranding="1"
           ></iframe>
         </div>
-        <div class="volvo__header-text">
+        <div>
           <p>
             I spent five years at Volvo Cars leading the development of the EX90
             and Polestar 3, defining user and business value for future
@@ -42,8 +42,11 @@
 
     <section class="section_padding bg_dark" id="ux">
       <div class="content-container">
-        <div class="image-wrapper uxWelcome">
-          <img src="public/images/uxWelcomeM.png" alt="center screen in car" />
+        <div class="image-wrapper">
+          <img
+            src="public/images/volvo/uxWelcomeM.png"
+            alt="center screen in car"
+          />
         </div>
         <div class="content-text">
           <p>
@@ -63,15 +66,16 @@
         </div>
       </div>
 
-      <div class="image-wrapper uxScreens">
-        <img src="public/images/uxScreensM.png" alt="screens in a car" />
+      <div class="image-wrapper" style="justify-items: center">
+        <img src="public/images/volvo/uxScreensM.png" alt="screens in a car" />
       </div>
 
       <div class="content-container-reversed">
-        <div class="image-wrapper uxAd">
+        <div class="image-wrapper">
           <img
-            src="public/images/uxAdM.png"
+            src="public/images/volvo/uxAdM.png"
             alt="screens behind a steeringwheel"
+            style="justify-items: center"
           />
         </div>
 
@@ -111,7 +115,7 @@
       <div class="content-container">
         <div class="image-wrapper senseDM">
           <img
-            src="public/images/senseDmM.png"
+            src="public/images/volvo/senseDmM.png"
             alt="abstract image of interior of a car"
           />
         </div>
@@ -142,7 +146,7 @@
 
       <div class="content-container">
         <div class="image-wrapper senseRadar">
-          <img src="public/images/senseRadarM.png" alt="abstract 3d" />
+          <img src="public/images/volvo/senseRadarM.png" alt="abstract 3d" />
         </div>
         <div class="content-text">
           <p>
@@ -204,31 +208,45 @@
     <section class="footer_padding bg_black">
       <div class="footer__contact">
         <h4>Get in touch:</h4>
-        <div class="main__contact-icon">
+        <label class="contact-icon">
           <a href="mailto:info@rosenqvist.design"
             ><img
-              src="public/images/icons8-secured-letter-50.png"
+              src="../public/images/icons8-secured-letter-50.png"
               alt="email"
             />
-            <p>info@rosenqvist.design</p></a
+            info@rosenqvist.design</a
           >
-        </div>
-        <div class="main__contact-icon">
+        </label>
+        <label class="contact-icon">
           <a
             href="https://www.linkedin.com/in/simon-rosenqvist/"
             target="_blank"
-            ><img src="public/images/icons8-linkedin-50.png" alt="Linkedin" />
-            <p>LinkedIn</p></a
+            ><img
+              src="../public/images/icons8-linkedin-50.png"
+              alt="Linkedin"
+            />
+            LinkedIn</a
           >
-        </div>
+        </label>
+        <label class="contact-icon">
+          <a href="https://mastodon.social/@amalgam_" target="_blank"
+            ><img
+              src="../public/images/mastodon-logo-purple.svg"
+              alt="Mastodon"
+            />
+            Mastodon</a
+          >
+        </label>
       </div>
 
       <div class="copyright">
-        <p>©2023, Simon Rosenqvist</p>
+        <label>©2024, Simon Rosenqvist</label>
+
         <a href="https://librecounter.org/referer/show" target="_blank">
           <img
             src="https://librecounter.org/outline-white.svg"
             referrerpolicy="unsafe-url"
+            style="width: 32px; height: 32px"
           />
         </a>
       </div>
