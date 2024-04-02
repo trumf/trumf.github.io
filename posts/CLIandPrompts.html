@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="A blogpost about design patterns for ai and the new types of interactions that are needed and enjoyed" />
+    <title>Rosenqvist</title>
+
+    <link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body class="post">
+    <section class="section_padding heroSection">
+        <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
+                <filter id="noiseFilter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+            </svg>
+        </div>
+        <div class="navbar">
+            <a href="/">
+                <h4 style="color: #fff;">Rosenqvist</h4>
+            </a>
+        </div>
+        <div class="">
+            <div>
+                <p style="opacity: 70%;">Consider these prelimenary notes on the topic. It is hardly even a draft</p>
+            </div>
+            <div>
+                <h1>Command line and prompt interfaces</h1>
+            </div>
+        </div>
+    </section>
+    <section class="section_padding bg_dark" id="intro">
+
+        <h2>The trend of designing around an input box</h2>
+
+
+        <p>So for last couple of decades, we have moved from CLI, the command line interface, to using more and more
+            GUI. For most
+            of us a graphical user interface is faster and it also makes it easier for designers to make functions easy
+            to discover.
+            Now we see a return to the CLI withgenerative AI we see a return to this prompt driven design.</p>
+
+    </section>
+    <section class="section_padding bg_light">
+        <h2>Types of design for prompts</h2>
+
+        <div class="paragraph-wrapper">
+            <p><a href="https://www.felicis.com/news/prompt-driven-design">This blog</a> discusses the trend of prompt
+                driven design. Before you used to only see it in search boxes or
+                in a terminal
+                computing now you start to see it everywhere. They identify three types of prompt design, navigational
+                core, UX and API.</p>
+
+            <p>Examples of navigational UI is super human where you use the keyboard to open and close emails and
+                generally move
+                around. I would maybe add the Spotlight search feature as an example on Mac. The second type is Core UX
+                and this is when
+                the text input is the… core of the experience. An example is ChatGPT along with most of the new LLMs.
+                The last example
+                is APIs which make up the base for these other interfaces.</p>
+
+
+        </div>
+    </section>
+    <section class="section_padding bg_dark">
+        <h2>Accordion editing and Apple picking</h2>
+        <div class="paragraph-wrapper">
+            <p><a href="https://www.nngroup.com/articles/accordion-editing-apple-picking/">Nielsen Norman group</a> has
+                done some research on how people interact with prompts (and AIs) and found some
+                interesting new
+                behavior.</p>
+
+            <p>LLMs will generate something useful, good as a starting point, but not quite right. To make it better you
+                ask it to
+                write a bit more on a certain topic (expansion), or to reduce the text and shorten it to the most
+                important parts
+                (shrinking). The effect is that the text expands and shrinks as an accordion.</p>
+
+            <p>They also saw participants do Apple picking. The text you generate might be pretty bad over all but there
+                are good
+                parts. So you pick out the good apples from the otherwise mediocre bushel. They make the point that
+                today’s tools are
+                not really made for this kind of behavior. When writing, or using AI to write, you want to go back and
+                edit certain
+                paragraphs or pick out the good parts and paste them somewhere else.
+            </p>
+
+            <p>What is interesting to me is that we are starting to see some concrete use-cases emerge around this whole
+                AI circus. 
+                The use case for AI is either to make something from scratch that can kick start your process. Change
+                the style the
+                text. Or Make a summary of some text so it is easier and quicker to understand.</p>
+
+            <p>I myself often do this and I’ve seen how to do it on the Internet as well. If you want to write a longer
+                piece of text,
+                you first have the AI describe the different parts of that text and then for each of the parts you ask
+                to write the
+                first outline, and then that outline gets updated Here you often experience a lot of branching and a lot
+                of smaller
+                things you might want to change so being able to work with large fragments of text, something I’m
+                looking forward to. I
+                often do a lot of text work in Figma because I can easily drag around different parcel text and find the
+                voice I want to
+                say, so being able to support this kind of nonlinear nonlinear way of working instead of this idea that
+                you as a writer
+                sit down with the computer and write something from start to finish something I think would be very
+                good.</p>
+
+        </div>
+    </section>
+    <section class="section_padding bg_light">
+        <h2>Examples of people doing this well</h2>
+        <div class="paragraph-wrapper">
+            <p>Lastly I want to highlight a project that is doing this in a very interesting way from <a
+                    href="https://www.inkandswitch.com/">Ink &
+                    Switch</a>. Go and read their project notes on how
+                they are trying to
+                design for this new way of editing <a
+                    href="https://www.inkandswitch.com/patchwork/notebook/07/">together with an AI</a>. I think this is
+                really cool and great example of how AI can be used to edit text that sort of expands it outside the
+                prompt box while still being very text based.
+            </p>
+            <div>
+                <a href="../posts.html">
+                    <h5>
+                        << Back to Posts</h5>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="footer_padding bg_black">
+        <div class="footer__contact">
+            <h4>Get in touch:</h4>
+            <label class="contact-icon">
+                <a href="mailto:info@rosenqvist.design"><img src="../public/images/icons8-secured-letter-50.png"
+                        alt="email" />
+                    info@rosenqvist.design</a>
+            </label>
+            <label class="contact-icon">
+                <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img
+                        src="../public/images/icons8-linkedin-50.png" alt="Linkedin" />
+                    LinkedIn</a>
+            </label>
+            <label class="contact-icon">
+                <a href="https://mastodon.social/@amalgam_" target="_blank"><img
+                        src="../public/images/mastodon-logo-purple.svg" alt="Mastodon" />
+                    Mastodon</a>
+            </label>
+        </div>
+
+        <div class="copyright">
+            <label>©2024, Simon Rosenqvist</label>
+
+            <a href="https://librecounter.org/referer/show" target="_blank">
+                <img src="https://librecounter.org/outline-white.svg" referrerPolicy="unsafe-url"
+                    style="width: 32px; height: 32px;" />
+            </a>
+
+        </div>
+
+
+    </section>
+</body>
+
+</html>
