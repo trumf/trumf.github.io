@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:400");
 
+:root {
+  --brand-color-main: #a0000c; /* Red */
+  --brand-color-secondary: #2c8287;
+  --bg-black: #030303;
+  --bg-dark: #161616;
+  --bg-light: #1f1f1f;
+  --bg-card: #2c2c2c;
+  --text-title: #fff;
+  --text-body: #fffffff8;
+  --text-subdued: #949494;
+  --text-link: #fffffff8;
+}
+
 /* -----  typography ----- */
 
 h1,
@@ -46,7 +59,7 @@ a:link,
 a:visited,
 a:active {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--text-body);
   cursor: pointer;
 }
 
@@ -56,11 +69,11 @@ a h4 {
 
 html {
   font-size: 100%;
-  background-color: black;
+  background-color: var(--bg-black);
 } /*16px*/
 
 body {
-  background: #0000;
+  background: var(--bg-black);
   font-family: "Inter", sans-serif;
   font-weight: 400;
 
@@ -100,15 +113,15 @@ p {
 }
 
 .bg_black {
-  background: #030303;
+  background: var(--bg-black);
 }
 
 .bg_dark {
-  background: #161616;
+  background: var(--bg-dark);
 }
 
 .bg_light {
-  background: #1f1f1f;
+  background: var(--bg-light);
 }
 
 /* ----- hero ----- */
@@ -134,7 +147,12 @@ nav {
 
 .portfolioHero {
   position: relative;
-  background: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
+  background: linear-gradient(
+    -65deg,
+    var(--brand-color-secondary),
+    var(--brand-color-main),
+    var(--brand-color-secondary) 70%
+  );
   background-size: 400% 100%;
   -webkit-animation: gradientAnim 30s ease infinite;
   -moz-animation: gradientAnim 30s ease infinite;
@@ -261,7 +279,7 @@ svg {
   display: flex;
   align-items: center;
 
-  color: #fff;
+  color: var(--text-body);
 }
 
 .contact-icon img {
@@ -353,7 +371,7 @@ svg {
   max-width: 360px;
   height: auto;
 
-  background: #2c2c2c;
+  background: var(--bg-card);
   border-radius: 4px;
 }
 
@@ -394,7 +412,7 @@ svg {
   line-height: 15px;
   /* identical to box height */
 
-  color: #949494;
+  color: var(--text-subdued);
 }
 
 /* ------ footer ------- */
@@ -584,7 +602,7 @@ svg {
 }
 
 .post a {
-  color: #2c8287;
+  color: var(--brand-color-secondary);
   text-decoration: underline;
 }
 
