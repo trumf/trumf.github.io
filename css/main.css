@@ -621,6 +621,22 @@ svg {
 }
 
 .post-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  gap: 32px;
+  z-index: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+/*
+.post-container {
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -629,20 +645,29 @@ svg {
   padding: 16px;
   flex-wrap: wrap;
 }
+*/
 
 .postCard {
+  position: relative;
+  width: 100%;
+
   display: flex;
+  align-items: start;
+  align-content: stretch;
+  justify-content: start;
+  gap: 16px;
+
   flex-direction: column;
-  overflow: hidden;
+  flex-wrap: nowrap;
+  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
+  max-width: 360px;
+  min-width: 280px;
 
-  justify-content: center;
-  align-items: center;
-
-  min-width: 260px;
-  max-width: 380px;
   height: 440px;
 
-  background: #2c2c2c;
+  background: var(--bg-card);
   border-radius: 4px;
 }
 
@@ -663,14 +688,26 @@ svg {
   height: auto;
 }
 
+.post-label {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  width: 100%;
+}
+
+.post-label p {
+  color: var(--text-subdued);
+  font-size: 12px;
+}
+
 .post-content {
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
+
+  padding: 16px;
   gap: 4px;
-  margin: 32px;
 
   min-height: 200px;
 }
