@@ -13,8 +13,15 @@
 </head>
 
 <body>
-    <section class="portfolioHero section_padding">
-
+    <header role="banner" class="heroSection section_padding">
+        <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
+                <filter id="noiseFilter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+            </svg>
+        </div>
         <nav>
             <a href="/" style="text-decoration: none;">
                 <h4 style="color: #fff; text-decoration: none;">Rosenqvist</h4>
@@ -22,10 +29,12 @@
         </nav>
 
         <div class="hero-text">
-            <h1 style="line-height: 115%">Portfolio</h1>
+            <h1 style="line-height: 115%">
+                Portfolio
+            </h1>
         </div>
-    </section>
-    <section class="section_padding bg_dark" style="align-items: center">
+    </header>
+    <section class="section_padding bg_dark">
         <div class="content-headline">
             <h3>About Me</h3>
 
@@ -140,64 +149,59 @@
         </div>
     </section>
 
-    <section class="bg_light section_padding">
-        <div class="content-headline" style="align-self: center; max-width: 880px">
-            <h3>Case Studies</h3>
-            <div class="cases-container">
-                <a href="volvo.html" alt="Link to Volvo case study">
-                    <div class="caseCard" style="height: 100%">
-                        <div class="imageDiv">
-                            <img style="margin-top: 0.5rem" src="public/images/main/305709_Volvo_EX90.png"
-                                alt="Product picture of Volvo EX90" />
-                        </div>
-                        <div class="case-content">
-                            <div class="caseLabel">
-                                <p>Leadership</p>
-                            </div>
-                            <div class="CaseName">
-                                <h4>Volvo Cars</h4>
-                            </div>
-                            <div class="caseText" style="margin-top: 8px">
-                                <p>Examples of my work as a design manager at Volvo Cars</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+    <section class="section_padding bg_light" style="gap: 40px;">
 
-                <a href="siic.html" alt="Link to SiiC case study">
-                    <div class="caseCard" style="height: 464px">
-                        <div class="imageDiv">
-                            <img style="margin-top: 0.5rem" src="public/images/main/siicHeroS.png"
-                                alt="3D rendered cars are driving along a road. There is some sort of signal comming from them" />
-                        </div>
-                        <div class="case-content">
-                            <div class="caseLabel">
-                                <p class="caseLabel">Research</p>
-                            </div>
-                            <div class="CaseName">
-                                <h4>Sound in Intelligent Cars</h4>
-                            </div>
-                            <div class="caseText" style="margin-top: 8px">
-                                <p>
-                                    How might we improve the experience of self-driving cars
-                                    through the use of sound?
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+        <h3 style="width: 100%;">Case Studies</h3>
+        <div class="post-container">
+            <a href="volvo.html" class="postCard">
 
-        </div>
-        <div style="width: max-content;">
-            <a href="index.html" style="color: #fff">
-                <h5>
-                    << Back</h5>
+                <div class="postImage"><img src="public/images/main/305709_Volvo_EX90.png"
+                        alt="Product picture of Volvo EX90" />
+                </div>
+
+                <div class="post-content">
+                    <div class="post-label">
+                        <p>Leadership</p>
+
+                    </div>
+                    <div class="CaseName">
+                        <h4>Volvo Cars</h4>
+                    </div>
+                    <div class="caseText" style="margin-top: 8px">
+                        <p>Examples of my work as a design manager at Volvo Cars</p>
+                    </div>
+                </div>
+
             </a>
+            <a href="siic.html" class="postCard">
+
+                <div class="postImage"><img src="public/images/main/siicHeroS.png"
+                        alt="3D rendered cars are driving along a road. There is some sort of signal comming from them" />
+                </div>
+
+                <div class="post-content">
+                    <div class="post-label">
+                        <p>Research</p>
+
+                    </div>
+                    <div class="CaseName">
+                        <h4>Sound in Intelligent Cars</h4>
+                    </div>
+                    <div class="caseText" style="margin-top: 8px">
+                        <p>How might we improve the experience of self-driving cars
+                            through the use of sound?</p>
+                    </div>
+                </div>
+
+            </a>
+
         </div>
+        <a href="posts.html" style="margin-top: 160px;">
+            <span style="font-size: 1.4rem; text-decoration: underline;">Posts, Notes, and Stuff</span>
+        </a>
     </section>
 
-    <footer class="footer_padding bg_black">
+    <footer role="contentinfo" class="footer_padding bg_black">
         <div class="footer__contact">
             <h4>Get in touch:</h4>
             <label class="contact-icon">
