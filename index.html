@@ -11,6 +11,15 @@
 
   <link rel="stylesheet" href="css/main.css" />
   <link rel="icon" type="image/x-icon" href="public/images/favicon.svg">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // Load navbar into the placeholder
+      $("#navbar-placeholder").load("components/NavBar.html");
+      // Load footer into the placeholder
+      $("#footer-placeholder").load("components/Footer.html");
+    });
+  </script>
 </head>
 
 <body>
@@ -23,7 +32,7 @@
         <rect width="100%" height="100%" filter="url(#noiseFilter)" />
       </svg>
     </div>
-    <nav>
+    <nav id="navbar-placeholder">
       <a href="/" style="text-decoration: none;">
         <h4 style="color: #fff; text-decoration: none;">Rosenqvist</h4>
       </a>
@@ -191,7 +200,7 @@
     </a>
   </section>
 
-  <footer role="contentinfo" class="footer_padding bg_black">
+  <footer id="footer-placeholder" role="contentinfo" class="footer_padding bg_black">
     <div class="footer__contact">
       <h4>Get in touch:</h4>
       <label class="contact-icon">
