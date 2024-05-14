@@ -728,6 +728,22 @@ svg {
   gap: 32px;
 }
 
+/* This container fits the video to the screen */
+.responsive-video {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio for 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* ----------- media queries --------------- */
 
 /* - 320px - `320px` being the minimum smartphone viewport width
