@@ -744,6 +744,56 @@ svg {
   height: 100%;
 }
 
+.hover-div {
+  position: relative;
+  cursor: pointer; /* Indicates an interactive element */
+  display: inline-block;
+}
+
+.info-box {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.hover-div:hover .info-box {
+  display: block; /* Show the info box on hover */
+}
+
+.hover-div {
+  position: relative;
+  cursor: pointer; /* Indicates an interactive element */
+}
+
+.info-box {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px;
+  background-color: var(--bg-light);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.emoji-button {
+  cursor: pointer; /* Suggests the emoji is clickable */
+  display: inline-block; /* Needed to apply dimensions */
+  width: 25px; /* Width of the emoji */
+  height: 25px; /* Height of the emoji */
+}
+
+.hover-div:hover .info-box {
+  display: block; /* Show the info box on hover */
+}
+
 /* ----------- media queries --------------- */
 
 /* - 320px - `320px` being the minimum smartphone viewport width
