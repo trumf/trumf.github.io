@@ -8,32 +8,34 @@
     <meta name="description" content="blog posts and other writings on design, technology, AI, and work" />
     <title>Rosenqvist</title>
 
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <link rel="icon" type="image/x-icon" href="public/images/favicon.svg">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("components/navbar.html");
+        });
+    </script>
 </head>
 
-<body>
-    <header role="banner" class="heroSection section_padding">
-        <div class="svg-container">
-            <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
-                <filter id="noiseFilter">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-                </filter>
-                <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-            </svg>
-        </div>
-        <nav>
-            <a href="/" style="text-decoration: none;">
-                <h4 style="color: #fff; text-decoration: none;">Rosenqvist</h4>
-            </a>
-        </nav>
+<header role="banner" class="heroSection section_padding">
+    <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
+            <filter id="noiseFilter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+        </svg>
+    </div>
+    <div id="navbar-container" class="navbar-container"></div>
 
-        <div class="hero-text">
-            <h1 style="line-height: 115%">
-                Portfolio
-            </h1>
-        </div>
-    </header>
+    <div class="hero-text">
+        <h1 style="line-height: 115%">
+            Portfolio
+        </h1>
+    </div>
+</header>
+<main>
     <section class="section_padding bg_dark">
         <div class="content-headline">
             <h3>About Me</h3>
@@ -196,9 +198,7 @@
             </a>
 
         </div>
-        <a href="posts.html" style="margin-top: 160px;">
-            <span style="font-size: 1.4rem; text-decoration: underline;">Posts, Notes, and Stuff</span>
-        </a>
+
     </section>
 
     <footer role="contentinfo" class="footer_padding bg_black">
@@ -229,7 +229,7 @@
                     style="width: 32px; height: 32px" />
             </a>
         </div>
-    </footer>
-</body>
+</main>
+</footer>
 
 </html>
