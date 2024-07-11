@@ -11,6 +11,12 @@
 
   <link rel="stylesheet" href="css/main.css" />
   <link rel="icon" type="image/x-icon" href="public/images/favicon.svg">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#navbar-container").load("components/navbar.html");
+    });
+  </script>
 </head>
 
 <body>
@@ -23,11 +29,8 @@
         <rect width="100%" height="100%" filter="url(#noiseFilter)" />
       </svg>
     </div>
-    <nav>
-      <a href="/" style="text-decoration: none;">
-        <h4 style="color: #fff; text-decoration: none;">Rosenqvist</h4>
-      </a>
-    </nav>
+    <div id="navbar-container"></div>
+
 
     <div class="hero-text">
       <h1 style="line-height: 115%">
