@@ -2,18 +2,23 @@
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  align-items: baseline;
+  justify-content: flex-start;
   margin: 0% 10%;
   margin-top: 32px;
+  max-width: 1280px;
+  gap: 2rem;
 }
 
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
+.navbar-nav a:hover {
+  text-decoration-line: underline;
 }
 
 .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 1.5rem;
   list-style-type: none;
   margin: 0;
   padding: 0;
