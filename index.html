@@ -11,12 +11,7 @@
 
   <link rel="stylesheet" href="css/main.css" />
   <link rel="icon" type="image/x-icon" href="public/images/favicon.svg">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#navbar-container").load("components/navbar.html");
-    });
-  </script>
+
 </head>
 
 <body>
@@ -212,38 +207,46 @@
       </a>
     </section>
   </main>
+
+
+
+
+  <footer role="contentinfo" class="footer_padding bg_black">
+    <div class="footer__contact">
+      <h3>Get in touch:</h3>
+      <label class="contact-icon">
+        <a href="mailto:info@rosenqvist.design"><img src="../public/images/icons8-secured-letter-50.png" alt="email" />
+          info@rosenqvist.design</a>
+      </label>
+      <label class="contact-icon">
+        <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img
+            src="../public/images/icons8-linkedin-50.png" alt="Linkedin" />
+          LinkedIn</a>
+      </label>
+      <label class="contact-icon">
+        <a href="https://mastodon.social/@amalgam_" target="_blank"><img src="../public/images/mastodon-logo-purple.svg"
+            alt="Mastodon" />
+          Mastodon</a>
+      </label>
+    </div>
+
+    <div class="copyright">
+      <label>©2024, Simon Rosenqvist</label>
+
+      <a href="https://librecounter.org/referer/show" target="_blank">
+        <img src="https://librecounter.org/outline-white.svg" referrerpolicy="unsafe-url"
+          style="width: 32px; height: 32px" />
+      </a>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#navbar-container").load("components/navbar.html");
+    });
+  </script>
+
+  <script src="tests.js"></script>
 </body>
-
-
-
-<footer role="contentinfo" class="footer_padding bg_black">
-  <div class="footer__contact">
-    <h3>Get in touch:</h3>
-    <label class="contact-icon">
-      <a href="mailto:info@rosenqvist.design"><img src="../public/images/icons8-secured-letter-50.png" alt="email" />
-        info@rosenqvist.design</a>
-    </label>
-    <label class="contact-icon">
-      <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img
-          src="../public/images/icons8-linkedin-50.png" alt="Linkedin" />
-        LinkedIn</a>
-    </label>
-    <label class="contact-icon">
-      <a href="https://mastodon.social/@amalgam_" target="_blank"><img src="../public/images/mastodon-logo-purple.svg"
-          alt="Mastodon" />
-        Mastodon</a>
-    </label>
-  </div>
-
-  <div class="copyright">
-    <label>©2024, Simon Rosenqvist</label>
-
-    <a href="https://librecounter.org/referer/show" target="_blank">
-      <img src="https://librecounter.org/outline-white.svg" referrerpolicy="unsafe-url"
-        style="width: 32px; height: 32px" />
-    </a>
-  </div>
-</footer>
-
 
 </html>
