@@ -80,6 +80,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--bg-dark);
 }
 
 body {
@@ -652,8 +653,6 @@ svg {
   flex-wrap: wrap;
   flex-grow: 1;
   margin: 40px;
-
-  background-color: red;
 }
 
 /*
