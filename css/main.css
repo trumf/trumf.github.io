@@ -243,21 +243,17 @@ svg {
 
 /* ----- about ------ */
 
-.content-headline {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 1280px;
-  gap: 1rem;
-}
-
 .about-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0px;
-  gap: 32px;
+  flex-wrap: wrap;
+
+  width: 100%;
+  max-width: 900px;
+  min-width: 300px;
+  gap: 3rem;
 }
 
 .content-container-reversed {
@@ -322,24 +318,16 @@ svg {
 }
 
 .cv-timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
-  row-gap: 1rem;
-  list-style-type: none;
-  column-gap: 3rem;
-}
-
-@media (min-width: 600px) {
-  .cv-timeline {
-    grid-auto-flow: column;
-    grid-template-rows: repeat(3, auto);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .cv-timeline_job {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: space;
   padding: 0px;
   gap: 0px;
 }
@@ -349,7 +337,9 @@ svg {
   flex-direction: row;
   align-items: center;
   padding: 0px;
-  gap: 8px;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .jobYear p {
