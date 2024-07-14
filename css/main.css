@@ -453,10 +453,9 @@ svg {
 }
 
 .footer__contact {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   color: var(--text-body);
 }
 
