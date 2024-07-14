@@ -119,6 +119,10 @@ ul {
   left: 0;
 }
 
+nav {
+  z-index: 100;
+}
+
 /* ----- main layout ------- */
 
 .section_padding {

@@ -5,21 +5,35 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rosenqvist</title>
+  <meta name="description"
+    content="Simon Rosenqvist researches and designs user experience with UX design, Product Management, web design, automotive" />
+  <title>Simon Rosenqvist - UX Designer & Product Manager | Sweden</title>
 
   <link rel="stylesheet" href="css/main.css" />
   <link rel="icon" type="image/x-icon" href="public/images/favicon.svg">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Portfolio: Volvo Design Manager">
+  <meta property="og:description" content="Details about my work with EX90, Polestar 3, and EX30">
+  <meta property="og:image" content="public/images/favicon.svg">
+  <meta property="og:url" content="https://rosenqvist.design/">
+
+  <!-- Twitter Card tags for Twitter -->
+  <meta name="twitter:title" content="Portfolio: Volvo Design Manager">
+  <meta name="twitter:description" content="Details about my work with EX90, Polestar 3, and EX30">
+  <meta name="twitter:image" content="public/images/favicon.svg">
+
+
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/x-icon" href="../public/images/favicon.svg">
+
 </head>
 
 <body>
   <section class="section_padding bg_black" id="header">
-    <nav>
-      <a href="/" style="text-decoration: none;">
-        <h4 style="color: #fff; text-decoration: none;">Rosenqvist</h4>
-      </a>
-    </nav>
+    <nav id="navbar-container" class="navbar-container"></nav>
 
-    <div class="content-youtube">
+    <div class="content-youtube" style="padding-top: 64px;">
       <div class="youtube">
         <iframe width="1389" height="790" src="https://www.youtube.com/embed/vMgpwPTetEo"
           title="The Volvo EX90: Hej there ;)" frameborder="0"
@@ -42,7 +56,7 @@
   <section class="section_padding bg_dark" id="ux">
     <div class="content-container">
       <div class="image-wrapper">
-        <img src="public/images/volvo/uxWelcomeM.png" alt="center screen in car" />
+        <img src="/public/images/volvo/uxWelcomeM.png" alt="center screen in car" />
       </div>
       <div class="content-text">
         <p>
@@ -63,12 +77,12 @@
     </div>
 
     <div class="image-wrapper" style="justify-items: center">
-      <img src="public/images/volvo/uxScreensM.png" alt="screens in a car" />
+      <img src="/public/images/volvo/uxScreensM.png" alt="screens in a car" />
     </div>
 
     <div class="content-container-reversed">
       <div class="image-wrapper">
-        <img src="public/images/volvo/uxAdM.png" alt="screens behind a steeringwheel" style="justify-items: center" />
+        <img src="/public/images/volvo/uxAdM.png" alt="screens behind a steeringwheel" style="justify-items: center" />
       </div>
 
       <div class="content-text">
@@ -101,7 +115,7 @@
   <section class="section_padding bg_light" id="sensing">
     <div class="content-container">
       <div class="image-wrapper senseDM">
-        <img src="public/images/volvo/senseDmM.png" alt="abstract image of interior of a car" />
+        <img src="/public/images/volvo/senseDmM.png" alt="abstract image of interior of a car" />
       </div>
       <div class="content-text">
         <p>
@@ -125,7 +139,7 @@
 
     <div class="content-container">
       <div class="image-wrapper senseRadar">
-        <img src="public/images/volvo/senseRadarM.png" alt="abstract 3d" />
+        <img src="/public/images/volvo/senseRadarM.png" alt="abstract 3d" />
       </div>
       <div class="content-text">
         <p>
@@ -170,41 +184,26 @@
     </div>
 
     <div>
-      <a href="index.html">
+      <a href="/portfolio.html">
         <h5>
           << Back</h5>
       </a>
     </div>
   </section>
 
-  <footer class="footer_padding bg_black">
-    <div class="footer__contact">
-      <h4>Get in touch:</h4>
-      <label class="contact-icon">
-        <a href="mailto:info@rosenqvist.design"><img src="../public/images/icons8-secured-letter-50.png" alt="email" />
-          info@rosenqvist.design</a>
-      </label>
-      <label class="contact-icon">
-        <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img
-            src="../public/images/icons8-linkedin-50.png" alt="Linkedin" />
-          LinkedIn</a>
-      </label>
-      <label class="contact-icon">
-        <a href="https://mastodon.social/@amalgam_" target="_blank"><img src="../public/images/mastodon-logo-purple.svg"
-            alt="Mastodon" />
-          Mastodon</a>
-      </label>
-    </div>
 
-    <div class="copyright">
-      <label>©2024, Simon Rosenqvist</label>
-
-      <a href="https://librecounter.org/referer/show" target="_blank">
-        <img src="https://librecounter.org/outline-white.svg" referrerpolicy="unsafe-url"
-          style="width: 32px; height: 32px" />
-      </a>
-    </div>
+  <footer role="contentinfo" class="footer_padding bg_black">
+    <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#navbar-container").load("../components/navbar.html");
+      $("#footer-container").load("../components/footer.html");
+    });
+  </script>
+
 </body>
 
 </html>
