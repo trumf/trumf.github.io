@@ -257,7 +257,7 @@ svg {
 .about-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+
   align-items: flex-start;
   flex-wrap: wrap;
 
@@ -265,6 +265,8 @@ svg {
   max-width: 900px;
   min-width: 300px;
   gap: 3rem;
+
+  padding: 10% 15%;
 }
 
 .content-container-reversed {
@@ -278,7 +280,7 @@ svg {
 .about-text {
   display: flex;
   flex-direction: column;
-  flex: 1;
+
   padding: 0;
   gap: 40px;
   min-width: 260px;
@@ -338,7 +340,7 @@ svg {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: space;
+
   padding: 0px;
   gap: 0px;
 }
@@ -765,7 +767,8 @@ svg {
 .paragraph-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: flex-start;
+  gap: 4rem;
 }
 
 /* This container fits the video to the screen */
