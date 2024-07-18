@@ -123,6 +123,37 @@ nav {
   z-index: 100;
 }
 
+.navbar {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin: 0% 10%;
+  margin-top: 32px;
+  max-width: 1280px;
+  gap: 2rem;
+}
+
+.navbar-nav a:hover {
+  text-decoration-line: underline;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 1.5rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar-nav .nav-item {
+  float: left;
+}
+
 /* ----- main layout ------- */
 
 .section_padding {
