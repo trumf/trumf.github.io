@@ -128,12 +128,11 @@ nav {
 .section_padding {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 10% 15%;
-  gap: 40px;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
   position: relative;
   overflow: hidden;
-  max-width: 1280px;
 }
 
 .section_short {
@@ -142,6 +141,14 @@ nav {
   align-items: flex-start;
   padding: 10% 15%;
   gap: 160px;
+}
+
+.section_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  padding: 10% 15%;
 }
 
 .bg_black {
