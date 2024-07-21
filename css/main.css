@@ -11,10 +11,13 @@
   --text-body: #fffffff8;
   --text-subdued: #949494;
   --text-link: #fffffff8;
+
+  --hero-animation-duration: 30s;
 }
 
 /* -----  typography ----- */
 
+/* Base styles for text elements */
 h1,
 h2,
 h3,
@@ -29,36 +32,38 @@ a {
   color: var(--text-body);
 }
 
+/* Heading styles */
+h1,
+h2,
+h3 {
+  color: var(--text-title);
+}
+
 h1 {
   font-size: 5.5rem;
-  line-height: 100%;
-  color: var(--text-title);
+  line-height: 1;
 }
-
 h2 {
   font-size: 3rem;
-  line-height: 110%;
-  color: var(--text-title);
+  line-height: 1.1;
 }
-
 h3 {
   font-size: 2rem;
-  color: var(--text-title);
 }
-
 h4 {
   font-size: 1.6rem;
 }
-
 h5 {
   font-size: 1.2rem;
 }
 
+/* Small text */
 small,
 .text_small {
   font-size: 0.7rem;
 }
 
+/* Link styles */
 a:link,
 a:visited,
 a:active {
@@ -70,6 +75,8 @@ a:active {
 a h4 {
   text-decoration: none;
 }
+
+/* ------- main layout ------- */
 
 html {
   font-size: 100%;
@@ -91,67 +98,35 @@ body {
   margin: 0px;
 }
 
-header {
-  margin: 0px;
-  padding: 0px;
-}
-
-p {
-  display: block;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  line-height: 200%;
-}
-
-ul {
-  padding: 0;
-}
-
+/* ------- navbar ------- */
 .navbar-container {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-nav {
+  width: 100%;
   z-index: 100;
 }
 
 .navbar {
-  overflow: hidden;
   display: flex;
-  flex-direction: row;
   align-items: baseline;
   justify-content: flex-start;
-  margin: 0% 10%;
-  margin-top: 32px;
   max-width: 1280px;
+  margin: 32px 10% 0;
   gap: 2rem;
-}
-
-.navbar-nav a:hover {
-  text-decoration-line: underline;
 }
 
 .navbar-nav {
   display: flex;
-  flex-direction: row;
   align-items: baseline;
   gap: 1.5rem;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
-.navbar-nav .nav-item {
-  float: left;
+.navbar-nav a:hover {
+  text-decoration: underline;
 }
 
 /* ----- main layout ------- */
@@ -181,6 +156,7 @@ nav {
   max-width: 1280px;
   padding: 10% 15%;
 }
+/* ------- common styles ------- */
 
 .bg_black {
   background: var(--bg-black);
@@ -196,135 +172,56 @@ nav {
 
 /* ----- hero ----- */
 
-.heroSection {
-  background: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
+.heroSection,
+.portfolioHero {
   background-size: 400% 100%;
-  -webkit-animation: gradientAnim 30s ease infinite;
-  -moz-animation: gradientAnim 30s ease infinite;
-  animation: gradientAnim 35s ease infinite;
+  animation: gradientAnim var(--hero-animation-duration) ease infinite;
   display: flex;
   align-items: flex-start;
   overflow: hidden;
+  position: relative;
+}
+
+.heroSection {
+  background-image: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
 }
 
 .portfolioHero {
-  position: relative;
-  background: linear-gradient(
+  background-image: linear-gradient(
     -65deg,
     var(--brand-color-secondary),
     var(--brand-color-main),
     var(--brand-color-secondary) 70%
   );
-  background-size: 400% 100%;
-  -webkit-animation: gradientAnim 30s ease infinite;
-  -moz-animation: gradientAnim 30s ease infinite;
-  animation: gradientAnim 35s ease infinite;
-  display: flex;
-  align-items: flex-start;
-  overflow: hidden;
 }
 
 @keyframes gradientAnim {
-  0% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@-webkit-keyframes gradientAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@-moz-keyframes gradientAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 
 .svg-container {
-  position: absolute; /* Set the SVG container to absolute positioning */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   opacity: 0.45;
   mix-blend-mode: multiply;
 }
 
 svg {
-  width: 100%; /* Make the SVG element fill the entire width of its container */
-  height: 100%; /* Make the SVG element fill the entire height of its container */
+  width: 100%;
+  height: 100%;
 }
 
 .hero-text {
   color: var(--text-title);
   display: flex;
-  flex-direction: row;
   padding: 10% 15%;
   max-width: 1280px;
-}
-
-/* ----- about ------ */
-
-.about-container {
-  display: flex;
-  flex-direction: row;
-
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  max-width: 900px;
-  min-width: 300px;
-  gap: 3rem;
-
-  padding: 10% 15%;
-}
-
-.content-container-reversed {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 32px;
-}
-
-.about-text {
-  display: flex;
-  flex-direction: column;
-
-  padding: 0;
-  gap: 40px;
-  min-width: 260px;
-  max-width: 480px;
-}
-
-.main__about-image {
-  display: flex;
-  width: 240px;
-  justify-content: center;
-}
-
-.main__about-image img {
-  max-width: 100%;
 }
 
 .about__contact {
@@ -354,133 +251,75 @@ svg {
   margin: 0;
 }
 
-.experience {
+/* ------ posts ------- */
+.post a {
+  color: var(--brand-color-secondary);
+  text-decoration: underline;
+}
+
+.post a h4 {
+  text-decoration: none;
+}
+
+.post h2 {
+  font-size: 2.5rem;
+}
+
+.post .section_padding {
+  gap: 64px;
+  padding: 100px;
+}
+
+.post-container {
+  max-width: 1280px;
   display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-.cv-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.cv-timeline_job {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  padding: 0px;
-  gap: 0px;
-}
-
-.jobWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 1rem;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.jobYear p {
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-
-  color: #919191;
-}
-
-.jobEmployer p {
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-
-  color: #919191;
-}
-
-/* ------ case studies ------- */
-
-.cases_section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 200px;
-  padding-bottom: 200px;
-  gap: 160px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cases-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 32px;
-}
-
-.caseCard {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-
   justify-content: center;
-  align-items: center;
+  gap: 3.2rem;
+  flex-wrap: wrap;
+}
 
-  min-width: 300px;
+.postCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   max-width: 360px;
-  height: auto;
-
+  min-width: 280px;
+  height: 440px;
   background: var(--bg-card);
   border-radius: 4px;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
 }
 
-.imageDiv {
-  display: flex;
-  height: 200px;
-  width: 360px;
+.postImage {
+  height: 180px;
+  width: 100%;
   overflow: hidden;
-  object-fit: cover;
-  align-items: center;
-  justify-content: center;
   border-radius: 4px 4px 0 0;
 }
 
-.imageDiv img {
-  margin: 0;
+.postImage img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
-.case-content {
+.post-label {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 4px;
-  margin: 32px;
-
-  min-height: 200px;
+  gap: 32px;
+  width: 100%;
 }
 
-.caseLabel p {
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  /* identical to box height */
-
+.post-label p {
   color: var(--text-subdued);
+  font-size: 12px;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+  gap: 4px;
 }
 
 /* ------ footer ------- */
@@ -517,282 +356,7 @@ svg {
   color: var(--text-body);
 }
 
-/* ------- Volvo ------ */
-
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  gap: 32px;
-}
-
-.content-image {
-  display: flex;
-  flex-direction: column;
-
-  flex: 1;
-}
-
-.content-image p {
-  font-size: 14px;
-  font-style: italic;
-}
-
-.image-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-
-  margin-top: 2rem;
-
-  max-height: 400px;
-  overflow: hidden;
-  object-fit: cover;
-  justify-content: center;
-}
-
-.image-wrapper img {
-  max-width: 120%;
-  max-height: 120%;
-
-  align-items: center;
-}
-
-.image-wrapper p {
-  font-size: 13px;
-  font-style: italic;
-}
-
-.youtube {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-
-.youtube iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-.content-youtube {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 32px;
-  width: 100%;
-}
-
-/* ------ SIIC ------- */
-
-.siic-moodboard-container {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.siic-moodboards {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 32px;
-}
-
-.moodboard {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  flex: 1;
-}
-
-.moodboard-images {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  object-fit: cover;
-}
-
-.moodboard-images img {
-  width: 100%;
-  height: auto;
-}
-
-.moodboard p {
-  font-size: 14px;
-  font-style: italic;
-}
-
-.siic__content-container_design {
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-start;
-  padding: 0px;
-  gap: 32px;
-}
-
-.siic__design-images {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  max-height: 400px;
-  object-fit: cover;
-}
-
-.siic__design-imageAndLabel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow: hidden;
-  width: 100%;
-  height: auto;
-  gap: 0.5rem;
-}
-
-.siic-image-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-}
-
-.siic-image-wrapper img {
-  max-width: 120%;
-  height: auto;
-}
-
-.post {
-}
-
-.post a {
-  color: var(--brand-color-secondary);
-  text-decoration: underline;
-}
-
-.post a h4 {
-  text-decoration: none;
-}
-
-.post h2 {
-  font-size: 2.5rem;
-}
-
-.post .section_padding {
-  gap: 64px;
-  padding: 100px;
-}
-
-.post-container {
-  position: relative;
-
-  max-width: 1280px;
-  display: flex;
-  align-items: start;
-  align-content: center;
-  justify-items: center;
-  justify-content: center;
-  gap: 3.2rem;
-  z-index: 0;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 1;
-}
-
-/*
-.post-container {
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: center;
-  gap: 24px;
-  padding: 16px;
-  flex-wrap: wrap;
-}
-*/
-
-.postCard {
-  position: relative;
-  width: 100%;
-
-  display: flex;
-  align-items: start;
-  align-content: stretch;
-  justify-content: start;
-  gap: 16px;
-
-  flex-direction: column;
-  flex-wrap: nowrap;
-  flex: 1;
-  flex-grow: 1;
-  flex-shrink: 0;
-  max-width: 360px;
-  min-width: 280px;
-
-  height: 440px;
-
-  background: var(--bg-card);
-  border-radius: 4px;
-
-  box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.1);
-}
-
-.postImage {
-  display: flex;
-  height: 180px;
-  width: 100%;
-  overflow: hidden;
-  object-fit: cover;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px 4px 0 0;
-}
-
-.postImage img {
-  margin: 0;
-  width: 100%;
-  height: auto;
-}
-
-.post-label {
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  width: 100%;
-}
-
-.post-label p {
-  color: var(--text-subdued);
-  font-size: 12px;
-}
-
-.post-content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: flex-start;
-
-  padding: 16px;
-  gap: 4px;
-
-  min-height: 200px;
-}
-
-.aiDesignHero {
-  background-image: url("manuel-CANL3bzp6wU-unsplash.jpg");
-  background-size: cover; /* This will make the image cover the entire div */
-  background-position: center; /* This will center the image */
-  width: 100%;
-}
+/* ------ blog ------- */
 
 .paragraph-wrapper {
   display: flex;
@@ -817,11 +381,55 @@ svg {
   height: 100%;
 }
 
-/* ----------- media queries --------------- */
+/* ----- about ------ */
 
-/* - 320px - `320px` being the minimum smartphone viewport width
--390px
-- 480px - Approximate boundary between smartphone and tablet
-- 768px - The original iPad had a resolution of 768x1024px
-- 1024px - as above
-- 1280px - Standard width for a 16:9 720p (HD) display */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 900px;
+  gap: 3rem;
+  padding: 10% 15%;
+}
+
+.about-text {
+  flex: 1 1 260px;
+  min-width: 260px;
+  max-width: 480px;
+}
+
+/* ----- experience ------ */
+
+.experience {
+  flex: 0 1 auto;
+  min-width: 260px;
+}
+
+.cv-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cv-timeline_job {
+  width: 100%;
+  padding: 0;
+}
+
+.experience ul {
+  padding: 0;
+}
+
+.jobWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.jobYear p,
+.jobEmployer p {
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--text-subdued);
+}
