@@ -30,7 +30,7 @@
 </head>
 
 <body class="post">
-  <section class="section_padding heroSection">
+  <header role="banner" class="heroSection" style="justify-content: left;">
     <div class="svg-container">
       <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
         <filter id="noiseFilter">
@@ -40,15 +40,15 @@
       </svg>
     </div>
     <nav id="navbar-container" class="navbar-container"></nav>
-    <div class="section_content" style="align-items: flex-start;">
-      <div>
-        <p style="opacity: 70%;">Consider these prelimenary notes on the topic. It is hardly even a draft</p>
-      </div>
-      <div>
-        <h1>Adapting to AI as a Designer</h1>
-      </div>
+
+
+    <div class="hero-text">
+      <h1 style="line-height: 115%">
+        Adapting to AI as a Designer
+      </h1>
     </div>
-  </section>
+  </header>
+
   <section class="section_padding bg_dark" id="intro">
     <div class="section_content paragraph-wrapper">
       <h2>Jakob Nielsen and an "Urgency around AI"</h2>
@@ -231,11 +231,10 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function () {
-      $("#navbar-container").load("/components/navbar.html");
-      $("#footer-container").load("/components/footer.html");
+      $("#navbar-container").load("../components/navbar.html");
+      $("#footer-container").load("../components/footer.html");
     });
   </script>
-  <script src="tests.js"></script>
 
 </body>
 

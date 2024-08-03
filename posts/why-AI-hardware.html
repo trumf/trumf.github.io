@@ -45,7 +45,7 @@
 </head>
 
 <body class="post">
-    <header class="section_padding heroSection">
+    <header role="banner" class="heroSection" style="justify-content: left;">
         <div class="svg-container">
             <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
                 <filter id="noiseFilter">
@@ -54,18 +54,16 @@
                 <rect width="100%" height="100%" filter="url(#noiseFilter)" />
             </svg>
         </div>
-        <nav>
-            <a href="/" style="text-decoration: none;">
-                <h4 style="color: #fff; text-decoration: none;">Rosenqvist</h4>
-            </a>
-        </nav>
-        <div>
+        <nav id="navbar-container" class="navbar-container"></nav>
 
 
-            <h1>AI Hardware products </h1>
-
+        <div class="hero-text">
+            <h1 style="line-height: 115%">
+                AI hardware products
+            </h1>
         </div>
     </header>
+
 
     <section class="section_padding bg_dark">
         <div class="section_content paragraph-wrapper ">
@@ -131,7 +129,7 @@
 
 
         <div class="section_content paragraph-wrapper ">
-            <h2>Why hardware?</h2>
+            <h2 class="headM">Why hardware?</h2>
             <p>There is a really <a href="https://x.com/jaykapoor24/status/1785940555471659429?s=12">funny clip</a> from
                 one reviewer of the rabbit where they talk about how they would
                 redesign it.
@@ -201,7 +199,7 @@
     <section class="section_padding bg_dark">
 
         <div class="section_content paragraph-wrapper ">
-            <h2>What’s up with assistants?</h2>
+            <h2 class="headM">What’s up with assistants?</h2>
             <p>I mean, I get it. I have a bunch of things I would like to get done and it would be great if someone
                 could them for me. The thing is that most of the things I personally want to get done you need a body to
                 do. I need to do the
@@ -279,42 +277,18 @@
 
         </div>
     </section>
-
-
-
-
-    <footer class="footer_padding bg_black">
-        <div class="footer__contact">
-            <h4>Get in touch:</h4>
-            <label class="contact-icon">
-                <a href="mailto:info@rosenqvist.design"><img src="../public/images/icons8-secured-letter-50.png"
-                        alt="email" />
-                    info@rosenqvist.design</a>
-            </label>
-            <label class="contact-icon">
-                <a href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank"><img
-                        src="../public/images/icons8-linkedin-50.png" alt="Linkedin" />
-                    LinkedIn</a>
-            </label>
-            <label class="contact-icon">
-                <a href="https://mastodon.social/@amalgam_" target="_blank"><img
-                        src="../public/images/mastodon-logo-purple.svg" alt="Mastodon" />
-                    Mastodon</a>
-            </label>
-        </div>
-
-        <div class="copyright">
-            <label>©2024, Simon Rosenqvist</label>
-
-            <a href="https://librecounter.org/referer/show" target="_blank">
-                <img src="https://librecounter.org/outline-white.svg" referrerPolicy="unsafe-url"
-                    style="width: 32px; height: 32px;" />
-            </a>
-
-        </div>
-
-
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("../components/navbar.html");
+            $("#footer-container").load("../components/footer.html");
+        });
+    </script>
+
 </body>
 
 </html>
