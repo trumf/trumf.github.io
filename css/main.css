@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:400");
 
 :root {
-  --brand-color-main: #a0000c; /* Red */
+  /* Existing dark mode variables */
+  --brand-color-main: #a0000c;
   --brand-color-secondary: #2c8287;
   --bg-black: #030303;
   --bg-dark: #161616;
@@ -11,9 +12,37 @@
   --text-body: #fffffff8;
   --text-subdued: #949494;
   --text-link: #fffffff8;
+  --text-navbar: #fffffff8;
 
   --hero-animation-duration: 30s;
+
+  /* New light mode variables */
+  --light-bg-black: #ffffff;
+  --light-bg-dark: #f0f0f0;
+  --light-bg-light: #fafafa;
+  --light-bg-card: #ffffff;
+  --light-text-title: #000000;
+  --light-text-body: #333333;
+  --light-text-subdued: #666666;
+  --light-text-link: #0000ff;
+  --light-text-navbar: #fff;
 }
+
+/*
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-black: var(--light-bg-black);
+    --bg-dark: var(--light-bg-dark);
+    --bg-light: var(--light-bg-light);
+    --bg-card: var(--light-bg-card);
+    --text-title: var(--light-text-title);
+    --text-body: var(--light-text-body);
+    --text-subdued: var(--light-text-subdued);
+    --text-link: var(--light-text-link);
+    --text-navbar: var(var(--light-text-navbar));
+  }
+}
+*/
 
 /* -----  typography ----- */
 
@@ -32,35 +61,52 @@ a {
   color: var(--text-body);
 }
 
+/* Body text */
+.body,
+p {
+  font-size: 1rem; /* 16px if base font size is 16px */
+  line-height: 1.5;
+}
+
 /* Heading styles */
 h1,
 h2,
-h3 {
+h3,
+.headL,
+.headM,
+.headS {
   color: var(--text-title);
+  line-height: 1.2;
 }
 
+.headL,
 h1 {
-  font-size: 5.5rem;
-  line-height: 1;
-}
-h2 {
-  font-size: 3rem;
+  font-size: 3.5rem; /* 56px if base font size is 16px */
   line-height: 1.1;
 }
+
+.headM,
+h2 {
+  font-size: 2.3rem; /* 40px if base font size is 16px */
+}
+
+.headS,
 h3 {
-  font-size: 2rem;
+  font-size: 1.7rem; /* 28px if base font size is 16px */
 }
+
 h4 {
-  font-size: 1.6rem;
+  font-size: 1.25rem; /* 20px if base font size is 16px */
 }
+
 h5 {
-  font-size: 1.2rem;
+  font-size: 1rem; /* 16px if base font size is 16px */
 }
 
 /* Small text */
 small,
 .text_small {
-  font-size: 0.7rem;
+  font-size: 0.875rem; /* 14px if base font size is 16px */
 }
 
 /* Link styles */
@@ -125,8 +171,14 @@ body {
   padding: 0;
 }
 
+.navbar-nav a,
+.nav-link {
+  color: var(--text-navbar) !important;
+  text-decoration: none !important;
+}
+
 .navbar-nav a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 /* ----- main layout ------- */
@@ -184,6 +236,10 @@ body {
 
 .heroSection {
   background-image: linear-gradient(-65deg, #2c8287, #a0000c, #2c8287 70%);
+}
+
+.heroPost {
+  padding: 10% 100px;
 }
 
 .portfolioHero {
@@ -267,7 +323,6 @@ svg {
 
 .post .section_padding {
   gap: 64px;
-  padding: 100px;
 }
 
 .post-container {
@@ -432,4 +487,136 @@ svg {
   font-size: 16px;
   line-height: 19px;
   color: var(--text-subdued);
+}
+
+/* ------ SIIC ------- */
+
+.siic-moodboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.siic-moodboards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.moodboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.moodboard-images {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  object-fit: cover;
+}
+
+.moodboard-images img {
+  width: 100%;
+  height: auto;
+}
+
+.moodboard p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.siic__content-container_design {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+}
+
+.siic__design-images {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.siic__design-imageAndLabel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  gap: 0.5rem;
+}
+
+.siic-image-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.siic-image-wrapper img {
+  max-width: 120%;
+  height: auto;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+
+  margin-top: 2rem;
+
+  max-height: 400px;
+  overflow: hidden;
+  object-fit: cover;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  max-width: 120%;
+  max-height: 120%;
+
+  align-items: center;
+}
+
+.image-wrapper p {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.youtube iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.content-youtube {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+  width: 100%;
 }
