@@ -622,3 +622,46 @@ svg {
   gap: 32px;
   width: 100%;
 }
+
+/* ------ Utopia ------- */
+
+.double_image {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  background-color: red;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.double_image_unit {
+  display: flex;
+  align-content: flex-start;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.utopia__image-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+.utopia-image-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.utopia-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
