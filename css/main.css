@@ -66,6 +66,7 @@ a {
 p {
   font-size: 1rem; /* 16px if base font size is 16px */
   line-height: 1.5;
+  margin: 0;
 }
 
 /* Heading styles */
@@ -120,6 +121,12 @@ a:active {
 
 a h4 {
   text-decoration: none;
+}
+
+code {
+  font-family: monospace;
+  background-color: var(--light-text-body);
+  padding: 0 0.2rem;
 }
 
 /* ------- main layout ------- */
@@ -220,6 +227,18 @@ body {
 
 .bg_light {
   background: var(--bg-light);
+}
+
+blockquote {
+  margin: 0 10%;
+  padding: 0;
+}
+
+blockquote p {
+  font-family: "Inter", sans-serif;
+  font-weight: 200;
+  line-height: 1.5;
+  color: var(--text-body);
 }
 
 /* ----- hero ----- */
