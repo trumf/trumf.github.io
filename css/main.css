@@ -709,3 +709,7 @@ svg {
   height: auto;
   display: block;
 }
+
+.test {
+  border-radius: 1rem;
+}
