@@ -288,6 +288,11 @@ svg {
   max-width: 1280px;
 }
 
+.hero-text h1 {
+  line-height: 115%;
+  padding-top: 4rem;
+}
+
 .about__contact {
   display: flex;
   flex-direction: row;
@@ -410,7 +415,7 @@ svg {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -425,6 +430,7 @@ svg {
   .blog-card {
     max-width: 100%;
     margin: 1rem 0;
+    min-height: 350px;
   }
 
   .card-content {
