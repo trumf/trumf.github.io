@@ -48,6 +48,12 @@
         const imageSelector = document.getElementById('imageSelector');
         const exportBtn = document.getElementById('exportBtn');
 
+        // Add this to your existing controls div
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Next';
+        nextBtn.style.margin = '5px';
+        document.getElementById('controls').appendChild(nextBtn);
+
         // Set canvas size to match the screen
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -98,20 +104,29 @@
             }
         }
 
-        // Load dataset.json and populate image selector
+        // Add this to your existing script section, after the imageSelector population code
+        let currentIndex = 0;
+        const imageOptions = [];
+
+        // Modify your existing fetch code to store the options
         fetch('letters.json')
             .then(response => response.json())
             .then(data => {
-                const images = data.lowercase; // Assuming lowercase key for images
+                const images = data.lowercase;
                 for (const key in images) {
+                    const imageUrl = `letter_images/${images[key]}`;
+                    imageOptions.push(imageUrl);
+
                     const option = document.createElement('option');
-                    // Adjust the path to include the `letter_images` folder
-                    option.value = `letter_images/${images[key]}`;
+                    option.value = imageUrl;
                     option.textContent = key;
                     imageSelector.appendChild(option);
                 }
             })
             .catch(error => console.error('Error loading dataset:', error));
+
+
+
 
         // Set selected image as background
         imageSelector.addEventListener('change', (e) => {
@@ -139,6 +154,22 @@
 
                     // Reset globalAlpha to 1 (fully opaque) for future drawings
                     ctx.globalAlpha = 1;
+
+                    // Draw the baseline
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.8); // Position baseline at 80% of image height
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.8);
+                    ctx.strokeStyle = 'red';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    // Draw the x-height line
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.4); // Position x-height at 40% of image height
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.4);
+                    ctx.strokeStyle = 'blue';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
                 };
 
                 img.onerror = () => {
@@ -176,6 +207,12 @@
             link.href = dataURL;
             link.download = 'drawing.png'; // Set file name
             link.click(); // Trigger download
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % imageOptions.length;
+            imageSelector.value = imageOptions[currentIndex];
+            imageSelector.dispatchEvent(new Event('change')); // Trigger the change event
         });
     </script>
 </body>
