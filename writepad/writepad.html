@@ -36,10 +36,12 @@
 
 <body>
     <div id="controls">
+        <button id="nextBtn" style="height: 4rem; width: 6rem; margin-right: 8rem;">Next</button>
         <select id="imageSelector">
             <option value="">Select an Image</option>
         </select>
         <button id="exportBtn">Export Drawing</button>
+
     </div>
     <canvas id="drawingCanvas"></canvas>
     <script>
@@ -49,11 +51,7 @@
         const exportBtn = document.getElementById('exportBtn');
 
         // Add this to your existing controls div
-        const nextBtn = document.createElement('button');
-        nextBtn.textContent = 'Next';
-        nextBtn.style.margin = '5px';
-        document.getElementById('controls').appendChild(nextBtn);
-
+        const nextBtn = document.getElementById('nextBtn');
         // Set canvas size to match the screen
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -108,7 +106,6 @@
         let currentIndex = 0;
         const imageOptions = [];
 
-        // Modify your existing fetch code to store the options
         fetch('letters.json')
             .then(response => response.json())
             .then(data => {
@@ -122,9 +119,14 @@
                     option.textContent = key;
                     imageSelector.appendChild(option);
                 }
+
+                // Set the first letter as default and trigger the change event
+                if (imageOptions.length > 0) {
+                    imageSelector.value = imageOptions[0];
+                    imageSelector.dispatchEvent(new Event('change'));
+                }
             })
             .catch(error => console.error('Error loading dataset:', error));
-
 
 
 
@@ -143,7 +145,7 @@
                     const imgHeight = (img.height / img.width) * imgWidth;
 
                     // Calculate position to center the image
-                    const x = (canvas.width - imgWidth) / 2;
+                    const x = (canvas.width - imgWidth) / 8;
                     const y = (canvas.height - imgHeight) / 2;
 
                     // Set opacity to 40%
@@ -152,24 +154,26 @@
                     // Draw image on canvas
                     ctx.drawImage(img, x, y, imgWidth, imgHeight);
 
-                    // Reset globalAlpha to 1 (fully opaque) for future drawings
-                    ctx.globalAlpha = 1;
+
 
                     // Draw the baseline
                     ctx.beginPath();
-                    ctx.moveTo(0, y + imgHeight * 0.8); // Position baseline at 80% of image height
-                    ctx.lineTo(canvas.width, y + imgHeight * 0.8);
-                    ctx.strokeStyle = 'red';
-                    ctx.lineWidth = 2;
+                    ctx.moveTo(0, y + imgHeight * 0.9); // Position baseline at 80% of image height
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.9);
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
                     ctx.stroke();
 
                     // Draw the x-height line
                     ctx.beginPath();
                     ctx.moveTo(0, y + imgHeight * 0.4); // Position x-height at 40% of image height
                     ctx.lineTo(canvas.width, y + imgHeight * 0.4);
-                    ctx.strokeStyle = 'blue';
-                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
                     ctx.stroke();
+
+                    // Reset globalAlpha to 1 (fully opaque) for future drawings
+                    ctx.globalAlpha = 1;
                 };
 
                 img.onerror = () => {
