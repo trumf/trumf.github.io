@@ -41,10 +41,10 @@
             <option value="">Select an Image</option>
         </select>
         <select id="sizeSelector">
-            <option value="300">Size 4 (Very Large)</option>
-            <option value="200" selected>Size 3 (Large)</option>
-            <option value="100">Size 2 (Medium)</option>
-            <option value="50">Size 1 (Small)</option>
+            <option value="250">Size 4 (Very Large)</option>
+            <option value="160" selected>Size 3 (Large)</option>
+            <option value="60">Size 2 (Medium)</option>
+            <option value="30">Size 1 (Small)</option>
         </select>
         <button id="exportBtn">Export Drawing</button>
 
@@ -139,60 +139,10 @@
 
 
         // Set selected image as background
-        imageSelector.addEventListener('change', (e) => {
-            const imageUrl = e.target.value;
-            if (imageUrl) {
-                const img = new Image();
-                img.src = imageUrl;
-
-                img.onload = () => {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-
-                    // Set image width to 200px and calculate height to maintain aspect ratio
-                    const imgWidth = 200;
-                    const imgHeight = (img.height / img.width) * imgWidth;
-
-                    // Calculate position to center the image
-                    const x = (canvas.width - imgWidth) / 8;
-                    const y = (canvas.height - imgHeight) / 2;
-
-                    // Set opacity to 40%
-                    ctx.globalAlpha = 0.4;
-
-                    // Draw image on canvas
-                    ctx.drawImage(img, x, y, imgWidth, imgHeight);
-
-
-
-                    // Draw the baseline
-                    ctx.beginPath();
-                    ctx.moveTo(0, y + imgHeight * 0.9); // Position baseline at 80% of image height
-                    ctx.lineTo(canvas.width, y + imgHeight * 0.9);
-                    ctx.strokeStyle = 'grey';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-
-                    // Draw the x-height line
-                    ctx.beginPath();
-                    ctx.moveTo(0, y + imgHeight * 0.4); // Position x-height at 40% of image height
-                    ctx.lineTo(canvas.width, y + imgHeight * 0.4);
-                    ctx.strokeStyle = 'grey';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-
-                    // Reset globalAlpha to 1 (fully opaque) for future drawings
-                    ctx.globalAlpha = 1;
-                };
-
-                img.onerror = () => {
-                    console.error(`Failed to load image from ${imageUrl}`);
-                };
-            }
-        });
 
         const sizeSelector = document.getElementById('sizeSelector');
 
-        // Modify your image selection handler to use the selected size
+        // Single unified image loading handler
         imageSelector.addEventListener('change', (e) => {
             const imageUrl = e.target.value;
             if (imageUrl) {
@@ -202,38 +152,35 @@
                 img.onload = () => {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    // Use the selected size instead of fixed 200px
+                    // Get the selected size
                     const imgWidth = parseInt(sizeSelector.value);
                     const imgHeight = (img.height / img.width) * imgWidth;
 
                     // Calculate position to center the image
-                    const x = (canvas.width - imgWidth) / 2;
+                    const x = (canvas.width - imgWidth) / 8;
                     const y = (canvas.height - imgHeight) / 2;
 
-                    // Set opacity to 40%
+                    // Set opacity and draw image
                     ctx.globalAlpha = 0.4;
-
-                    // Draw image on canvas
                     ctx.drawImage(img, x, y, imgWidth, imgHeight);
 
-                    // Reset globalAlpha to 1 (fully opaque) for future drawings
-                    ctx.globalAlpha = 1;
-
-                    // Draw the baseline and x-height lines
+                    // Draw the guidelines
                     ctx.beginPath();
-                    ctx.moveTo(0, y + imgHeight * 0.8);
-                    ctx.lineTo(canvas.width, y + imgHeight * 0.8);
-                    ctx.strokeStyle = 'red';
-                    ctx.lineWidth = 2;
+                    ctx.moveTo(0, y + imgHeight * 0.9);
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.9);
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
                     ctx.stroke();
 
-                    // Draw the x-height line
                     ctx.beginPath();
                     ctx.moveTo(0, y + imgHeight * 0.4);
                     ctx.lineTo(canvas.width, y + imgHeight * 0.4);
-                    ctx.strokeStyle = 'blue';
-                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
                     ctx.stroke();
+
+                    // Reset opacity
+                    ctx.globalAlpha = 1;
                 };
 
                 img.onerror = () => {
