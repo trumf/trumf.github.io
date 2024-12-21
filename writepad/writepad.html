@@ -36,10 +36,18 @@
 
 <body>
     <div id="controls">
+        <button id="nextBtn">Next</button>
         <select id="imageSelector">
             <option value="">Select an Image</option>
         </select>
+        <select id="sizeSelector">
+            <option value="300">Size 4 (Very Large)</option>
+            <option value="200" selected>Size 3 (Large)</option>
+            <option value="100">Size 2 (Medium)</option>
+            <option value="50">Size 1 (Small)</option>
+        </select>
         <button id="exportBtn">Export Drawing</button>
+
     </div>
     <canvas id="drawingCanvas"></canvas>
     <script>
@@ -47,6 +55,10 @@
         const ctx = canvas.getContext('2d');
         const imageSelector = document.getElementById('imageSelector');
         const exportBtn = document.getElementById('exportBtn');
+
+        // Add this to your existing controls div
+        const nextBtn = document.getElementById('nextBtn');
+
 
         // Set canvas size to match the screen
         canvas.width = window.innerWidth;
@@ -98,20 +110,33 @@
             }
         }
 
-        // Load dataset.json and populate image selector
+        // Add this to your existing script section, after the imageSelector population code
+        let currentIndex = 0;
+        const imageOptions = [];
+
         fetch('letters.json')
             .then(response => response.json())
             .then(data => {
-                const images = data.lowercase; // Assuming lowercase key for images
+                const images = data.lowercase;
                 for (const key in images) {
+                    const imageUrl = `letter_images/${images[key]}`;
+                    imageOptions.push(imageUrl);
+
                     const option = document.createElement('option');
-                    // Adjust the path to include the `letter_images` folder
-                    option.value = `letter_images/${images[key]}`;
+                    option.value = imageUrl;
                     option.textContent = key;
                     imageSelector.appendChild(option);
                 }
+
+                // Set the first letter as default and trigger the change event
+                if (imageOptions.length > 0) {
+                    imageSelector.value = imageOptions[0];
+                    imageSelector.dispatchEvent(new Event('change'));
+                }
             })
             .catch(error => console.error('Error loading dataset:', error));
+
+
 
         // Set selected image as background
         imageSelector.addEventListener('change', (e) => {
@@ -128,6 +153,60 @@
                     const imgHeight = (img.height / img.width) * imgWidth;
 
                     // Calculate position to center the image
+                    const x = (canvas.width - imgWidth) / 8;
+                    const y = (canvas.height - imgHeight) / 2;
+
+                    // Set opacity to 40%
+                    ctx.globalAlpha = 0.4;
+
+                    // Draw image on canvas
+                    ctx.drawImage(img, x, y, imgWidth, imgHeight);
+
+
+
+                    // Draw the baseline
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.9); // Position baseline at 80% of image height
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.9);
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    // Draw the x-height line
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.4); // Position x-height at 40% of image height
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.4);
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    // Reset globalAlpha to 1 (fully opaque) for future drawings
+                    ctx.globalAlpha = 1;
+                };
+
+                img.onerror = () => {
+                    console.error(`Failed to load image from ${imageUrl}`);
+                };
+            }
+        });
+
+        const sizeSelector = document.getElementById('sizeSelector');
+
+        // Modify your image selection handler to use the selected size
+        imageSelector.addEventListener('change', (e) => {
+            const imageUrl = e.target.value;
+            if (imageUrl) {
+                const img = new Image();
+                img.src = imageUrl;
+
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // Use the selected size instead of fixed 200px
+                    const imgWidth = parseInt(sizeSelector.value);
+                    const imgHeight = (img.height / img.width) * imgWidth;
+
+                    // Calculate position to center the image
                     const x = (canvas.width - imgWidth) / 2;
                     const y = (canvas.height - imgHeight) / 2;
 
@@ -139,11 +218,35 @@
 
                     // Reset globalAlpha to 1 (fully opaque) for future drawings
                     ctx.globalAlpha = 1;
+
+                    // Draw the baseline and x-height lines
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.8);
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.8);
+                    ctx.strokeStyle = 'red';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    // Draw the x-height line
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.4);
+                    ctx.lineTo(canvas.width, y + imgHeight * 0.4);
+                    ctx.strokeStyle = 'blue';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
                 };
 
                 img.onerror = () => {
                     console.error(`Failed to load image from ${imageUrl}`);
                 };
+            }
+        });
+
+        // Add event listener for size changes
+        sizeSelector.addEventListener('change', () => {
+            // Trigger the image redraw by simulating a change event on the image selector
+            if (imageSelector.value) {
+                imageSelector.dispatchEvent(new Event('change'));
             }
         });
         // Event listeners for touch input
@@ -176,6 +279,12 @@
             link.href = dataURL;
             link.download = 'drawing.png'; // Set file name
             link.click(); // Trigger download
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % imageOptions.length;
+            imageSelector.value = imageOptions[currentIndex];
+            imageSelector.dispatchEvent(new Event('change')); // Trigger the change event
         });
     </script>
 </body>
