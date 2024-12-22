@@ -135,7 +135,8 @@
             .then(data => {
                 const images = data.lowercase;
                 for (const key in images) {
-                    const imageUrl = `letter_images/${images[key]}`;
+                    // Encode the URL to handle special characters
+                    const imageUrl = `letter_images/${encodeURIComponent(images[key])}`;
                     imageOptions.push(imageUrl);
 
                     const option = document.createElement('option');
@@ -151,7 +152,6 @@
                 }
             })
             .catch(error => console.error('Error loading dataset:', error));
-
 
 
         // Single unified image loading handler
