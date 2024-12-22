@@ -298,7 +298,6 @@
             }
         };
 
-        // 5. Guide Image Module
         const GuideManager = {
             init() {
                 imageSelector.addEventListener('change', (e) => this.handleImageChange(e));
@@ -314,28 +313,33 @@
                         const ctx = CanvasManager.guideCtx;
                         ctx.clearRect(0, 0, CanvasManager.guideCanvas.width, CanvasManager.guideCanvas.height);
 
-                        const imgWidth = parseInt(sizeSelector.value);
-                        const imgHeight = (img.height / img.width) * imgWidth;
-                        const spacing = imgWidth * 0.5;
+                        // Use a fixed height instead of fixed width
+                        const imgHeight = parseInt(sizeSelector.value);
+                        const imgWidth = (img.width / img.height) * imgHeight;
+                        const spacing = imgHeight * 0.5; // Spacing based on height for consistency
                         const startX = 50;
                         const y = (CanvasManager.guideCanvas.height - imgHeight) / 2;
 
-                        // Draw guidelines
+                        // Draw guidelines at fixed relative positions of the height
                         ctx.beginPath();
-                        ctx.moveTo(0, y + imgHeight * 0.9);
-                        ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.9);
-                        ctx.moveTo(0, y + imgHeight * 0.4);
-                        ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.4);
+                        ctx.moveTo(0, y + imgHeight * 0.74);
+                        ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.74);
+                        ctx.moveTo(0, y + imgHeight * 0.33);
+                        ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.33);
                         ctx.strokeStyle = 'grey';
                         ctx.lineWidth = 1;
                         ctx.stroke();
 
                         // Draw guide images
+                        let x = startX;
                         for (let i = 0; i < 15; i++) {
-                            const x = startX + (imgWidth + spacing) * i;
-                            const opacity = Math.max(0.4 - (0.04 * i), 0.1);
-                            ctx.globalAlpha = opacity;
-                            ctx.drawImage(img, x, y, imgWidth, imgHeight);
+                            // Only draw if the image will be visible on canvas
+                            if (x < CanvasManager.guideCanvas.width) {
+                                const opacity = Math.max(0.4 - (0.04 * i), 0.1);
+                                ctx.globalAlpha = opacity;
+                                ctx.drawImage(img, x, y, imgWidth, imgHeight);
+                                x += (imgWidth + spacing);
+                            }
                         }
                         ctx.globalAlpha = 1;
                     };
@@ -429,7 +433,7 @@
                 };
                 startSessionBtn.disabled = false;
 
-                imageSelector.disabled = true;
+
                 exportSessionBtn.disabled = true;
                 CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
             }
