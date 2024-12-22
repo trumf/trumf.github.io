@@ -69,8 +69,8 @@
 <body>
     <div id="controls">
         <button id="startSessionBtn">Start Session</button>
-        <button id="nextBtn" disabled>Next</button>
-        <select id="imageSelector" disabled>
+        <button id="nextBtn">Next</button>
+        <select id="imageSelector">
             <option value="">Select an Image</option>
         </select>
         <select id="sizeSelector">
@@ -235,7 +235,7 @@
                 };
 
                 startSessionBtn.disabled = true;
-                nextBtn.disabled = false;
+
                 imageSelector.disabled = false;
                 exportSessionBtn.disabled = false;
 
@@ -428,7 +428,7 @@
                     drawings: []
                 };
                 startSessionBtn.disabled = false;
-                nextBtn.disabled = true;
+
                 imageSelector.disabled = true;
                 exportSessionBtn.disabled = true;
                 CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
@@ -460,6 +460,11 @@
                     imageSelector.value = AppState.imageOptions[AppState.currentIndex];
                     imageSelector.dispatchEvent(new Event('change'));
                     CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
+                } else {
+                    // Allow switching the guide without saving or clearing drawings
+                    AppState.currentIndex = (AppState.currentIndex + 1) % AppState.imageOptions.length;
+                    imageSelector.value = AppState.imageOptions[AppState.currentIndex];
+                    imageSelector.dispatchEvent(new Event('change'));
                 }
             });
         }
