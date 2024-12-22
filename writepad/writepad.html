@@ -5,32 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drawing App with Background Images</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <link rel="manifest" href="/writepad/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Writepad">
+    <link rel="apple-touch-icon" href="/writepad/icons/icon-192x192.png">
+
+
+
     <style>
         body {
             margin: 0;
             overflow: hidden;
         }
 
-        canvas {
-            display: block;
-            touch-action: none;
-            /* Prevent scrolling while drawing */
-            -webkit-touch-callout: none;
-            /* Prevents iOS callout menu */
-            -webkit-user-select: none;
-            /* Prevents text selection */
-            -khtml-user-select: none;
-            /* Prevents text selection */
-            -moz-user-select: none;
-            /* Prevents text selection */
-            -ms-user-select: none;
-            /* Prevents text selection */
-            user-select: none;
-            /* Prevents text selection */
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            /* Removes tap highlight */
+        #canvasContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
         }
 
+        #guideCanvas,
+        #drawingCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            touch-action: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
 
         #controls {
             position: fixed;
@@ -45,14 +56,21 @@
             font-size: 16px;
             margin: 5px;
             cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
         }
     </style>
 </head>
 
 <body>
     <div id="controls">
-        <button id="nextBtn">Next</button>
-        <select id="imageSelector">
+        <button id="startSessionBtn">Start Session</button>
+        <button id="nextBtn" disabled>Next</button>
+        <select id="imageSelector" disabled>
             <option value="">Select an Image</option>
         </select>
         <select id="sizeSelector">
@@ -61,10 +79,13 @@
             <option value="40">Size 2 (Medium)</option>
             <option value="20">Size 1 (Small)</option>
         </select>
-        <button id="exportBtn">Export Drawing</button>
-
+        <button id="exportSessionBtn" disabled>Export Session</button>
     </div>
-    <canvas id="drawingCanvas"></canvas>
+    <div id="canvasContainer">
+        <canvas id="guideCanvas"></canvas>
+        <canvas id="drawingCanvas"></canvas>
+    </div>
+
     <script>
         const canvas = document.getElementById('drawingCanvas');
         const ctx = canvas.getContext('2d');
@@ -135,8 +156,7 @@
             .then(data => {
                 const images = data.lowercase;
                 for (const key in images) {
-                    // Encode the URL to handle special characters
-                    const imageUrl = `letter_images/${encodeURIComponent(images[key])}`;
+                    const imageUrl = `letter_images/${images[key]}`;
                     imageOptions.push(imageUrl);
 
                     const option = document.createElement('option');
@@ -154,6 +174,7 @@
             .catch(error => console.error('Error loading dataset:', error));
 
 
+
         // Single unified image loading handler
         imageSelector.addEventListener('change', (e) => {
             const imageUrl = e.target.value;
@@ -162,105 +183,177 @@
                 img.src = imageUrl;
 
                 // Add at the top near your other variable declarations
-                const numberOfImages = 15;  // Easy to adjust
+                const numberOfImages = 10;  // Easy to adjust
 
                 img.onload = () => {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    // Get the selected size
                     const imgWidth = parseInt(sizeSelector.value);
                     const imgHeight = (img.height / img.width) * imgWidth;
-
-                    // Add spacing between images
                     const spacing = imgWidth * 0.5;
                     const startX = 50;
+                    const y = (CanvasManager.guideCanvas.height - imgHeight) / 2;
 
-                    // Calculate the y position once since all images share the same y
-                    const y = (canvas.height - imgHeight) / 2;
-
-                    // Draw the full-width guidelines first
+                    // Draw guidelines
                     ctx.beginPath();
                     ctx.moveTo(0, y + imgHeight * 0.9);
-                    ctx.lineTo(canvas.width, y + imgHeight * 0.9);
-                    ctx.strokeStyle = 'grey';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-
-                    ctx.beginPath();
+                    ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.9);
                     ctx.moveTo(0, y + imgHeight * 0.4);
-                    ctx.lineTo(canvas.width, y + imgHeight * 0.4);
+                    ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.4);
                     ctx.strokeStyle = 'grey';
                     ctx.lineWidth = 1;
                     ctx.stroke();
 
-                    // Draw the images with decreasing opacity
-                    const baseOpacity = 0.4;  // Starting opacity
-                    const opacityDecrement = 0.04;  // How much to reduce opacity per image
-
-                    for (let i = 0; i < numberOfImages; i++) {
+                    // Draw guide images
+                    for (let i = 0; i < 15; i++) {
                         const x = startX + (imgWidth + spacing) * i;
-
-                        // Calculate decreasing opacity for each subsequent image
-                        const opacity = Math.max(baseOpacity - (opacityDecrement * i), 0.1);  // Don't go below 0.1
-
+                        const opacity = Math.max(0.4 - (0.04 * i), 0.1);
                         ctx.globalAlpha = opacity;
                         ctx.drawImage(img, x, y, imgWidth, imgHeight);
                     }
-
-                    // Reset opacity
                     ctx.globalAlpha = 1;
                 };
+            }
+        },
 
-                img.onerror = () => {
-                    console.error(`Failed to load image from ${imageUrl}`);
+            async loadImageOptions() {
+            try {
+                const response = await fetch('letters.json');
+                const data = await response.json();
+                const images = data.lowercase;
+
+                for(const key in images) {
+                    const imageUrl = `letter_images/${encodeURIComponent(images[key])}`;
+                    AppState.imageOptions.push(imageUrl);
+
+                    const option = document.createElement('option');
+                    option.value = imageUrl;
+                    option.textContent = key;
+                    imageSelector.appendChild(option);
+                }
+
+                    if(AppState.imageOptions.length > 0) {
+            imageSelector.value = AppState.imageOptions[0];
+            imageSelector.dispatchEvent(new Event('change'));
+        }
+                } catch (error) {
+            console.error('Error loading dataset:', error);
+        }
+            }
+        };
+
+        // 6. Export Module
+        const ExportManager = {
+            async exportSession() {
+                if (!AppState.sessionActive || AppState.sessionDrawings.drawings.length === 0) return;
+
+                SessionManager.saveCurrentDrawing();
+
+                const trainingData = {
+                    sessionInfo: {
+                        timestamp: AppState.sessionDrawings.timestamp,
+                        canvasWidth: CanvasManager.drawingCanvas.width,
+                        canvasHeight: CanvasManager.drawingCanvas.height,
+                        letterWidth: parseInt(sizeSelector.value),
+                        letterHeight: parseInt(sizeSelector.value) * 1.5,
+                        spacing: parseInt(sizeSelector.value) * 0.5,
+                        baselineY: (CanvasManager.drawingCanvas.height - parseInt(sizeSelector.value)) / 2 +
+                            (parseInt(sizeSelector.value) * 0.9),
+                        midlineY: (CanvasManager.drawingCanvas.height - parseInt(sizeSelector.value)) / 2 +
+                            (parseInt(sizeSelector.value) * 0.4),
+                        guideImageScale: parseInt(sizeSelector.value) / 120
+                    },
+                    samples: []
                 };
+
+                const zip = new JSZip();
+                const imagesFolder = zip.folder("images");
+
+                for (let i = 0; i < AppState.sessionDrawings.drawings.length; i++) {
+                    const drawing = AppState.sessionDrawings.drawings[i];
+                    const timestamp = drawing.metadata.timestamp.replace(/[:.]/g, '');
+                    const filename = `${drawing.metadata.label}_${timestamp}_${drawing.metadata.position}.png`;
+
+                    trainingData.samples.push({
+                        filename: `images/${filename}`,
+                        ...drawing.metadata
+                    });
+
+                    const base64Data = drawing.imageData.replace(/^data:image\/png;base64,/, "");
+                    imagesFolder.file(filename, base64Data, { base64: true });
+                }
+
+                zip.file("metadata.json", JSON.stringify(trainingData, null, 2));
+
+                const zipBlob = await zip.generateAsync({ type: "blob" });
+                const zipUrl = URL.createObjectURL(zipBlob);
+                const link = document.createElement('a');
+                link.href = zipUrl;
+                link.download = `training_data_${AppState.sessionDrawings.timestamp}.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(zipUrl);
+
+                // Reset session
+                AppState.sessionActive = false;
+                AppState.sessionDrawings = {
+                    timestamp: null,
+                    drawings: []
+                };
+                startSessionBtn.disabled = false;
+                nextBtn.disabled = true;
+                imageSelector.disabled = true;
+                exportSessionBtn.disabled = true;
+                CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
             }
-        });
+        };
 
-        // Add event listener for size changes
-        sizeSelector.addEventListener('change', () => {
-            // Trigger the image redraw by simulating a change event on the image selector
-            if (imageSelector.value) {
-                imageSelector.dispatchEvent(new Event('change'));
-            }
-        });
-        // Event listeners for touch input
-        canvas.addEventListener('touchstart', startDrawing);
-        canvas.addEventListener('touchmove', draw);
-        canvas.addEventListener('touchend', stopDrawing);
+        // Initialize the application
+        function initializeApp() {
+            // Get DOM elements
+            const startSessionBtn = document.getElementById('startSessionBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const exportSessionBtn = document.getElementById('exportSessionBtn');
+            const imageSelector = document.getElementById('imageSelector');
+            const sizeSelector = document.getElementById('sizeSelector');
 
-        // Event listeners for mouse input
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mouseout', stopDrawing);
+            // Initialize all modules
+            CanvasManager.init();
+            DrawingManager.init();
+            GuideManager.init();
 
-        // Adjust canvas on resize
-        window.addEventListener('resize', () => {
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = canvas.width;
-            tempCanvas.height = canvas.height;
-            tempCanvas.getContext('2d').drawImage(canvas, 0, 0);
+            // Set up event listeners
+            startSessionBtn.addEventListener('click', () => SessionManager.startSession());
+            exportSessionBtn.addEventListener('click', () => ExportManager.exportSession());
 
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            ctx.drawImage(tempCanvas, 0, 0);
-        });
+            nextBtn.addEventListener('click', () => {
+                if (AppState.sessionActive) {
+                    SessionManager.saveCurrentDrawing();
+                    AppState.currentIndex = (AppState.currentIndex + 1) % AppState.imageOptions.length;
+                    imageSelector.value = AppState.imageOptions[AppState.currentIndex];
+                    imageSelector.dispatchEvent(new Event('change'));
+                    CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
+                }
+            });
+        }
 
-        // Export drawing
-        exportBtn.addEventListener('click', () => {
-            const dataURL = canvas.toDataURL('image/png'); // Get image as base64
-            const link = document.createElement('a');
-            link.href = dataURL;
-            link.download = 'drawing.png'; // Set file name
-            link.click(); // Trigger download
-        });
+        // Start the application
+        initializeApp();
+    </script>
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % imageOptions.length;
-            imageSelector.value = imageOptions[currentIndex];
-            imageSelector.dispatchEvent(new Event('change')); // Trigger the change event
-        });
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/writepad/sw.js', { scope: '/writepad/' })
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
     </script>
 </body>
 
