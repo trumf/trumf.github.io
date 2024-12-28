@@ -91,13 +91,17 @@
             <option value="80">Size 2 (Medium)</option>
             <option value="40">Size 1 (Small)</option>
         </select>
-
         <select id="letterCountSelector">
             <option value="1">1 Letter</option>
             <option value="2">2 Letters</option>
             <option value="3">3 Letters</option>
             <option value="4">4 Letters</option>
         </select>
+        <div style="display: inline-block; margin: 5px;">
+            <label for="fadeRateSlider" style="margin-right: 5px;">Fade Speed:</label>
+            <input type="range" id="fadeRateSlider" min="2" max="15" value="8" step="1" style="vertical-align: middle;">
+            <span id="fadeRateValue">0.08</span>
+        </div>
         <button id="startSessionBtn">Start Session</button>
         <button id="exportSessionBtn" disabled>Export Session</button>
     </div>
@@ -117,6 +121,15 @@
             currentIndex: 0,
             imageOptions: []
         };
+
+        // Add this JavaScript to update the display value:
+        const fadeRateSlider = document.getElementById('fadeRateSlider');
+        const fadeRateValue = document.getElementById('fadeRateValue');
+
+        fadeRateSlider.addEventListener('input', (e) => {
+            const value = parseInt(e.target.value) / 100;
+            fadeRateValue.textContent = value.toFixed(2);
+        });
 
         // 1. Canvas Management Module
         const CanvasManager = {
@@ -372,9 +385,10 @@
 
                     // Draw groups of letters
                     let x = startX;
-                    for (let group = 0; group < 5; group++) { // Reduced number of groups to account for wider groups
+                    for (let group = 0; group < 8; group++) { // Reduced number of groups to account for wider groups
                         if (x + groupWidth < CanvasManager.guideCanvas.width) {
-                            const opacity = Math.max(0.4 - (0.08 * group), 0.1);
+                            const fadeRate = parseInt(document.getElementById('fadeRateSlider').value) / 100;
+                            const opacity = Math.max(0.4 - (fadeRate * group), 0.01);//last number here determine the min opacity
                             ctx.globalAlpha = opacity;
 
                             // Draw each letter in the group without spacing between letters
