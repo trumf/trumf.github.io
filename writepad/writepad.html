@@ -335,6 +335,29 @@
             init() {
                 imageSelector.addEventListener('change', (e) => this.handleImageChange(e));
                 this.loadImageOptions();
+
+                // Add orientation change handler
+                window.addEventListener('resize', () => {
+                    // Redraw current image when orientation changes
+                    if (imageSelector.value) {
+                        this.handleImageChange({ target: { value: imageSelector.value } });
+                    }
+                });
+            },
+            // Add this to GuideManager to help with layout calculations
+            getLayoutConfig() {
+                const isPortrait = window.innerHeight > window.innerWidth;
+                const numRows = isPortrait ? 3 : 2;
+                const imgHeight = parseInt(sizeSelector.value);
+                const totalContentHeight = numRows * imgHeight * 1.5; // 1.5 to account for guidelines
+                const startY = (window.innerHeight - totalContentHeight) / 2;
+
+                return {
+                    numRows,
+                    rowHeight: imgHeight,
+                    startY,
+                    rowSpacing: imgHeight * 1.5
+                };
             },
 
             handleImageChange(e) {
@@ -344,9 +367,8 @@
 
                 // Get random letters
                 let selectedLetters = [];
-                selectedLetters.push(e.target.value); // Include the currently selected letter
+                selectedLetters.push(e.target.value);
 
-                // Add random additional letters
                 const availableOptions = [...AppState.imageOptions].filter(opt => opt !== e.target.value);
                 for (let i = 1; i < letterCount; i++) {
                     const randomIndex = Math.floor(Math.random() * availableOptions.length);
@@ -363,19 +385,9 @@
                     });
                 })).then(images => {
                     const imgHeight = parseInt(sizeSelector.value);
-                    const groupSpacing = imgHeight * .8; // Spacing between groups of letters
+                    const groupSpacing = imgHeight * 1.5;
                     const startX = 50;
-                    const y = (CanvasManager.guideCanvas.height - imgHeight) / 2;
-
-                    // Draw guidelines
-                    ctx.beginPath();
-                    ctx.moveTo(0, y + imgHeight * 0.74);
-                    ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.74);
-                    ctx.moveTo(0, y + imgHeight * 0.33);
-                    ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.33);
-                    ctx.strokeStyle = 'grey';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
+                    const layout = this.getLayoutConfig();
 
                     // Calculate total width of one group of letters
                     let groupWidth = 0;
@@ -383,23 +395,38 @@
                         groupWidth += (img.width / img.height) * imgHeight;
                     });
 
-                    // Draw groups of letters
-                    let x = startX;
-                    for (let group = 0; group < 8; group++) { // Reduced number of groups to account for wider groups
-                        if (x + groupWidth < CanvasManager.guideCanvas.width) {
-                            const fadeRate = parseInt(document.getElementById('fadeRateSlider').value) / 100;
-                            const opacity = Math.max(0.4 - (fadeRate * group), 0.01);//last number here determine the min opacity
-                            ctx.globalAlpha = opacity;
+                    // Draw for each row
+                    for (let row = 0; row < layout.numRows; row++) {
+                        const rowY = layout.startY + (row * layout.rowSpacing);
 
-                            // Draw each letter in the group without spacing between letters
-                            let currentX = x;
-                            for (let i = 0; i < images.length; i++) {
-                                const imgWidth = (images[i].width / images[i].height) * imgHeight;
-                                ctx.drawImage(images[i], currentX, y, imgWidth, imgHeight);
-                                currentX += imgWidth; // Move to next letter position without adding spacing
+                        // Draw guidelines for this row
+                        ctx.beginPath();
+                        ctx.moveTo(0, rowY + imgHeight * 0.74);
+                        ctx.lineTo(CanvasManager.guideCanvas.width, rowY + imgHeight * 0.74);
+                        ctx.moveTo(0, rowY + imgHeight * 0.33);
+                        ctx.lineTo(CanvasManager.guideCanvas.width, rowY + imgHeight * 0.33);
+                        ctx.strokeStyle = 'grey';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+
+                        // Draw groups of letters for this row
+                        let x = startX;
+                        for (let group = 0; group < 5; group++) {
+                            if (x + groupWidth < CanvasManager.guideCanvas.width) {
+                                const fadeRate = parseInt(document.getElementById('fadeRateSlider').value) / 100;
+                                const opacity = Math.max(0.4 - (fadeRate * group), 0.0);
+                                ctx.globalAlpha = opacity;
+
+                                // Draw each letter in the group
+                                let currentX = x;
+                                for (let i = 0; i < images.length; i++) {
+                                    const imgWidth = (images[i].width / images[i].height) * imgHeight;
+                                    ctx.drawImage(images[i], currentX, rowY, imgWidth, imgHeight);
+                                    currentX += imgWidth;
+                                }
+
+                                x += groupWidth + groupSpacing;
                             }
-
-                            x += groupWidth + groupSpacing; // Add spacing only between groups
                         }
                     }
                     ctx.globalAlpha = 1;
