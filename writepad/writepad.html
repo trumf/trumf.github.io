@@ -91,6 +91,13 @@
             <option value="80">Size 2 (Medium)</option>
             <option value="40">Size 1 (Small)</option>
         </select>
+
+        <select id="letterCountSelector">
+            <option value="1">1 Letter</option>
+            <option value="2">2 Letters</option>
+            <option value="3">3 Letters</option>
+            <option value="4">4 Letters</option>
+        </select>
         <button id="startSessionBtn">Start Session</button>
         <button id="exportSessionBtn" disabled>Export Session</button>
     </div>
@@ -318,46 +325,74 @@
             },
 
             handleImageChange(e) {
-                const imageUrl = e.target.value;
-                if (imageUrl) {
-                    const img = new Image();
-                    img.src = imageUrl;
-                    img.onload = () => {
-                        const ctx = CanvasManager.guideCtx;
-                        ctx.clearRect(0, 0, CanvasManager.guideCanvas.width, CanvasManager.guideCanvas.height);
+                const letterCount = parseInt(document.getElementById('letterCountSelector').value);
+                const ctx = CanvasManager.guideCtx;
+                ctx.clearRect(0, 0, CanvasManager.guideCanvas.width, CanvasManager.guideCanvas.height);
 
-                        // Use a fixed height instead of fixed width
-                        const imgHeight = parseInt(sizeSelector.value);
-                        const imgWidth = (img.width / img.height) * imgHeight;
-                        const spacing = imgHeight * 0.5; // Spacing based on height for consistency
-                        const startX = 50;
-                        const y = (CanvasManager.guideCanvas.height - imgHeight) / 2;
+                // Get random letters
+                let selectedLetters = [];
+                selectedLetters.push(e.target.value); // Include the currently selected letter
 
-                        // Draw guidelines at fixed relative positions of the height
-                        ctx.beginPath();
-                        ctx.moveTo(0, y + imgHeight * 0.74);
-                        ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.74);
-                        ctx.moveTo(0, y + imgHeight * 0.33);
-                        ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.33);
-                        ctx.strokeStyle = 'grey';
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-
-                        // Draw guide images
-                        let x = startX;
-                        for (let i = 0; i < 15; i++) {
-                            // Only draw if the image will be visible on canvas
-                            if (x < CanvasManager.guideCanvas.width) {
-                                const opacity = Math.max(0.4 - (0.04 * i), 0.1);
-                                ctx.globalAlpha = opacity;
-                                ctx.drawImage(img, x, y, imgWidth, imgHeight);
-                                x += (imgWidth + spacing);
-                            }
-                        }
-                        ctx.globalAlpha = 1;
-                    };
+                // Add random additional letters
+                const availableOptions = [...AppState.imageOptions].filter(opt => opt !== e.target.value);
+                for (let i = 1; i < letterCount; i++) {
+                    const randomIndex = Math.floor(Math.random() * availableOptions.length);
+                    selectedLetters.push(availableOptions[randomIndex]);
+                    availableOptions.splice(randomIndex, 1);
                 }
+
+                // Load all images
+                Promise.all(selectedLetters.map(url => {
+                    return new Promise((resolve) => {
+                        const img = new Image();
+                        img.src = url;
+                        img.onload = () => resolve(img);
+                    });
+                })).then(images => {
+                    const imgHeight = parseInt(sizeSelector.value);
+                    const groupSpacing = imgHeight * .8; // Spacing between groups of letters
+                    const startX = 50;
+                    const y = (CanvasManager.guideCanvas.height - imgHeight) / 2;
+
+                    // Draw guidelines
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + imgHeight * 0.74);
+                    ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.74);
+                    ctx.moveTo(0, y + imgHeight * 0.33);
+                    ctx.lineTo(CanvasManager.guideCanvas.width, y + imgHeight * 0.33);
+                    ctx.strokeStyle = 'grey';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    // Calculate total width of one group of letters
+                    let groupWidth = 0;
+                    images.forEach(img => {
+                        groupWidth += (img.width / img.height) * imgHeight;
+                    });
+
+                    // Draw groups of letters
+                    let x = startX;
+                    for (let group = 0; group < 5; group++) { // Reduced number of groups to account for wider groups
+                        if (x + groupWidth < CanvasManager.guideCanvas.width) {
+                            const opacity = Math.max(0.4 - (0.08 * group), 0.1);
+                            ctx.globalAlpha = opacity;
+
+                            // Draw each letter in the group without spacing between letters
+                            let currentX = x;
+                            for (let i = 0; i < images.length; i++) {
+                                const imgWidth = (images[i].width / images[i].height) * imgHeight;
+                                ctx.drawImage(images[i], currentX, y, imgWidth, imgHeight);
+                                currentX += imgWidth; // Move to next letter position without adding spacing
+                            }
+
+                            x += groupWidth + groupSpacing; // Add spacing only between groups
+                        }
+                    }
+                    ctx.globalAlpha = 1;
+                });
             },
+
+
 
             async loadImageOptions() {
                 try {
