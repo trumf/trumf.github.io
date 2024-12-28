@@ -285,49 +285,64 @@
                 const imgWidth = parseInt(sizeSelector.value);
                 const spacing = imgWidth * 0.5;
                 const startX = 50;
-                const mainY = (CanvasManager.drawingCanvas.height - imgWidth) / 2;
 
+                // Get layout configuration
+                const isPortrait = window.innerHeight > window.innerWidth;
+                const numRows = isPortrait ? 3 : 2;
+                const rowHeight = imgWidth * 1.5;
+                const totalContentHeight = numRows * rowHeight;
+                const startY = (CanvasManager.drawingCanvas.height - totalContentHeight) / 2;
+
+                const currentOption = imageSelector.selectedOptions[0];
+                const label = currentOption.textContent;
+
+                // Create temporary canvas for capturing
                 const tempCanvas = document.createElement('canvas');
                 const tempCtx = tempCanvas.getContext('2d');
                 tempCanvas.width = imgWidth;
                 tempCanvas.height = imgWidth * 1.5;
 
-                const currentOption = imageSelector.selectedOptions[0];
-                const label = currentOption.textContent;
+                // For each row
+                for (let row = 0; row < numRows; row++) {
+                    const rowY = startY + (row * rowHeight);
 
-                for (let i = 0; i < 15; i++) {
-                    tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+                    // For each possible letter position in the row
+                    for (let i = 0; i < 5; i++) {  // Reduced from 15 to 5 since we have multiple rows
+                        tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
 
-                    const sourceX = startX + (imgWidth + spacing) * i;
-                    const sourceY = mainY - (imgWidth * 0.5);
+                        const sourceX = startX + (imgWidth + spacing) * i;
+                        const sourceY = rowY - (imgWidth * 0.5);
 
-                    tempCtx.drawImage(
-                        CanvasManager.drawingCanvas,
-                        sourceX, sourceY, imgWidth, imgWidth * 1.5,
-                        0, 0, imgWidth, imgWidth * 1.5
-                    );
+                        tempCtx.drawImage(
+                            CanvasManager.drawingCanvas,
+                            sourceX, sourceY, imgWidth, imgWidth * 1.5,
+                            0, 0, imgWidth, imgWidth * 1.5
+                        );
 
-                    const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-                    const hasContent = Array.from(imageData.data).some((value, index) =>
-                        index % 4 === 3 && value > 0
-                    );
+                        const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+                        const hasContent = Array.from(imageData.data).some((value, index) =>
+                            index % 4 === 3 && value > 0
+                        );
 
-                    if (hasContent) {
-                        const opacity = Math.max(0.4 - (0.04 * i), 0.1);
+                        if (hasContent) {
+                            const opacity = Math.max(0.4 - (0.04 * i), 0.0);
 
-                        AppState.sessionDrawings.drawings.push({
-                            imageData: tempCanvas.toDataURL('image/png'),
-                            metadata: {
-                                label: label,
-                                position: i + 1,
-                                guideOpacity: opacity,
-                                timestamp: new Date().toISOString(),
-                                pixelDensity: Analytics.calculatePixelDensity(imageData),
-                                strokeCoverage: Analytics.calculateStrokeCoverage(imageData)
-                            }
-                        });
+                            AppState.sessionDrawings.drawings.push({
+                                imageData: tempCanvas.toDataURL('image/png'),
+                                metadata: {
+                                    label: label,
+                                    position: i + 1,
+                                    row: row + 1,
+                                    guideOpacity: opacity,
+                                    timestamp: new Date().toISOString(),
+                                    pixelDensity: Analytics.calculatePixelDensity(imageData),
+                                    strokeCoverage: Analytics.calculateStrokeCoverage(imageData)
+                                }
+                            });
+                        }
                     }
                 }
+
             }
         };
 
