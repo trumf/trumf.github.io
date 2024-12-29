@@ -116,7 +116,7 @@
             sessionActive: false,
             sessionDrawings: {
                 timestamp: null,
-                drawings: []
+                drawings: []  // Will contain round objects with timestamp and images array
             },
             currentIndex: 0,
             imageOptions: []
@@ -263,15 +263,13 @@
             startSession() {
                 AppState.sessionActive = true;
                 AppState.sessionDrawings = {
-                    timestamp: new Date().toISOString().replace(/[:.]/g, '-'),
+                    timestamp: new Date().toISOString().split('.')[0] + 'Z',
                     drawings: []
                 };
 
                 startSessionBtn.disabled = true;
-
                 imageSelector.disabled = false;
                 exportSessionBtn.disabled = false;
-
                 CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
 
                 if (AppState.imageOptions.length > 0) {
@@ -282,69 +280,107 @@
             },
 
             saveCurrentDrawing() {
-                const imgWidth = parseInt(sizeSelector.value);
-                const spacing = imgWidth * 0.5;
-                const startX = 50;
+                try {
+                    const roundDrawings = [];
+                    const layout = GuideManager.getLayoutConfig();
+                    const letterCount = parseInt(letterCountSelector.value);
+                    const now = new Date();
+                    const roundTimestamp = now.toISOString().split('.')[0] + 'Z';
 
-                // Get layout configuration
-                const isPortrait = window.innerHeight > window.innerWidth;
-                const numRows = isPortrait ? 3 : 2;
-                const rowHeight = imgWidth * 1.5;
-                const totalContentHeight = numRows * rowHeight;
-                const startY = (CanvasManager.drawingCanvas.height - totalContentHeight) / 2;
+                    // Get all selected letters for this round
+                    const selectedLetters = [];
+                    selectedLetters.push(imageSelector.selectedOptions[0].textContent);
 
-                const currentOption = imageSelector.selectedOptions[0];
-                const label = currentOption.textContent;
+                    // Get the currently displayed additional letters from GuideManager
+                    const availableOptions = [...AppState.imageOptions]
+                        .filter(opt => opt !== imageSelector.value)
+                        .slice(0, letterCount - 1);
 
-                // Create temporary canvas for capturing
-                const tempCanvas = document.createElement('canvas');
-                const tempCtx = tempCanvas.getContext('2d');
-                tempCanvas.width = imgWidth;
-                tempCanvas.height = imgWidth * 1.5;
-
-                // For each row
-                for (let row = 0; row < numRows; row++) {
-                    const rowY = startY + (row * rowHeight);
-
-                    // For each possible letter position in the row
-                    for (let i = 0; i < 5; i++) {  // Reduced from 15 to 5 since we have multiple rows
-                        tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
-
-                        const sourceX = startX + (imgWidth + spacing) * i;
-                        const sourceY = rowY - (imgWidth * 0.5);
-
-                        tempCtx.drawImage(
-                            CanvasManager.drawingCanvas,
-                            sourceX, sourceY, imgWidth, imgWidth * 1.5,
-                            0, 0, imgWidth, imgWidth * 1.5
-                        );
-
-                        const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-                        const hasContent = Array.from(imageData.data).some((value, index) =>
-                            index % 4 === 3 && value > 0
-                        );
-
-                        if (hasContent) {
-                            const opacity = Math.max(0.4 - (0.04 * i), 0.0);
-
-                            AppState.sessionDrawings.drawings.push({
-                                imageData: tempCanvas.toDataURL('image/png'),
-                                metadata: {
-                                    label: label,
-                                    position: i + 1,
-                                    row: row + 1,
-                                    guideOpacity: opacity,
-                                    timestamp: new Date().toISOString(),
-                                    pixelDensity: Analytics.calculatePixelDensity(imageData),
-                                    strokeCoverage: Analytics.calculateStrokeCoverage(imageData)
-                                }
-                            });
+                    for (const option of availableOptions) {
+                        const optionEl = [...imageSelector.options].find(opt => opt.value === option);
+                        if (optionEl) {
+                            selectedLetters.push(optionEl.textContent);
                         }
                     }
-                }
 
+                    // For each row
+                    for (let row = 0; row < layout.numRows; row++) {
+                        const rowY = layout.startY + (row * layout.rowSpacing);
+
+                        // Calculate group dimensions
+                        const imgWidth = parseInt(sizeSelector.value);
+                        const spacing = imgWidth * 0.5;
+                        const startX = 50;
+                        let groupWidth = 0;
+
+                        // Calculate total width for the group of letters
+                        for (let l = 0; l < letterCount; l++) {
+                            groupWidth += imgWidth;
+                            if (l < letterCount - 1) groupWidth += spacing;
+                        }
+
+                        // For each repetition group in the row
+                        for (let group = 0; group < 5; group++) {
+                            // For each letter position within the group
+                            for (let letterIndex = 0; letterIndex < letterCount; letterIndex++) {
+                                const tempCanvas = document.createElement('canvas');
+                                const tempCtx = tempCanvas.getContext('2d');
+                                if (!tempCtx) {
+                                    console.error('Failed to get canvas context');
+                                    continue;
+                                }
+
+                                tempCanvas.width = imgWidth;
+                                tempCanvas.height = imgWidth * 1.5;
+
+                                const letterX = startX + (group * (groupWidth + spacing)) + (letterIndex * (imgWidth + spacing));
+                                const sourceY = rowY - (imgWidth * 0.5);
+
+                                tempCtx.drawImage(
+                                    CanvasManager.drawingCanvas,
+                                    letterX, sourceY, imgWidth, imgWidth * 1.5,
+                                    0, 0, imgWidth, imgWidth * 1.5
+                                );
+
+                                const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+                                const hasContent = Array.from(imageData.data).some((value, index) =>
+                                    index % 4 === 3 && value > 0
+                                );
+
+                                if (hasContent) {
+                                    const opacity = Math.max(0.4 - (0.04 * group), 0.0);
+                                    const label = selectedLetters[letterIndex] || 'N/A';
+
+                                    roundDrawings.push({
+                                        imageData: tempCanvas.toDataURL('image/png'),
+                                        metadata: {
+                                            label: label,
+                                            position: group + 1,
+                                            letterIndex: letterIndex + 1,
+                                            row: row + 1,
+                                            guideOpacity: opacity,
+                                            timestamp: roundTimestamp,
+                                            pixelDensity: Analytics.calculatePixelDensity(imageData),
+                                            strokeCoverage: Analytics.calculateStrokeCoverage(imageData)
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    if (roundDrawings.length > 0) {
+                        AppState.sessionDrawings.drawings.push({
+                            timestamp: roundTimestamp,
+                            images: roundDrawings
+                        });
+                    }
+                } catch (err) {
+                    console.error('Error in saveCurrentDrawing:', err);
+                }
             }
         };
+
 
         const GuideManager = {
             init() {
@@ -478,6 +514,44 @@
 
         // 6. Export Module
         const ExportManager = {
+            validateSession(roundsMap, letterCount) {
+                const validation = {
+                    status: 'valid',
+                    issues: [],
+                    stats: {
+                        totalRounds: roundsMap.size,
+                        expectedImagesPerRound: letterCount,
+                        actualImagesPerRound: []
+                    }
+                };
+
+                for (const [timestamp, round] of roundsMap) {
+                    // Count unique combinations of position and row
+                    const uniqueCombos = new Set();
+                    round.images.forEach(drawing => {
+                        uniqueCombos.add(`${drawing.metadata.row}_${drawing.metadata.position}_${drawing.metadata.letterIndex}`);
+                    });
+
+                    validation.stats.actualImagesPerRound.push(uniqueCombos.size);
+
+                    // Check if we have the correct number of images
+                    if (uniqueCombos.size !== letterCount * round.images.length / letterCount) {
+                        validation.status = 'warning';
+                        validation.issues.push(`Round ${timestamp} has unexpected number of images`);
+                    }
+
+                    // Check for proper letter distribution
+                    const letterIndices = round.images.map(d => d.metadata.letterIndex);
+                    const uniqueLetterIndices = new Set(letterIndices);
+                    if (uniqueLetterIndices.size !== letterCount) {
+                        validation.status = 'error';
+                        validation.issues.push(`Round ${timestamp} is missing some letter positions`);
+                    }
+                }
+
+                return validation;
+            },
+
             async exportSession() {
                 if (!AppState.sessionActive || AppState.sessionDrawings.drawings.length === 0) return;
 
@@ -491,57 +565,83 @@
                         letterWidth: parseInt(sizeSelector.value),
                         letterHeight: parseInt(sizeSelector.value) * 1.5,
                         spacing: parseInt(sizeSelector.value) * 0.5,
+                        letterCount: parseInt(letterCountSelector.value),
                         baselineY: (CanvasManager.drawingCanvas.height - parseInt(sizeSelector.value)) / 2 +
                             (parseInt(sizeSelector.value) * 0.9),
                         midlineY: (CanvasManager.drawingCanvas.height - parseInt(sizeSelector.value)) / 2 +
                             (parseInt(sizeSelector.value) * 0.4),
                         guideImageScale: parseInt(sizeSelector.value) / 120
                     },
-                    samples: []
+                    rounds: []
                 };
 
                 const zip = new JSZip();
                 const imagesFolder = zip.folder("images");
 
-                for (let i = 0; i < AppState.sessionDrawings.drawings.length; i++) {
-                    const drawing = AppState.sessionDrawings.drawings[i];
-                    const timestamp = drawing.metadata.timestamp.replace(/[:.]/g, '');
-                    const filename = `${drawing.metadata.label}_${timestamp}_${drawing.metadata.position}.png`;
+                // Group drawings by timestamp
+                const roundsMap = new Map();
+                AppState.sessionDrawings.drawings.forEach(round => {
+                    roundsMap.set(round.timestamp, round);
+                });
 
-                    trainingData.samples.push({
-                        filename: `images/${filename}`,
-                        ...drawing.metadata
-                    });
+                // Add validation information
+                trainingData.sessionInfo.validation = this.validateSession(
+                    roundsMap,
+                    parseInt(letterCountSelector.value)
+                );
 
-                    const base64Data = drawing.imageData.replace(/^data:image\/png;base64,/, "");
-                    imagesFolder.file(filename, base64Data, { base64: true });
+                let roundIndex = 1;
+                for (const [timestamp, round] of roundsMap) {
+                    const roundData = {
+                        round: roundIndex,
+                        timestamp: timestamp,
+                        images: []
+                    };
+
+                    for (const drawing of round.images) {
+                        const filename = `round${roundIndex}_${drawing.metadata.label}_row${drawing.metadata.row}_pos${drawing.metadata.position}_letter${drawing.metadata.letterIndex}.png`;
+
+                        roundData.images.push({
+                            filename: `images/${filename}`,
+                            metadata: drawing.metadata
+                        });
+
+                        const base64Data = drawing.imageData.replace(/^data:image\/png;base64,/, "");
+                        imagesFolder.file(filename, base64Data, { base64: true });
+                    }
+
+                    trainingData.rounds.push(roundData);
+                    roundIndex++;
                 }
 
-                zip.file("metadata.json", JSON.stringify(trainingData, null, 2));
+                try {
+                    zip.file("metadata.json", JSON.stringify(trainingData, null, 2));
 
-                const zipBlob = await zip.generateAsync({ type: "blob" });
-                const zipUrl = URL.createObjectURL(zipBlob);
-                const link = document.createElement('a');
-                link.href = zipUrl;
-                link.download = `training_data_${AppState.sessionDrawings.timestamp}.zip`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(zipUrl);
+                    const zipBlob = await zip.generateAsync({ type: "blob" });
+                    const zipUrl = URL.createObjectURL(zipBlob);
+                    const link = document.createElement('a');
+                    link.href = zipUrl;
+                    link.download = `training_data_${AppState.sessionDrawings.timestamp}.zip`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(zipUrl);
 
-                // Reset session
-                AppState.sessionActive = false;
-                AppState.sessionDrawings = {
-                    timestamp: null,
-                    drawings: []
-                };
-                startSessionBtn.disabled = false;
-
-
-                exportSessionBtn.disabled = true;
-                CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
+                    // Reset session
+                    AppState.sessionActive = false;
+                    AppState.sessionDrawings = {
+                        timestamp: null,
+                        drawings: []
+                    };
+                    startSessionBtn.disabled = false;
+                    exportSessionBtn.disabled = true;
+                    CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
+                } catch (err) {
+                    console.error('Error generating zip file:', err);
+                }
             }
         };
+
 
         // Initialize the application
         function initializeApp() {
