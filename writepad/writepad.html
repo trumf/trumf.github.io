@@ -414,6 +414,8 @@
             handleImageChange(e) {
                 const letterCount = parseInt(document.getElementById('letterCountSelector').value);
                 const ctx = CanvasManager.guideCtx;
+
+                // Fully clear the canvas
                 ctx.clearRect(0, 0, CanvasManager.guideCanvas.width, CanvasManager.guideCanvas.height);
 
                 // Get random letters
@@ -460,30 +462,27 @@
                         ctx.lineWidth = 1;
                         ctx.stroke();
 
-                        // Draw groups of letters for this row
+                        // Draw groups of letters for this row - always draw 5 groups regardless of canvas width
                         let x = startX;
                         for (let group = 0; group < 5; group++) {
-                            if (x + groupWidth < CanvasManager.guideCanvas.width) {
-                                const fadeRate = parseInt(document.getElementById('fadeRateSlider').value) / 100;
-                                const opacity = Math.max(0.4 - (fadeRate * group), 0.0);
-                                ctx.globalAlpha = opacity;
+                            const fadeRate = parseInt(document.getElementById('fadeRateSlider').value) / 100;
+                            const opacity = Math.max(0.4 - (fadeRate * group), 0.0);
+                            ctx.globalAlpha = opacity;
 
-                                // Draw each letter in the group
-                                let currentX = x;
-                                for (let i = 0; i < images.length; i++) {
-                                    const imgWidth = (images[i].width / images[i].height) * imgHeight;
-                                    ctx.drawImage(images[i], currentX, rowY, imgWidth, imgHeight);
-                                    currentX += imgWidth;
-                                }
-
-                                x += groupWidth + groupSpacing;
+                            // Draw each letter in the group
+                            let currentX = x;
+                            for (let i = 0; i < images.length; i++) {
+                                const imgWidth = (images[i].width / images[i].height) * imgHeight;
+                                ctx.drawImage(images[i], currentX, rowY, imgWidth, imgHeight);
+                                currentX += imgWidth + (i < images.length - 1 ? imgWidth * 0.5 : 0); // Add spacing between letters in a group
                             }
+
+                            x += groupWidth + groupSpacing;
                         }
                     }
                     ctx.globalAlpha = 1;
                 });
             },
-
 
 
             async loadImageOptions() {
