@@ -184,13 +184,60 @@
 
             init() {
                 const canvas = CanvasManager.drawingCanvas;
-                canvas.addEventListener('touchstart', e => this.startDrawing(e));
-                canvas.addEventListener('touchmove', e => this.draw(e));
-                canvas.addEventListener('touchend', () => this.stopDrawing());
-                canvas.addEventListener('mousedown', e => this.startDrawing(e));
-                canvas.addEventListener('mousemove', e => this.draw(e));
-                canvas.addEventListener('mouseup', () => this.stopDrawing());
-                canvas.addEventListener('mouseout', () => this.stopDrawing());
+
+                // Touch Events
+                canvas.addEventListener('touchstart', e => {
+                    e.preventDefault();
+                    this.startDrawing(e);
+                    if (AppState.sessionActive) {
+                        StrokeManager.startStroke(e);
+                    }
+                });
+
+                canvas.addEventListener('touchmove', e => {
+                    e.preventDefault();
+                    this.draw(e);
+                    if (this.drawing && AppState.sessionActive) {
+                        StrokeManager.addPoint(e);
+                    }
+                });
+
+                canvas.addEventListener('touchend', e => {
+                    e.preventDefault();
+                    if (this.drawing && AppState.sessionActive) {
+                        StrokeManager.endStroke(e);
+                    }
+                    this.stopDrawing();
+                });
+
+                // Mouse Events
+                canvas.addEventListener('mousedown', e => {
+                    this.startDrawing(e);
+                    if (AppState.sessionActive) {
+                        StrokeManager.startStroke(e);
+                    }
+                });
+
+                canvas.addEventListener('mousemove', e => {
+                    this.draw(e);
+                    if (this.drawing && AppState.sessionActive) {
+                        StrokeManager.addPoint(e);
+                    }
+                });
+
+                canvas.addEventListener('mouseup', e => {
+                    if (this.drawing && AppState.sessionActive) {
+                        StrokeManager.endStroke(e);
+                    }
+                    this.stopDrawing();
+                });
+
+                canvas.addEventListener('mouseout', () => {
+                    if (this.drawing && AppState.sessionActive) {
+                        StrokeManager.endStroke({ clientX: this.lastX, clientY: this.lastY });
+                    }
+                    this.stopDrawing();
+                });
             },
 
             startDrawing(e) {
@@ -222,6 +269,97 @@
             }
         };
 
+        const StrokeManager = {
+            currentStroke: [],
+            strokes: [],
+            isRecording: false,
+            startTime: null,
+
+            startStroke(e) {
+                if (!this.isRecording) {
+                    console.log('Stroke not recorded - recording not active');
+                    return;
+                }
+
+                const pos = CanvasManager.getPos(e);
+                if (!this.startTime) {
+                    this.startTime = Date.now();
+                }
+
+                this.currentStroke = [{
+                    x: pos.x,
+                    y: pos.y,
+                    timestamp: Date.now() - this.startTime,
+                    pressure: e.pressure || (e.touches ? e.touches[0].force : 1.0),
+                    type: 'start'
+                }];
+                console.log('Started new stroke', this.currentStroke[0]);
+            },
+
+            addPoint(e) {
+                if (!this.isRecording || this.currentStroke.length === 0) return;
+
+                const pos = CanvasManager.getPos(e);
+                this.currentStroke.push({
+                    x: pos.x,
+                    y: pos.y,
+                    timestamp: Date.now() - this.startTime,
+                    pressure: e.pressure || (e.touches ? e.touches[0].force : 1.0),
+                    type: 'move'
+                });
+                console.log('Added point to stroke', pos);
+            },
+
+            endStroke(e) {
+                if (!this.isRecording || this.currentStroke.length === 0) return;
+
+                const pos = CanvasManager.getPos(e);
+                this.currentStroke.push({
+                    x: pos.x,
+                    y: pos.y,
+                    timestamp: Date.now() - this.startTime,
+                    pressure: e.pressure || (e.touches ? e.touches[0].force : 1.0),
+                    type: 'end'
+                });
+
+                this.strokes.push([...this.currentStroke]);
+                console.log('Ended stroke, total strokes:', this.strokes.length);
+                this.currentStroke = [];
+            },
+
+            startRecording() {
+                this.isRecording = true;
+                this.startTime = Date.now();
+                this.strokes = [];
+                this.currentStroke = [];
+                console.log('Started recording strokes');
+            },
+
+            stopRecording() {
+                this.isRecording = false;
+                console.log('Stopped recording strokes');
+                return {
+                    startTime: this.startTime,
+                    endTime: Date.now(),
+                    strokes: this.strokes
+                };
+            },
+
+            getStrokeData() {
+                console.log('Getting stroke data, total strokes:', this.strokes.length);
+                const strokeData = {
+                    startTime: this.startTime,
+                    endTime: Date.now(),
+                    strokes: [...this.strokes], // Make a copy of the strokes array
+                    metadata: {
+                        totalStrokes: this.strokes.length,
+                        totalPoints: this.strokes.reduce((sum, stroke) => sum + stroke.length, 0)
+                    }
+                };
+                console.log('Stroke data:', strokeData);
+                return strokeData;
+            }
+        };
         // 3. Analytics Module
         const Analytics = {
             calculatePixelDensity(imageData) {
@@ -270,7 +408,10 @@
                 startSessionBtn.disabled = true;
                 imageSelector.disabled = false;
                 exportSessionBtn.disabled = false;
+
+                // Clear previous drawings and start fresh stroke recording
                 CanvasManager.drawingCtx.clearRect(0, 0, CanvasManager.drawingCanvas.width, CanvasManager.drawingCanvas.height);
+                StrokeManager.startRecording();
 
                 if (AppState.imageOptions.length > 0) {
                     AppState.currentIndex = 0;
@@ -280,6 +421,7 @@
             },
 
             saveCurrentDrawing() {
+
                 try {
                     const roundDrawings = [];
                     const layout = GuideManager.getLayoutConfig();
@@ -370,10 +512,17 @@
                     }
 
                     if (roundDrawings.length > 0) {
+                        // Get the stroke data before starting new recording
+                        const strokeData = StrokeManager.getStrokeData();
+
                         AppState.sessionDrawings.drawings.push({
                             timestamp: roundTimestamp,
-                            images: roundDrawings
+                            images: roundDrawings,
+                            strokeData: strokeData
                         });
+
+                        // Start fresh stroke recording for next round
+                        StrokeManager.startRecording();
                     }
                 } catch (err) {
                     console.error('Error in saveCurrentDrawing:', err);
@@ -594,7 +743,8 @@
                     const roundData = {
                         round: roundIndex,
                         timestamp: timestamp,
-                        images: []
+                        images: [],
+                        strokeData: round.strokeData || {} // Include stroke data in each round
                     };
 
                     for (const drawing of round.images) {
@@ -602,7 +752,7 @@
 
                         roundData.images.push({
                             filename: `images/${filename}`,
-                            metadata: drawing.metadata
+                            metadata: drawing.metadata,
                         });
 
                         const base64Data = drawing.imageData.replace(/^data:image\/png;base64,/, "");
@@ -639,7 +789,7 @@
                     console.error('Error generating zip file:', err);
                 }
             }
-        };
+        }
 
 
         // Initialize the application
