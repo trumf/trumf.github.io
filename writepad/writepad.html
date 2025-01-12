@@ -131,6 +131,8 @@
             fadeRateValue.textContent = value.toFixed(2);
         });
 
+
+
         // 1. Canvas Management Module
         const CanvasManager = {
             guideCanvas: document.getElementById('guideCanvas'),
@@ -801,6 +803,42 @@
             const imageSelector = document.getElementById('imageSelector');
             const sizeSelector = document.getElementById('sizeSelector');
 
+            // Add toggle button
+            const toggleButton = document.createElement('button');
+            toggleButton.id = 'toggleGuidesBtn';
+            toggleButton.textContent = 'Hide Guides';
+            document.getElementById('controls').appendChild(toggleButton);
+
+            // Add visibility state to GuideManager
+            GuideManager.guidesVisible = true;
+
+            // Add toggle function to GuideManager
+            GuideManager.toggleGuides = function () {
+                this.guidesVisible = !this.guidesVisible;
+                toggleButton.textContent = this.guidesVisible ? 'Hide Guides' : 'Show Guides';
+
+                if (this.guidesVisible) {
+                    // Redraw guides if they're being shown
+                    if (imageSelector.value) {
+                        this.handleImageChange({ target: { value: imageSelector.value } });
+                    }
+                } else {
+                    // Clear the guide canvas if hiding
+                    const ctx = CanvasManager.guideCtx;
+                    ctx.clearRect(0, 0, CanvasManager.guideCanvas.width, CanvasManager.guideCanvas.height);
+                }
+            };
+
+            // Update handleImageChange to respect visibility
+            const originalHandleImageChange = GuideManager.handleImageChange;
+            GuideManager.handleImageChange = function (e) {
+                if (!this.guidesVisible) return;
+                originalHandleImageChange.call(this, e);
+            };
+
+            // Add event listener to the toggle button
+            toggleButton.addEventListener('click', () => GuideManager.toggleGuides());
+
             // Initialize all modules
             CanvasManager.init();
             DrawingManager.init();
@@ -825,7 +863,6 @@
                 }
             });
         }
-
         // Start the application
         initializeApp();
     </script>
