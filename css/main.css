@@ -1,3 +1,4 @@
+@import url("reset.css");
 @import url("https://fonts.googleapis.com/css?family=Inter:400");
 @import url("utilities.css");
 
@@ -41,7 +42,7 @@
   --text-link-hover: var(--color-secondary-dark);
 
   /* Component-specific Colors */
-  --navbar-text: var(--color-neutral-50);
+  --navbar-text: var(--color-neutral-800);
   --navbar-bg: transparent;
   --footer-bg: var(--color-neutral-950);
   --footer-text: var(--color-neutral-50);
@@ -1339,7 +1340,7 @@ button:focus-visible {
 
 .navbar-nav a,
 .nav-link {
-  color: var(--navbar-text) !important;
+  color: var(--navbar-text);
   text-decoration: none !important;
   transition: opacity 0.2s ease;
 }
@@ -1368,6 +1369,10 @@ button:focus-visible {
   color: var(--footer-text);
 }
 
+.footer__contact h3 {
+  color: var(--footer-text);
+}
+
 .footer__contact a {
   gap: 16px;
   color: var(--footer-text);
@@ -1384,6 +1389,10 @@ button:focus-visible {
   gap: var(--spacing-sm);
   max-height: 2rem;
   justify-content: space-between;
+  color: var(--footer-text);
+}
+
+.copyright p {
   color: var(--footer-text);
 }
 
