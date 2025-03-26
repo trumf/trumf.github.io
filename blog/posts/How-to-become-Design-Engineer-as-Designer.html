@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How to Go from Design to Design Engineering</title>
+
+    <meta name="description"
+        content="Moving from design to design engineering is challenging but achievable. Here's the technical and organizational hurdles to look out for.">
+
+
+
+    <!-- Open Graph tags for social media -->
+
+    <meta property="og:title" content="How to Go from Design to Design Engineering">
+
+    <meta property="og:description"
+        content="Moving from design to design engineering is challenging but achievable. Here's the technical and organizational hurdles to look out for.">
+
+    <meta property="og:image" content="public/images/favicon.svg">
+
+    <meta property="og:url" content="https://rosenqvist.design/posts/How-to-become-Design-Engineer-as-Designer.html">
+    <!-- Update with the actual URL -->
+
+
+
+    <!-- Twitter Card tags for Twitter -->
+
+    <meta name="twitter:title" content="How to Go from Design to Design Engineering">
+
+    <meta name="twitter:description"
+        content="Moving from design to design engineering is challenging but achievable. Here's the technical and organizational hurdles to look out for.">
+
+    <meta name="twitter:image" content="public/images/favicon.svg">
+
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="icon" type="image/x-icon" href="../public/images/favicon.svg">
+
+</head>
+
+<body class="post">
+    <header role="banner" class="heroSection" style="justify-content: left;">
+        <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" style="flex: 1 0 0; align-self: stretch">
+                <filter id="noiseFilter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+            </svg>
+        </div>
+        <nav id="navbar-container" class="navbar-container"></nav>
+
+
+        <div class="hero-text">
+            <h1 style="line-height: 115%">
+                How to become a Design Engineer as a Designer
+            </h1>
+        </div>
+    </header>
+    <section class="section_padding bg_dark">
+        <div class="section_content paragraph-wrapper">
+
+
+            <p>Lately, I've been writing more code both at work and on my own projects. It got me thinking—maybe I
+                should understand the design engineer role better. </p>
+            <p>A design engineer bridges design and engineering. They can design user interfaces and have the technical
+                skills to code them. They often make prototypes in code, contribute to design systems, and take projects
+                from concept to production, which is why I'm interested in them.</p>
+        </div>
+    </section>
+
+    <section class="section_padding bg_light">
+        <div class="section_content paragraph-wrapper">
+            <h2>Why Do Most Design Engineers Come from an Engineering Background?</h2>
+            <p>One thing that struck me when reading about the role is that most design engineers come from a developer
+                background, particularly frontend or web development. Many of the people in <a
+                    href="https://maggieappleton.com/design-engineers">Maggie Appleton's "collection of Design
+                    Engineers"</a> seem to come from an engineering background. Design engineers often start by writing
+                software and then transition into design. It's pretty rare to see someone move into it from a pure
+                design background.</p>
+            <p>As someone who comes from a design background, I think it is harder to move from design into a design
+                engineering role than vice versa. I will lay out my position here and explain the hurdles you might face
+                as a designer.
+            </p>
+        </div>
+    </section>
+    <section class="section_padding bg_dark">
+        <div class="section_content paragraph-wrapper">
+            <h2>Learning to Code Isn't the Biggest Hurdle</h2>
+            <p>Surprisingly, the actual programming part—writing HTML, CSS, maybe some JavaScript—isn't the hardest
+                hurdle. There are tons of tutorials out there, and modern design tools are getting closer to how you'd
+                style components in code. On YouTube, you can find loads of tutorials, and if you prefer to read, there
+                are some great blogs and reference sites like [<a href="https://developer.mozilla.org/en-US/">MDN</a>.
+            </p>
+            <p>The first real challenge is figuring out the tools. If you're a UX designer today, you're probably
+                spending most of your time in Figma. As you move more towards engineering, you'll need to get used to
+                new tools.</p>
+            <img src="/posts/figma ui.png" alt="The figma UI, a common program for web and UI design"
+                style="aspect-ratio: 16/9; width: 100%; height: auto;">
+            <p>Setting up an IDE like VS Code with some plug-ins doesn’t take long but is very different from Figma.
+                Then there's the whole environment setup and getting your head around version control systems like Git,
+                where you'll have to type cryptic commands into a terminal just to get things running. For someone who's
+                never touched the command line, that can be pretty intimidating. Especially for designers who haven't
+                worked with version handling beyond naming files "final_design_v3_final.psd."</p>
+        </div>
+    </section>
+
+    <section class="section_padding bg_light">
+        <div class="section_content paragraph-wrapper">
+            <h2>How Things Work in the Real World</h2>
+            <p>Next up is learning how things are done "in the real world." Even if you've studied hard and done a lot
+                of
+                personal
+                projects, when you get to an enterprise environment, things are often done differently.</p>
+
+            <blockquote>
+                <p style="font-weight: 100;">Say you’re a new web developer on the job, and you’re given a ticket to
+                    have a button open an informational popup for users to read for extra information. You have a solid
+                    grasp of the fundamentals, so you make a Pull Request where you implement this <a
+                        href="https://frontendmasters.com/blog/popover-api-is-here/">as a
+                        popover</a>(e.g.'<code>&lt;div id="extra-information"
+        popover&gt;Extra information.&lt;/div&gt;</code>`).
+                    <br><br>
+                    Then the feedback arrives: … but that’s not how it’s done <span
+                        style="font-style: italic;">here</span>…
+                    <br><br>
+                    At this job, with this current code base, you:
+                    <br>
+                    1. Use the existing `
+                    <code>&lt;Popup /&gt;</code>` element from the Design System.<br>
+                    2. Keep the content in the `Copy` package as HTML strings, so it can be translated.<br>
+                    3. Make an enum for it (e.g. `export const POPOVER_EXTRA_INFORMATION = "POPOVER_EXTRA_INFORMATION"`)
+                    so that anywhere that refers to this component or copy has a consistent name.<br>
+                    4. Has a component test ensuring it functions correctly.<br>
+                    5. Use special classes from the design system in order to create variations, rather than it’s own
+                    bespoke styles.<br><br>
+                    None of those things are really “fundamentals”, they are _conventions_ that this particular code
+                    base has grown into over time to make it manageable<br>
+                </p>
+                <label style="display: flex;
+                            margin-top: 1rem;
+                            width: 100%;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            justify-content: flex-end; ">
+                    <a href="https://frontendmasters.com/blog/what-skills-should-you-focus-on-as-junior-web-developer-in-2024/
+                " style="align-self: flex-end;">-- What Skills Should You Focus on as Junior Web Developer in
+                        2024?</a>
+                </label>
+            </blockquote>
+
+            <p>These conventions won’t be in coding courses. Writing tests, code reviews, and engineering processes are
+                areas where designers might struggle.</p>
+            <p>This is an area where there’s surprisingly little information out there. I’m guessing it's the kind of
+                trade knowledge that people just learn and don’t feel the need to describe. The best resource I’ve found
+                are videos from
+                <a href="https://www.youtube.com/@WebDevCody">webdevcody</a>.
+            </p>
+            <!-- Wrapper div for responsive iframe -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Dl-BdxNRUqs?si=vRQSQImf1iNL5rs8" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="section_padding bg_dark">
+        <div class="section_content paragraph-wrapper">
+            <h2>The Biggest Hurdles Are Organizational</h2>
+            <p>Honestly, the biggest challenges are organizational. You'll probably need to convince IT to give you
+                admin access to install new programs. Getting access to repositories on GitHub or wherever means talking
+                to the DevOps team or an engineering manager.</p>
+            <p>You'll also need support from your manager to grow into this kind of role. They might not fully
+                understand what you're trying to do, but their backing is crucial. You’ll also need guidance from
+                someone in engineering, which might slow things down as you learn on the job. Remember, you're
+                essentially taking on a junior or intern dev role in addition to your designer role.</p>
+            <p>If you're part of the design team but doing engineering work, you might end up out of sync with both
+                sides. You could find yourself attending more meetings, trying to stay updated with both departments.
+            </p>
+            <p>When performance review time comes around, things can get even trickier. How will your manager assess
+                your performance? If you don’t fit neatly into the usual job descriptions or leveling guides, it might
+                be hard for them to justify a raise or promotion, even if you’ve made significant contributions. My only
+                advice is to keep track of what you’re doing and show how things would have been missed if you weren’t
+                there to catch them.</p>
+        </div>
+    </section>
+
+    <section class="section_padding bg_light">
+        <div class="section_content paragraph-wrapper">
+            <h2>Is it easier for Engineers to move toward Design?</h2>
+            <p>On the flip side, if an engineer wants to move toward design, it might be a bit easier. They can expand
+                design specifications while still closing tickets. They don’t need access to new tools and will still
+                fit into the usual engineering org. They might take longer to finish tasks because they’re spending more
+                time on design,
+                but that’s a similar challenge designers face when they start coding.</p>
+            <p>One thing I’ve noticed is that learning resources for design aren’t as comprehensive as those for coding.
+                They often focus on how to use tools rather than teaching design principles. It’s tough to find
+                resources that delve into topics like advanced typography beyond the basics.</p>
+            <img src="/posts/vscode-custom.png"
+                alt="The UI of Visual Studio code, a common program for editing and writing code"
+                style="aspect-ratio: 16/9; width: 100%; height: auto;">
+        </div>
+    </section>
+    <section class="section_padding bg_dark">
+        <div class="section_content paragraph-wrapper">
+            <h2>What to think about for Designers</h2>
+            <p>If you're a designer wanting to become a design engineer, your best bet might be working freelance or at
+                a smaller company. Startups are probably ideal since you'd need to help out with a variety of tasks
+                anyway.</p>
+            <p>A design engineering role, like any hybrid role, works best if you already have trouble fitting into a
+                mold. If you’ve been working for a while as a designer, it can feel like starting over. You’ll need to
+                augment the skills you already have to stand out. </p>
+            <p>Focus on areas where you can outperform a full-stack engineer. It could be animation, clever ways to
+                handle design tokens, typography, or micro-adjustments to layout. Use your design eye to add final
+                touches that make a difference.
+            </p>
+        </div>
+    </section>
+
+    <section class="section_padding bg_light">
+        <div class="section_content paragraph-wrapper">
+            <h2>Transitioning to Design Engineering is hard but possible</h2>
+            <p>Making the transition from design to design engineering is challenging but definitely possible. It helps
+                to be in an environment that supports your growth and understands the value you bring. Having managers
+                and colleagues who back you up can make a huge difference.</p>
+            <p>So, if you're thinking about making this move, be prepared for some obstacles, but know that it's
+                achievable. And if you're already on this path, I'd love to hear about your experiences. </p>
+            <a href="/" style="margin-bottom: 1rem; ">
+                <h5 style="color: var(--brand-color-secondary);">
+                    &lt;&lt; Back to Home
+                </h5>
+            </a>
+        </div>
+
+
+    </section>
+    <footer role=" contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("../components/navbar.html");
+            $("#footer-container").load("../components/footer.html");
+        });
+    </script>
+
+</body>
+
+</html>

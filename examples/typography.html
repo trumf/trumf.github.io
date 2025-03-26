@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Typography System Examples - rosenqvist.design" />
+
+    <title>Typography System | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+    <style>
+        .typography-section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--color-neutral-300);
+        }
+
+        .typography-section:last-child {
+            border-bottom: none;
+        }
+
+        .type-example {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--color-neutral-100);
+            border-radius: var(--border-radius-md);
+        }
+
+        .type-label {
+            display: block;
+            font-size: var(--text-xs);
+            color: var(--text-tertiary);
+            font-family: monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-meta {
+            margin-top: 0.5rem;
+            font-size: var(--text-xs);
+            color: var(--text-tertiary);
+            font-family: monospace;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+            border-radius: var(--border-radius-sm);
+            vertical-align: middle;
+        }
+
+        .color-primary {
+            background-color: var(--text-primary);
+        }
+
+        .color-secondary {
+            background-color: var(--text-secondary);
+        }
+
+        .color-tertiary {
+            background-color: var(--text-tertiary);
+        }
+
+        .scale-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .utility-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header role="banner" class="heroSection" style="justify-content: center;">
+        <nav id="navbar-container" class="navbar-container"></nav>
+
+        <div class="hero-text">
+            <h1>Typography System</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="section_padding">
+            <div class="section_content">
+                <div class="typography-section">
+                    <h2>Type Scale</h2>
+                    <p class="text-lead">The typography system uses a modular scale with a ratio of approximately 1.25
+                        (major third). This creates a harmonious progression of sizes that work well together.</p>
+
+                    <div class="scale-container">
+                        <div class="type-example">
+                            <span class="type-label">--text-4xl (3.75rem / 60px)</span>
+                            <h1 class="display-text">Display Heading</h1>
+                            <span class="type-meta">Font: Inter | Weight: 700 | Line Height: 1</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-3xl (3rem / 48px)</span>
+                            <h1>Main Heading (H1)</h1>
+                            <span class="type-meta">Font: Inter | Weight: 700 | Line Height: 1.2</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-2xl (2.25rem / 36px)</span>
+                            <h2>Section Heading (H2)</h2>
+                            <span class="type-meta">Font: Inter | Weight: 500 | Line Height: 1.2</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-xl (1.875rem / 30px)</span>
+                            <h3>Subsection Heading (H3)</h3>
+                            <span class="type-meta">Font: Inter | Weight: 500 | Line Height: 1.35</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-lg (1.5rem / 24px)</span>
+                            <p class="text-lead">Lead paragraph text used for introductions and important content.
+                                Should be concise but impactful.</p>
+                            <span class="type-meta">Font: Inter | Weight: 400 | Line Height: 1.75</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-md (1.25rem / 20px)</span>
+                            <h4>Smaller Heading (H4)</h4>
+                            <span class="type-meta">Font: Inter | Weight: 500 | Line Height: 1.35</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-base (1rem / 16px)</span>
+                            <p>This is the standard body text used for the main content. It should be easy to read with
+                                good contrast and spacing. The line length is optimized for readability with a maximum
+                                of approximately 65-70 characters per line.</p>
+                            <span class="type-meta">Font: Inter | Weight: 400 | Line Height: 1.5</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-sm (0.875rem / 14px)</span>
+                            <p><small>This smaller text is used for less important information, captions, footnotes, and
+                                    metadata.</small></p>
+                            <span class="type-meta">Font: Inter | Weight: 400 | Line Height: 1.5</span>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">--text-xs (0.75rem / 12px)</span>
+                            <p class="text-xs">Extra small text for specialized cases. Use sparingly as it's at the
+                                minimum size for readable text.</p>
+                            <span class="type-meta">Font: Inter | Weight: 400 | Line Height: 1.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typography-section">
+                    <h2>Color Variations</h2>
+                    <p>Text colors are managed through CSS variables to maintain consistency and support theming.</p>
+
+                    <div class="type-example">
+                        <span class="type-label">--text-primary</span>
+                        <h4><span class="color-box color-primary"></span>Primary Text</h4>
+                        <p>This is the main text color used for headings and body text. It has the highest contrast
+                            against the background.</p>
+                    </div>
+
+                    <div class="type-example">
+                        <span class="type-label">--text-secondary</span>
+                        <h4><span class="color-box color-secondary"></span>Secondary Text</h4>
+                        <p style="color: var(--text-secondary);">Secondary text is used for less emphasized content
+                            while still maintaining good readability.</p>
+                    </div>
+
+                    <div class="type-example">
+                        <span class="type-label">--text-tertiary</span>
+                        <h4><span class="color-box color-tertiary"></span>Tertiary Text</h4>
+                        <p style="color: var(--text-tertiary);">Tertiary text is used for supplementary information,
+                            metadata, and less important content.</p>
+                    </div>
+                </div>
+
+                <div class="typography-section">
+                    <h2>Utility Classes</h2>
+                    <p>These utility classes help maintain consistency across the site.</p>
+
+                    <div class="utility-examples">
+                        <div class="type-example">
+                            <span class="type-label">.text-left</span>
+                            <p class="text-left">Left-aligned text (default)</p>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">.text-center</span>
+                            <p class="text-center">Center-aligned text</p>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">.text-right</span>
+                            <p class="text-right">Right-aligned text</p>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">.text-uppercase</span>
+                            <p class="text-uppercase">Uppercase text transformation</p>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">.text-lowercase</span>
+                            <p class="text-lowercase">Lowercase Text Transformation</p>
+                        </div>
+
+                        <div class="type-example">
+                            <span class="type-label">.text-capitalize</span>
+                            <p class="text-capitalize">capitalized text transformation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typography-section">
+                    <h2>Spacing & Rhythm</h2>
+                    <p>These examples demonstrate vertical rhythm with spacing utility classes.</p>
+
+                    <div class="type-example">
+                        <span class="type-label">Default paragraph spacing</span>
+                        <p>This paragraph has default spacing below it.</p>
+                        <p>This demonstrates the standard rhythm between paragraphs.</p>
+                        <p>The spacing adapts to different screen sizes.</p>
+                    </div>
+
+                    <div class="type-example">
+                        <span class="type-label">Margin utilities</span>
+                        <p class="mb-0">No margin (mb-0)</p>
+                        <p class="mb-1">Extra small margin (mb-1)</p>
+                        <p class="mb-2">Small margin (mb-2)</p>
+                        <p class="mb-3">Medium margin (mb-3)</p>
+                        <p class="mb-4">Large margin (mb-4)</p>
+                        <p class="mb-5">Extra large margin (mb-5)</p>
+                        <p>Back to default spacing</p>
+                    </div>
+                </div>
+
+                <div class="typography-section">
+                    <h2>Responsive Behavior</h2>
+                    <p>Resize your browser window to see how typography adapts to different screen sizes.</p>
+
+                    <div class="type-example">
+                        <span class="type-label">Responsive heading</span>
+                        <h1>This heading will change size</h1>
+                        <p>The typography system includes media queries that adjust text sizes at these breakpoints:</p>
+                        <ul>
+                            <li>Desktop (default): Full-size scale</li>
+                            <li>Large Tablets (max-width: 1200px): Slight reduction for largest sizes</li>
+                            <li>Tablets (max-width: 768px): Medium reduction</li>
+                            <li>Mobile (max-width: 480px): Significant reduction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("/components/navbar.html");
+            $("#footer-container").load("/components/footer.html");
+        });
+    </script>
+</body>
+
+</html>

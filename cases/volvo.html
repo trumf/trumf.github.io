@@ -5,10 +5,29 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rosenqvist</title>
+  <meta name="description"
+    content="Case study on Simon Rosenqvist's work at Volvo Cars designing the EX90 and Polestar 3" />
 
-  <link rel="stylesheet" href="../css/main.css" />
-  <link rel="icon" type="image/x-icon" href="public/images/favicon.svg">
+  <title>Volvo Cars Case Study | Simon Rosenqvist</title>
+
+  <!-- Styles and Resources -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Volvo Cars Case Study | Simon Rosenqvist">
+  <meta property="og:description"
+    content="Case study on Simon Rosenqvist's work at Volvo Cars designing the EX90 and Polestar 3">
+  <meta property="og:image" content="/public/images/volvo/uxWelcomeM.png">
+  <meta property="og:url" content="https://rosenqvist.design/cases/volvo.html">
+  <meta property="og:type" content="article">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Volvo Cars Case Study | Simon Rosenqvist">
+  <meta name="twitter:description"
+    content="Case study on Simon Rosenqvist's work at Volvo Cars designing the EX90 and Polestar 3">
+  <meta name="twitter:image" content="/public/images/volvo/uxWelcomeM.png">
 </head>
 
 <body>
@@ -38,7 +57,7 @@
   <section class="section_short bg_dark" id="ux">
     <div class="content-container">
       <div class="image-wrapper">
-        <img src="../public/images/volvo/uxWelcomeM.png" alt="center screen in car" />
+        <img src="/public/images/volvo/uxWelcomeM.png" alt="center screen in car" />
       </div>
       <div class="content-text">
         <p>
@@ -59,13 +78,12 @@
     </div>
 
     <div class="image-wrapper" style="justify-items: center">
-      <img src="../public/images/volvo/uxScreensM.png" alt="screens in a car" />
+      <img src="/public/images/volvo/uxScreensM.png" alt="screens in a car" />
     </div>
 
     <div class="content-container-reversed">
       <div class="image-wrapper">
-        <img src="../public/images/volvo/uxAdM.png" alt="screens behind a steeringwheel"
-          style="justify-items: center" />
+        <img src="/public/images/volvo/uxAdM.png" alt="screens behind a steeringwheel" style="justify-items: center" />
       </div>
 
       <div class="content-text">
@@ -98,7 +116,7 @@
   <section class="section_short bg_light" id="sensing">
     <div class="content-container">
       <div class="image-wrapper senseDM">
-        <img src="../public/images/volvo/senseDmM.png" alt="abstract image of interior of a car" />
+        <img src="/public/images/volvo/senseDmM.png" alt="abstract image of interior of a car" />
       </div>
       <div class="content-text">
         <p>
@@ -122,7 +140,7 @@
 
     <div class="content-container">
       <div class="image-wrapper senseRadar">
-        <img src="../public/images/volvo/senseRadarM.png" alt="abstract 3d" />
+        <img src="/public/images/volvo/senseRadarM.png" alt="abstract 3d" />
       </div>
       <div class="content-text">
         <p>
@@ -144,7 +162,7 @@
 
     <div class="youtube">
       <iframe width="1389" height="790" src="https://www.youtube.com/embed/EqLjxCVJnDY"
-        title="What if your car could remind you when someone’s left behind?" frameborder="0"
+        title="What if your car could remind you when someone's left behind?" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
     </div>
@@ -167,7 +185,7 @@
     </div>
 
     <div>
-      <a href="index.html">
+      <a href="/portfolio.html">
         <h5>
           << Back</h5>
       </a>
@@ -178,14 +196,11 @@
     <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
   </footer>
 
-
-
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function () {
-      $("#navbar-container").load("../components/navbar.html");
-      $("#footer-container").load("../components/footer.html");
+      $("#navbar-container").load("/components/navbar.html");
+      $("#footer-container").load("/components/footer.html");
     });
   </script>
 </body>

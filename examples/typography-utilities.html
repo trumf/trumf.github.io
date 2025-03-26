@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Utilities | Simon Rosenqvist</title>
+    <meta name="description" content="A showcase of typography utilities available for the rosenqvist.design website.">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico">
+    <style>
+        /* Demo-specific styles */
+        .demo-section {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--color-neutral-300);
+            padding-bottom: 2rem;
+        }
+
+        .demo-heading {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .sample-box {
+            background-color: var(--color-neutral-100);
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-label {
+            font-family: monospace;
+            background-color: var(--color-neutral-200);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .demo-card {
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+
+        .demo-card-content {
+            padding: 1.5rem;
+        }
+
+        .sample-width {
+            background-color: var(--color-neutral-200);
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        .responsive-demo {
+            border: 1px solid var(--color-neutral-300);
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1rem;
+        }
+
+        .truncate-box {
+            width: 200px;
+            background-color: var(--color-neutral-100);
+            padding: 1rem;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo">Simon Rosenqvist</a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/examples">Examples</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="container">
+                <h1>Typography Utilities</h1>
+                <p class="text-lead">A comprehensive showcase of all available typography utilities for consistent and
+                    flexible text styling across rosenqvist.design.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="content-area">
+            <section class="demo-section">
+                <h2 class="demo-heading">Text Size Utilities</h2>
+                <p>Control the size of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-size-xs">Extra small text (.text-size-xs)</p>
+                    <p class="text-size-sm">Small text (.text-size-sm)</p>
+                    <p class="text-size-base">Base text size (.text-size-base)</p>
+                    <p class="text-size-md">Medium text (.text-size-md)</p>
+                    <p class="text-size-lg">Large text (.text-size-lg)</p>
+                    <p class="text-size-xl">Extra large text (.text-size-xl)</p>
+                    <p class="text-size-2xl">2X large text (.text-size-2xl)</p>
+                    <p class="text-size-3xl">3X large text (.text-size-3xl)</p>
+                    <p class="text-size-4xl">4X large text (.text-size-4xl)</p>
+                </div>
+
+                <div class="code-label">&lt;p class="text-size-lg"&gt;Large text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Font Weight Utilities</h2>
+                <p>Control the weight of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-weight-normal">Normal weight text (400) (.text-weight-normal)</p>
+                    <p class="text-weight-medium">Medium weight text (500) (.text-weight-medium)</p>
+                    <p class="text-weight-bold">Bold weight text (700) (.text-weight-bold)</p>
+                </div>
+
+                <div class="code-label">&lt;p class="text-weight-bold"&gt;Bold text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Line Height Utilities</h2>
+                <p>Control the line height of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-leading-none">This text has no line height spacing. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        (.text-leading-none)</p>
+                    <br>
+                    <p class="text-leading-tight">This text has tight line height spacing. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        (.text-leading-tight)</p>
+                    <br>
+                    <p class="text-leading-snug">This text has snug line height spacing. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        (.text-leading-snug)</p>
+                    <br>
+                    <p class="text-leading-normal">This text has normal line height spacing. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        (.text-leading-normal)</p>
+                    <br>
+                    <p class="text-leading-relaxed">This text has relaxed line height spacing. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. (.text-leading-relaxed)</p>
+                </div>
+
+                <div class="code-label">&lt;p class="text-leading-relaxed"&gt;Text with relaxed line height&lt;/p&gt;
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Letter Spacing Utilities</h2>
+                <p>Control the letter spacing (tracking) of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-tracking-tighter text-size-lg">TIGHTER LETTER SPACING (-0.03em)
+                        (.text-tracking-tighter)</p>
+                    <p class="text-tracking-tight text-size-lg">TIGHT LETTER SPACING (-0.015em) (.text-tracking-tight)
+                    </p>
+                    <p class="text-tracking-normal text-size-lg">NORMAL LETTER SPACING (0) (.text-tracking-normal)</p>
+                    <p class="text-tracking-wide text-size-lg">WIDE LETTER SPACING (0.01em) (.text-tracking-wide)</p>
+                    <p class="text-tracking-wider text-size-lg">WIDER LETTER SPACING (0.02em) (.text-tracking-wider)</p>
+                </div>
+
+                <div class="code-label">&lt;h1 class="text-tracking-tight"&gt;Headline with tight tracking&lt;/h1&gt;
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Text Alignment Utilities</h2>
+                <p>Control the alignment of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-left">This text is left-aligned (default). (.text-left)</p>
+                    <p class="text-center">This text is center-aligned. (.text-center)</p>
+                    <p class="text-right">This text is right-aligned. (.text-right)</p>
+                    <p class="text-justify">This text is justified. It will stretch to fill the entire width of its
+                        container. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. (.text-justify)</p>
+                </div>
+
+                <div class="code-label">&lt;p class="text-center"&gt;Centered text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Text Transformation Utilities</h2>
+                <p>Control the capitalization of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-uppercase">This text is uppercase. (.text-uppercase)</p>
+                    <p class="text-lowercase">THIS TEXT IS LOWERCASE. (.text-lowercase)</p>
+                    <p class="text-capitalize">this text has first letter of each word capitalized. (.text-capitalize)
+                    </p>
+                    <p class="text-normal-case">THIS TEXT has normal case (resets transformations). (.text-normal-case)
+                    </p>
+                </div>
+
+                <div class="code-label">&lt;p class="text-uppercase"&gt;Uppercase text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Text Decoration Utilities</h2>
+                <p>Control the decoration of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p>Normal text with <span class="text-underline">underlined text</span> inside it. (.text-underline)
+                    </p>
+                    <p>A <a href="#" class="text-no-underline">link with no underline</a> styling. (.text-no-underline)
+                    </p>
+                    <p>This price is <span class="text-line-through">$100</span> $75 now. (.text-line-through)</p>
+                    <p>Text with <span class="text-no-decoration">no decoration</span> at all. (.text-no-decoration)</p>
+                </div>
+
+                <div class="code-label">&lt;span class="text-underline"&gt;Underlined text&lt;/span&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Text Wrapping and Overflow Utilities</h2>
+                <p>Control how text wraps and handles overflow with these utilities.</p>
+
+                <div class="sample-box">
+                    <div class="truncate-box">
+                        <p class="text-truncate">This text will be truncated with an ellipsis when it exceeds the width
+                            of its container. (.text-truncate)</p>
+                    </div>
+
+                    <div class="truncate-box">
+                        <p class="text-break">ThisIsAReallyLongWordThatWouldNormallyOverflowButWillBreakInstead because
+                            of the text-break utility. (.text-break)</p>
+                    </div>
+
+                    <div class="truncate-box">
+                        <p class="text-no-wrap">This text will not wrap to a new line. (.text-no-wrap)</p>
+                    </div>
+
+                    <div class="truncate-box">
+                        <p class="text-wrap">This text will wrap normally, which is the default behavior. (.text-wrap)
+                        </p>
+                    </div>
+
+                    <div class="truncate-box">
+                        <p class="text-clamp-1">This paragraph will be limited to exactly one line with an ellipsis at
+                            the end if it exceeds the width. (.text-clamp-1)</p>
+                    </div>
+
+                    <div class="truncate-box">
+                        <p class="text-clamp-2">This paragraph will be limited to exactly two lines maximum. Any
+                            additional content beyond the second line will be truncated with an ellipsis at the end.
+                            (.text-clamp-2)</p>
+                    </div>
+
+                    <div class="truncate-box">
+                        <p class="text-clamp-3">This paragraph will be limited to exactly three lines maximum. Any
+                            additional content beyond the third line will be truncated with an ellipsis at the end. This
+                            allows for a bit more content to be visible while still maintaining a consistent height.
+                            (.text-clamp-3)</p>
+                    </div>
+                </div>
+
+                <div class="code-label">&lt;p class="text-clamp-2"&gt;Text limited to 2 lines&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Text Color Utilities</h2>
+                <p>Control the color of text with these utilities.</p>
+
+                <div class="sample-box">
+                    <p class="text-color-primary">This text uses the primary text color. (.text-color-primary)</p>
+                    <p class="text-color-secondary">This text uses the secondary text color. (.text-color-secondary)</p>
+                    <p class="text-color-tertiary">This text uses the tertiary text color. (.text-color-tertiary)</p>
+                    <div
+                        style="background-color: var(--color-primary); padding: 1rem; border-radius: var(--border-radius-sm);">
+                        <p class="text-color-on-brand">This text uses the on-brand color, designed for use on brand
+                            backgrounds. (.text-color-on-brand)</p>
+                    </div>
+                    <p class="text-color-link">This text uses the link color. (.text-color-link)</p>
+                </div>
+
+                <div class="code-label">&lt;p class="text-color-secondary"&gt;Secondary color text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Style Composition Utilities</h2>
+                <p>These utilities combine multiple properties for common text styles.</p>
+
+                <div class="sample-box">
+                    <p class="text-lead">This is a lead paragraph that stands out from regular text. Lead paragraphs are
+                        commonly used at the beginning of articles to introduce the topic. (.text-lead)</p>
+
+                    <p>This is a regular paragraph for comparison.</p>
+
+                    <p class="text-meta">Posted on January 15, 2024 • 5 minute read • Design, Typography (.text-meta)
+                    </p>
+
+                    <p>Use the <span class="text-code">text-code</span> class for inline code snippets. (.text-code)</p>
+
+                    <figure>
+                        <div
+                            style="height: 100px; background-color: var(--color-neutral-300); border-radius: var(--border-radius-sm);">
+                        </div>
+                        <figcaption class="text-caption">Figure 1: An example image showing the typography concept.
+                            (.text-caption)</figcaption>
+                    </figure>
+                </div>
+
+                <div class="code-label">&lt;p class="text-lead"&gt;Lead paragraph text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Width Constraint Utilities</h2>
+                <p>Control the maximum width of text elements for optimal reading.</p>
+
+                <div class="sample-box">
+                    <p class="text-width-narrow">This paragraph has a narrow width constraint (65ch), which is ideal for
+                        focused reading experiences like articles. The character width is optimized for readability.
+                        (.text-width-narrow)</p>
+                    <div class="sample-width" style="max-width: 65ch;"></div>
+
+                    <br>
+
+                    <p class="text-width-default">This paragraph has a default width constraint (75ch), which is a good
+                        balance for most content. It provides enough room for content while maintaining readability.
+                        (.text-width-default)</p>
+                    <div class="sample-width" style="max-width: 75ch;"></div>
+
+                    <br>
+
+                    <p class="text-width-wide">This paragraph has a wide width constraint (90ch), which allows for more
+                        content to be displayed in a single line. This is useful for content that needs more horizontal
+                        space, such as tables or complex layouts. (.text-width-wide)</p>
+                    <div class="sample-width" style="max-width: 90ch;"></div>
+
+                    <br>
+
+                    <p class="text-width-full">This paragraph has a full width constraint (100%), which means it will
+                        expand to fill the entire width of its container. This is useful for elements that should take
+                        up all available space. (.text-width-full)</p>
+                    <div class="sample-width" style="width: 100%;"></div>
+                </div>
+
+                <div class="code-label">&lt;p class="text-width-narrow"&gt;Width-constrained text&lt;/p&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Responsive Typography Utilities</h2>
+                <p>These utilities apply only at specific screen sizes.</p>
+
+                <div class="sample-box">
+                    <div class="responsive-demo">
+                        <h3 class="text-center text-sm-left">Responsive Heading</h3>
+                        <p><code>.text-center .text-sm-left</code> - This heading is centered on larger screens but
+                            left-aligned on mobile (resize your browser to see).</p>
+                    </div>
+
+                    <div class="responsive-demo">
+                        <p class="text-left text-md-center">Responsive Paragraph</p>
+                        <p><code>.text-left .text-md-center</code> - This paragraph is left-aligned by default but
+                            centered on medium screens.</p>
+                    </div>
+
+                    <div class="responsive-demo">
+                        <div style="width: 300px;">
+                            <p class="text-sm-truncate">This long text will be truncated on small screens only. Try
+                                resizing your browser window to see the effect.</p>
+                        </div>
+                        <p><code>.text-sm-truncate</code> - This applies truncation only on small screens.</p>
+                    </div>
+                </div>
+
+                <div class="code-label">&lt;h2 class="text-center text-sm-left"&gt;Responsive heading&lt;/h2&gt;</div>
+            </section>
+
+            <section class="demo-section">
+                <h2 class="demo-heading">Practical Example: Article Card</h2>
+                <p>Here's a practical example of how these utilities can be combined in a real component:</p>
+
+                <div class="demo-grid">
+                    <article class="demo-card">
+                        <img src="/public/images/placeholder.jpg" alt="Article image"
+                            style="width: 100%; height: 200px; object-fit: cover; background-color: var(--color-neutral-300);">
+                        <div class="demo-card-content">
+                            <p class="text-meta text-uppercase">Design • June 12, 2023</p>
+                            <h3 class="text-size-lg text-clamp-2">This Article Title Will Be Limited to Two Lines
+                                Maximum</h3>
+                            <p class="text-clamp-3 text-color-secondary">This article excerpt will be limited to three
+                                lines maximum. It provides a brief summary of what the article is about, with any
+                                additional content being truncated with an ellipsis at the end of the third line.</p>
+                            <a href="#" class="text-color-link text-weight-medium">Read more</a>
+                        </div>
+                    </article>
+
+                    <div class="sample-box">
+                        <pre><code>&lt;article class="card"&gt;
+  &lt;div class="card-image"&gt;
+    &lt;img src="article-image.jpg" alt="Article image"&gt;
+  &lt;/div&gt;
+  &lt;div class="card-content"&gt;
+    &lt;p class="text-meta text-uppercase"&gt;
+      Category • June 12, 2023
+    &lt;/p&gt;
+    &lt;h3 class="text-size-lg text-clamp-2"&gt;
+      This Article Title Will Be Limited to Two Lines Maximum
+    &lt;/h3&gt;
+    &lt;p class="text-clamp-3 text-color-secondary"&gt;
+      This article excerpt will be limited to three lines...
+    &lt;/p&gt;
+    &lt;a href="#" class="text-color-link text-weight-medium"&gt;
+      Read more
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="demo-heading">Best Practices</h2>
+                <ol>
+                    <li><strong>Combine sparingly:</strong> While utilities can be combined, use restraint to avoid
+                        excessive class lists.</li>
+                    <li><strong>Create component classes:</strong> For frequently used combinations of utilities,
+                        consider creating dedicated component classes.</li>
+                    <li><strong>Use semantic HTML:</strong> Utilities should enhance semantic markup, not replace it.
+                    </li>
+                    <li><strong>Be consistent:</strong> Apply utilities consistently across your site for a cohesive
+                        experience.</li>
+                    <li><strong>Test responsively:</strong> Always test your typography on different screen sizes.</li>
+                    <li><strong>Consider accessibility:</strong> Ensure text remains readable and accessible when
+                        applying utilities.</li>
+                </ol>
+
+                <a href="/TYPOGRAPHY_UTILITIES.md" class="text-color-link text-weight-medium">View Full Documentation
+                    →</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Simon Rosenqvist. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
