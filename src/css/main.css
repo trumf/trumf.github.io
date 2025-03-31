@@ -547,13 +547,13 @@ body {
 
 @media (max-width: 768px) {
   .section_content {
-    padding: 10% 7.5%;
+    padding: 15% 7.5%;
   }
 }
 
 @media (max-width: 480px) {
   .section_content {
-    padding: 10% 5%;
+    padding: 20% 5%;
   }
 }
 
