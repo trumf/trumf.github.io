@@ -4,6 +4,7 @@ layout: base.njk
 
 <article class="section_padding">
     <div class="section_content">
+
         <div class="post-meta">
             <time datetime="{{ date | dateToISO }}">{{ date | dateToISO }}</time>
             {% if tags %}
@@ -13,6 +14,7 @@ layout: base.njk
                 {% endfor %}
             </div>
             {% endif %}
+            <h1 class="display-1">{{ title }}</h1>
         </div>
 
         <div class="post-content">

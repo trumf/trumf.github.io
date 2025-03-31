@@ -6,7 +6,7 @@ module.exports = function (eleventyConfig) {
 
   // Copy the public directory to the output
   eleventyConfig.addPassthroughCopy({
-    "src/public": "public",
+    "src/public": ".",
   });
 
   // Copy the components directory to the output
