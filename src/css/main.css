@@ -880,6 +880,16 @@ svg {
   transform: scale(1.05);
 }
 
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  font-size: var(--text-sm);
+  padding: 0 var(--spacing-md);
+}
+
 .post-content {
   padding: var(--spacing-md);
   display: flex;
