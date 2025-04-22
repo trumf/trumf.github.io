@@ -21,7 +21,7 @@ Surprisingly, the actual programming part—writing HTML, CSS, maybe some JavaSc
 
 The first real challenge is figuring out the tools. If you're a UX designer today, you're probably spending most of your time in Figma. As you move more towards engineering, you'll need to get used to new tools.
 
-![The figma UI, a common program for web and UI design](/images/posts/figma%20ui.png)
+![The figma UI, a common program for web and UI design](./figma%20ui.png)
 
 Setting up an IDE like VS Code with some plug-ins doesn't take long but is very different from Figma. Then there's the whole environment setup and getting your head around version control systems like Git, where you'll have to type cryptic commands into a terminal just to get things running. For someone who's never touched the command line, that can be pretty intimidating. Especially for designers who haven't worked with version handling beyond naming files "final_design_v3_final.psd."
 
@@ -69,7 +69,7 @@ On the flip side, if an engineer wants to move toward design, it might be a bit 
 
 One thing I've noticed is that learning resources for design aren't as comprehensive as those for coding. They often focus on how to use tools rather than teaching design principles. It's tough to find resources that delve into topics like advanced typography beyond the basics.
 
-![The UI of Visual Studio code, a common program for editing and writing code](/images/posts/vscode-custom.png)
+![The UI of Visual Studio code, a common program for editing and writing code](./vscode-custom.png)
 
 ## What to think about for Designers
 

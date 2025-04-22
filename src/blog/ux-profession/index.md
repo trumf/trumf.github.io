@@ -23,21 +23,21 @@ It seems to me that thee were a couple of strands that ended up being lumped int
 
 The first strand come from the marketing agencies. In the 90s the internet exploded and the people who had previously done print design, graphic designers, suddenly got a new medium to work in. Over time we have seen a constant exchange, both ways, between marketing agencies and big tech. Graphic designers have today become (in many instances) brand designers. We have also added motion designers to this mix.
 
-![Diagram with the roles that came from marketing](../../public/images/posts/marektingroles.png)
+![diagram with the roles that came from marketing](./marektingroles.png)
 
 Another strand we see from 80s marketing agencies are copy writers. Copy writers have branched out into UX writing and then content designers.
 
 The second big influence comes from engineering. If you were a programmer with a knack for figuring out edge cases on the front end you might start to call yourself Interaction designer. We also get a big influx from the ergonomics. Early usability material uses a lot of similar methods as ergonomics.
 
-![Diagram of the roles that came from programmers](../../public/images/posts/programmerroles.png)
+![Diagram of the roles that came from programmers](./programmerroles.png)
 
 The third one is researchers. Often from behavioral science. Interviews and and observations are staple methods in research. It's not surprising that academics wanted to see what it was like outside of the university and design was a good place to go. We are mostly talking about qualitative researches, maybe a few who are good at surveys. When i was going through textbooks about research for design it was mostly qualitative methods. Sometimes more quantitative methods were used but since the number of participants generally low and descriptive statistics was enough. I've never read anything about how qualitative research was/is used in marketing agencies but if you have any suggestions please let me know.
 
-![Diagram of the roles that came from researchers](../../public/images/posts/researchroles.png)
+![Diagram of the roles that came from researchers](./researchroles.png)
 
 The last strand I've seen is from the "consultant" industry. By that I mean IDEO and the ideas they promoted. A while ago it struck me that IDEO never talks to designers, they are always talking to mangers and directors without a design background. I can't identify a particular role that comes from this influence but they have given us a lot of ideas and ideological baggage. I'm thinking of the workshop methods and of course the design thinking courses. There are more agancies than IDEO of course but I feel they exemplify this kind of influence.
 
-![Diagram with all the roles that have been discussed](../../public/images/posts/Allroles.png)
+![Diagram with all the roles that have been discussed](./Allroles.png)
 
 I think I need to stop here for the sake of time and come back to the more current roles in design. As I said in the beginning I don't have any sources for this and I'm more trying to describe a vibe than actual facts.
 
