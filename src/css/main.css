@@ -558,14 +558,11 @@ body {
 
 @media (max-width: 768px) {
   .section_content {
-    padding: 15% 7.5%;
+    padding: 15% 10%;
   }
 }
 
-@media (max-width: 480px) {
-  .section_content {
-    padding: 20% 5%;
-  }
+
 }
 
 /* ------- common styles ------- */
