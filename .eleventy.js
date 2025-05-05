@@ -14,6 +14,11 @@ module.exports = function (eleventyConfig) {
     "src/components": "components",
   });
 
+  // Add this line: Explicitly copy portfolio.html without processing
+  eleventyConfig.addPassthroughCopy("src/portfolio.html");
+  eleventyConfig.addPassthroughCopy("./cases/siic.html");
+  eleventyConfig.addPassthroughCopy("./cases/volvo.html");
+
   // Add passthrough copy for blog post images - COMMENTED OUT
   // eleventyConfig.addPassthroughCopy("src/blog/**/*.+(jpg|jpeg|png|gif|svg|webp)");
 

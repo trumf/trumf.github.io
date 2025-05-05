@@ -451,6 +451,17 @@ pre code {
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
   }
+
+  /* Adjust navbar padding at 480px */
+  .navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  /* Adjust about-container padding at 480px */
+  .about-container {
+    padding: 10% 10%;
+  }
 }
 
 /* Vertical rhythm helpers */
@@ -671,7 +682,7 @@ svg {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .contact-icon {
@@ -1081,10 +1092,13 @@ svg {
 .about-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  max-width: 900px;
+  align-items: baseline;
   gap: var(--spacing-xl);
   padding: 10% 15%;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1400px;
 }
 
 .about-text {
@@ -1336,9 +1350,9 @@ button:focus-visible {
 .navbar {
   display: flex;
   align-items: baseline;
-  justify-content: flex-start;
+  justify-content: space-between;
   max-width: 1280px;
-  margin: 32px 10% 0;
+  margin: 32px 15% 0;
   gap: var(--spacing-lg);
   background-color: var(--navbar-bg);
 }
@@ -1350,13 +1364,20 @@ button:focus-visible {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  color: var(--text-primary);
 }
 
 .navbar-nav a,
 .nav-link {
-  color: var(--navbar-text);
+  color: var(--text-primary);
   text-decoration: none !important;
   transition: opacity 0.2s ease;
+}
+
+/* Prevent the logo/brand text from wrapping */
+.navbar a h4.nav-link {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-nav a:hover {
