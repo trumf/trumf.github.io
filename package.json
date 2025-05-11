@@ -5,7 +5,9 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
-    "debug": "DEBUG=* eleventy"
+    "serve": "eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "publish": "./publish.sh"
   },
   "repository": {
     "type": "git",
