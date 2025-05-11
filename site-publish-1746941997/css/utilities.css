@@ -1,0 +1,338 @@
+/* 
+ * Typography Utility Classes
+ * 
+ * This file provides a comprehensive set of utility classes for typography
+ * following the naming pattern .text-{property}-{value} for most classes.
+ * 
+ * These utilities are organized by category:
+ * - Text size utilities
+ * - Font weight utilities
+ * - Line height utilities
+ * - Letter spacing utilities
+ * - Text alignment utilities
+ * - Text transformation utilities
+ * - Text decoration utilities
+ * - Text wrapping and overflow utilities
+ * - Text color utilities
+ * - Style composition utilities
+ * - Width constraint utilities
+ * - Responsive typography utilities
+ */
+
+/* ----------------------------------- */
+/* Text Size Utilities                 */
+/* ----------------------------------- */
+.text-size-xs {
+  font-size: 0.75rem !important; /* 12px */
+}
+
+.text-size-sm {
+  font-size: 0.875rem !important; /* 14px */
+}
+
+.text-size-base {
+  font-size: 1rem !important; /* 16px */
+}
+
+.text-size-md {
+  font-size: 1.25rem !important; /* 20px */
+}
+
+.text-size-lg {
+  font-size: 1.5rem !important; /* 24px */
+}
+
+.text-size-xl {
+  font-size: 1.875rem !important; /* 30px */
+}
+
+.text-size-2xl {
+  font-size: 2.25rem !important; /* 36px */
+}
+
+.text-size-3xl {
+  font-size: 3rem !important; /* 48px */
+}
+
+.text-size-4xl {
+  font-size: 3.75rem !important; /* 60px */
+}
+
+/* ----------------------------------- */
+/* Font Weight Utilities               */
+/* ----------------------------------- */
+.text-weight-normal {
+  font-weight: 400 !important;
+}
+
+.text-weight-medium {
+  font-weight: 500 !important;
+}
+
+.text-weight-bold {
+  font-weight: 700 !important;
+}
+
+/* ----------------------------------- */
+/* Line Height Utilities               */
+/* ----------------------------------- */
+.text-leading-none {
+  line-height: 1 !important;
+}
+
+.text-leading-tight {
+  line-height: 1.2 !important;
+}
+
+.text-leading-snug {
+  line-height: 1.4 !important;
+}
+
+.text-leading-normal {
+  line-height: 1.6 !important;
+}
+
+.text-leading-relaxed {
+  line-height: 1.75 !important;
+}
+
+/* ----------------------------------- */
+/* Letter Spacing Utilities            */
+/* ----------------------------------- */
+.text-tracking-tighter {
+  letter-spacing: -0.03em !important;
+}
+
+.text-tracking-tight {
+  letter-spacing: -0.015em !important;
+}
+
+.text-tracking-normal {
+  letter-spacing: 0 !important;
+}
+
+.text-tracking-wide {
+  letter-spacing: 0.01em !important;
+}
+
+.text-tracking-wider {
+  letter-spacing: 0.02em !important;
+}
+
+/* ----------------------------------- */
+/* Text Alignment Utilities            */
+/* ----------------------------------- */
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-justify {
+  text-align: justify !important;
+}
+
+/* ----------------------------------- */
+/* Text Transformation Utilities       */
+/* ----------------------------------- */
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-normal-case {
+  text-transform: none !important;
+}
+
+/* ----------------------------------- */
+/* Text Decoration Utilities           */
+/* ----------------------------------- */
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.text-no-underline {
+  text-decoration: none !important;
+}
+
+.text-line-through {
+  text-decoration: line-through !important;
+}
+
+.text-no-decoration {
+  text-decoration: none !important;
+}
+
+/* ----------------------------------- */
+/* Text Wrapping and Overflow Utilities */
+/* ----------------------------------- */
+.text-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.text-break {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.text-no-wrap {
+  white-space: nowrap !important;
+}
+
+.text-wrap {
+  white-space: normal !important;
+}
+
+/* Line clamping utilities */
+.text-clamp-1 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.text-clamp-2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.text-clamp-3 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* ----------------------------------- */
+/* Text Color Utilities                */
+/* ----------------------------------- */
+.text-color-primary {
+  color: var(--text-primary, #000000) !important;
+}
+
+.text-color-secondary {
+  color: var(--text-secondary, #454545) !important;
+}
+
+.text-color-tertiary {
+  color: var(--text-tertiary, #767676) !important;
+}
+
+.text-color-on-brand {
+  color: var(--text-on-brand, #ffffff) !important;
+}
+
+.text-color-link {
+  color: var(--text-link, #2563eb) !important;
+}
+
+/* ----------------------------------- */
+/* Style Composition Utilities         */
+/* ----------------------------------- */
+.text-lead {
+  font-size: 1.25rem !important;
+  color: var(--text-secondary, #454545) !important;
+  line-height: 1.6 !important;
+}
+
+.text-meta {
+  font-size: 0.875rem !important;
+  color: var(--text-tertiary, #767676) !important;
+  line-height: 1.4 !important;
+}
+
+.text-code {
+  font-family: monospace !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  padding: 0.125rem 0.25rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875em !important;
+}
+
+.text-caption {
+  font-size: 0.875rem !important;
+  font-style: italic !important;
+  color: var(--text-tertiary, #767676) !important;
+}
+
+/* ----------------------------------- */
+/* Width Constraint Utilities          */
+/* ----------------------------------- */
+.text-width-narrow {
+  max-width: 65ch !important;
+}
+
+.text-width-default {
+  max-width: 75ch !important;
+}
+
+.text-width-wide {
+  max-width: 90ch !important;
+}
+
+.text-width-full {
+  max-width: 100% !important;
+}
+
+/* ----------------------------------- */
+/* Responsive Typography Utilities     */
+/* ----------------------------------- */
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .text-md-left {
+    text-align: left !important;
+  }
+
+  .text-md-center {
+    text-align: center !important;
+  }
+
+  .text-md-right {
+    text-align: right !important;
+  }
+
+  .text-md-truncate {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 480px) {
+  .text-sm-left {
+    text-align: left !important;
+  }
+
+  .text-sm-center {
+    text-align: center !important;
+  }
+
+  .text-sm-right {
+    text-align: right !important;
+  }
+
+  .text-sm-truncate {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}

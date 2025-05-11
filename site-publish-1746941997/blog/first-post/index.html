@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This is my first blog post using 11ty as a static site generator." />
+    <title>My First Blog Post with 11ty | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/utilities.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="My First Blog Post with 11ty | Simon Rosenqvist">
+    <meta property="og:description" content="This is my first blog post using 11ty as a static site generator.">
+    <meta property="og:image" content="/public/images/favicon.svg">
+    <meta property="og:url" content="https://rosenqvist.design/blog/first-post/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="My First Blog Post with 11ty | Simon Rosenqvist">
+    <meta name="twitter:description" content="This is my first blog post using 11ty as a static site generator.">
+    <meta name="twitter:image" content="/public/images/favicon.svg">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar-container" class="navbar-container"></nav>
+        
+    </header>
+
+    <main>
+        
+<article class="section_padding">
+    <div class="section_content">
+
+        <div class="post-meta">
+            <time datetime="2024-03-20">2024-03-20</time>
+            
+            <div class="tags">
+                
+                <span class="tag">11ty</span>
+                
+                <span class="tag">Blog</span>
+                
+                <span class="tag">Web Development</span>
+                
+            </div>
+            
+            <h1 class="display-1">My First Blog Post with 11ty</h1>
+        </div>
+
+        <div class="post-content">
+            <h1>Welcome to My New Blog</h1>
+<p>This is my first blog post using 11ty as a static site generator. I'm excited to share my thoughts and experiences with you.</p>
+<h2>Why 11ty?</h2>
+<p>11ty is a simple yet powerful static site generator that allows me to:</p>
+<ul>
+<li>Write content in Markdown</li>
+<li>Use templates for consistent layouts</li>
+<li>Generate a fast, static website</li>
+<li>Keep my content organized</li>
+</ul>
+<h2>What's Next?</h2>
+<p>I'll be sharing more posts about:</p>
+<ul>
+<li>Web development</li>
+<li>Design</li>
+<li>Technology</li>
+<li>And more!</li>
+</ul>
+<p>Stay tuned for more content!</p>
+
+        </div>
+        <a href="/index.html" class="button" style="margin-left: var(--spacing-md); margin-top: var(--spacing-md);">Back
+            Home</a>
+    </div>
+
+</article>
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("/components/navbar.html");
+            $("#footer-container").load("/components/footer.html");
+        });
+    </script>
+</body>
+
+</html>
