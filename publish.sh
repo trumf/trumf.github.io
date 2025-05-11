@@ -53,22 +53,31 @@ cp -R "$TEMP_DIR/"* .
 # Also copy any hidden files
 cp -R "$TEMP_DIR/".* . 2>/dev/null || true
 
-# Step 8: Check for large files BEFORE committing anything
-echo "Checking for large files before adding..."
+# Step 8: Check for large files and remove them BEFORE adding to git
+echo "🔍 Checking for large files (>90MB)..."
 LARGE_FILES=$(find . -type f -size +90M -not -path "./.git/*" | sed 's|^\./||')
 if [ -n "$LARGE_FILES" ]; then
     echo "⚠️ WARNING: The following files are too large for GitHub (>90MB):"
     echo "$LARGE_FILES"
-    echo "These files will not be included in your site. Please optimize them."
     
-    # Create/update .gitignore to exclude these files
-    echo "# Ignore files larger than 90MB (under GitHub's 100MB limit)" > .gitignore
+    # Create .gitignore to exclude these files
+    echo "# Ignore files larger than 90MB (GitHub limit is 100MB)" > .gitignore
     echo "$LARGE_FILES" >> .gitignore
     
-    echo "Created .gitignore to exclude large files"
+    # IMPORTANT: Remove large files from filesystem so they don't get committed
+    for file in $LARGE_FILES; do
+        if [ -f "$file" ]; then
+            echo "🗑️ Removing large file: $file"
+            rm -f "$file"
+            # Also untrack from git if it was previously tracked
+            git rm --cached "$file" 2>/dev/null || true
+        fi
+    done
+    
+    echo "✅ Large files removed and added to .gitignore"
 fi
 
-# Step 9: NOW commit changes (after large files are ignored)
+# Step 9: Commit and push changes
 echo "💾 Committing changes to publish branch..."
 git add .
 git commit -m "Manual publish: $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
