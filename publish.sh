@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e  # Exit immediately if a command fails
 
-# Store the current branch so we can return to it
+# Store the current branch
 CURRENT_BRANCH=$(git branch --show-current)
 echo "📝 Current branch is: $CURRENT_BRANCH"
 
@@ -10,7 +10,7 @@ TEMP_DIR="/tmp/site-publish-$(date +%s)"
 mkdir -p "$TEMP_DIR"
 echo "📁 Created temporary directory at $TEMP_DIR"
 
-# Step 1: Switch to main and make sure it's up to date
+# Step 1: Make sure you're on main branch
 echo "🔄 Switching to main branch..."
 git checkout main
 git pull origin main
@@ -67,4 +67,4 @@ echo "🔄 Returning to $CURRENT_BRANCH branch..."
 git checkout "$CURRENT_BRANCH"
 
 echo "✅ Publishing complete! Your site should be live shortly at your GitHub Pages URL."
-echo "🌐 Typically: https://yourusername.github.io/your-repo/"
+echo "🌐 Typically: https://rosenqvist.design"
