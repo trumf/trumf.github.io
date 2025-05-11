@@ -8,12 +8,18 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
+    # Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: write # Required for deployment to publish branch
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Gets full git history for accurate timestamps
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -30,11 +36,11 @@ jobs:
       - name: Build with Eleventy
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Deploy to Publish Branch
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-          branch: gh-pages
+          branch: publish
           folder: _site
           commit-message: "Deploy website - based on ${{ github.sha }}"
           clean: true
