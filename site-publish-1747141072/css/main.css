@@ -558,7 +558,7 @@ body {
 
 @media (max-width: 768px) {
   .section_content {
-    padding: 15% 10%;
+    padding: 15% 5%;
   }
 }
 
@@ -895,11 +895,11 @@ svg {
   align-items: flex-start;
 
   font-size: var(--text-sm);
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--spacing-sm);
 }
 
 .post-content {
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -1337,9 +1337,6 @@ button:focus-visible {
 /* ------- navbar ------- */
 
 .navbar-container {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 100;
 }
@@ -1350,6 +1347,7 @@ button:focus-visible {
   justify-content: space-between;
   max-width: 1280px;
   margin: 32px 15% 0;
+  padding: 0 var(--spacing-sm);
   gap: var(--spacing-lg);
   background-color: var(--navbar-bg);
 }
@@ -1380,6 +1378,12 @@ button:focus-visible {
 .navbar-nav a:hover {
   text-decoration: underline !important;
   opacity: 0.9;
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    margin: 32px 5% 0;
+  }
 }
 
 /* ------ footer ------- */
