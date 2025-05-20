@@ -3,17 +3,17 @@ import eleventyRssPlugin from "@11ty/eleventy-plugin-rss";
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyRssPlugin, {
     posthtmlRenderOptions: {},
-    outputPath: "./feed/feed.xml",
+    outputPath: "./feed.xml",
     base: "https://trumf.github.io/",
     metadata: {
       language: "en",
-      title: "Trumf",
+      title: "Rosenqvist Design",
       description: "Simon Rosenqvist's personal blog and portfolio",
       author: {
         name: "Simon Rosenqvist",
-        email: "simon.rosenqvist@hyperisland.se", // Optional
+        email: "", // Optional
       },
-      feed_url: "https://trumf.github.io/feed/feed.xml", // Absolute url to the feed
+      feed_url: "https://trumf.github.io/feed.xml", // Absolute url to the feed
     },
   });
 
