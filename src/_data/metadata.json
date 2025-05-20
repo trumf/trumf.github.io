@@ -1,0 +1,15 @@
+{
+  "title": "trumf.github.io",
+  "description": "My personal website and blog.",
+  "url": "https://trumf.github.io",
+  "feed": {
+    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://rosenqvist.design/"
+  },
+  "author": {
+    "name": "trumf",
+    "email": "trumf@example.com"
+  }
+}

@@ -1,25 +1,19 @@
 import eleventyRssPlugin from "@11ty/eleventy-plugin-rss";
 
-console.log("RSS Plugin:", eleventyRssPlugin); // This will show us what's being imported
-
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyRssPlugin, {
-    type: "rss",
-    outputPath: "/rss.xml",
-    collection: {
-      name: "post", // make sure this matches your collection name
-      limit: 0, // 0 means no limit
-    },
+    posthtmlRenderOptions: {},
+    outputPath: "./feed/feed.xml",
+    base: "https://trumf.github.io/",
     metadata: {
       language: "en",
-      title: "rosenqvist.design",
-      subtitle:
-        "UX design, Product Management, web design, and automotive research",
-      base: "https://rosenqvist.design/",
+      title: "Trumf",
+      description: "Simon Rosenqvist's personal blog and portfolio",
       author: {
         name: "Simon Rosenqvist",
-        email: "", // Optional
+        email: "simon.rosenqvist@hyperisland.se", // Optional
       },
+      feed_url: "https://trumf.github.io/feed/feed.xml", // Absolute url to the feed
     },
   });
 
@@ -47,9 +41,9 @@ export default function (eleventyConfig) {
   // eleventyConfig.addPassthroughCopy("src/blog/**/*.+(jpg|jpeg|png|gif|svg|webp)");
 
   // Add absoluteUrl filter
-  eleventyConfig.addFilter("absoluteUrl", function (url) {
-    return `https://rosenqvist.design${url}`;
-  });
+  // eleventyConfig.addFilter("absoluteUrl", function (url) {
+  //   return `https://rosenqvist.design${url}`;
+  // });
 
   // Add dateToISO filter
   eleventyConfig.addFilter("dateToISO", function (date) {
