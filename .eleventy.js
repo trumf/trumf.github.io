@@ -1,7 +1,7 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(feedPlugin, {
+  eleventyConfig.addPlugin(pluginRss, {
     type: "rss",
     outputPath: "/rss.xml",
     collection: {
