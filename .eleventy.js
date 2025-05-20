@@ -1,4 +1,26 @@
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "rss",
+    outputPath: "/rss.xml",
+    collection: {
+      name: "post", // make sure this matches your collection name
+      limit: 0, // 0 means no limit
+    },
+    metadata: {
+      language: "en",
+      title: "rosenqvist.design",
+      subtitle:
+        "UX design, Product Management, web design, and automotive research",
+      base: "https://rosenqvist.design/",
+      author: {
+        name: "Simon Rosenqvist",
+        email: "", // Optional
+      },
+    },
+  });
+
   // Copy the css directory to the output
   eleventyConfig.addPassthroughCopy({
     "src/css": "css",

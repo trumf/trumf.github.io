@@ -26,5 +26,8 @@
   "description": "",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-rss": "^2.0.4"
   }
 }
