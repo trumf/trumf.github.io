@@ -3,7 +3,7 @@ import eleventyRssPlugin from "@11ty/eleventy-plugin-rss";
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyRssPlugin, {
     posthtmlRenderOptions: {},
-    outputPath: "./blog/feed.xml",
+    outputPath: "/feed.xml",
     base: "https://trumf.github.io/",
     metadata: {
       language: "en",
@@ -13,7 +13,7 @@ export default function (eleventyConfig) {
         name: "Simon Rosenqvist",
         email: "", // Optional
       },
-      feed_url: "https://trumf.github.io/blog/feed.xml", // Absolute url to the feed
+      feed_url: "https://trumf.github.io/feed.xml", // Absolute url to the feed
     },
   });
 
