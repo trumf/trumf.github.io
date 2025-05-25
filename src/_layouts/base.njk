@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ metadata.language }}">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{{ description }}" />
-    <title>{{ title }} | Simon Rosenqvist</title>
+    <meta name="description" content="{{ description or metadata.description }}" />
+    <title>{{ title or metadata.title }} | Simon Rosenqvist</title>
 
     <!-- Styles and Resources -->
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/utilities.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
+    <link rel="stylesheet" href="{{ '/css/image-fullscreen.css' | url }}" />
     <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{ title }} | Simon Rosenqvist">
-    <meta property="og:description" content="{{ description }}">
+    <meta property="og:title" content="{{ title or metadata.title }} | Simon Rosenqvist">
+    <meta property="og:description" content="{{ description or metadata.description }}">
     <meta property="og:image" content="/public/images/favicon.svg">
     <meta property="og:url" content="{{ page.url | absoluteUrl }}">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ title }} | Simon Rosenqvist">
-    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:title" content="{{ title or metadata.title }} | Simon Rosenqvist">
+    <meta name="twitter:description" content="{{ description or metadata.description }}">
     <meta name="twitter:image" content="/public/images/favicon.svg">
 
     <!-- RSS Feed -->
-    <link rel="alternate" href="/rss.xml" type="application/rss+xml" title="Rosenqvist.design">
+    <link rel="alternate" href="{{ metadata.feed.url or '/feed.xml' | url }}" type="application/rss+xml"
+        title="{{ metadata.title }}">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script>
 </head>
 
 <body>
@@ -55,6 +59,19 @@
             $("#navbar-container").load("/components/navbar.html");
             $("#footer-container").load("/components/footer.html");
         });
+    </script>
+    <script src="{{ '/js/image-fullscreen.js' | url }}" defer></script>
+    <script>
+        // Netlify Identity login
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
     </script>
 </body>
 

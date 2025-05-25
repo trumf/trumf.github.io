@@ -32,6 +32,11 @@ export default function (eleventyConfig) {
     "src/components": "components",
   });
 
+  // Copy the js directory to the output
+  eleventyConfig.addPassthroughCopy({
+    "src/js": "js",
+  });
+
   // Add this line: Explicitly copy portfolio.html without processing
   eleventyConfig.addPassthroughCopy("src/portfolio.html");
   eleventyConfig.addPassthroughCopy("./cases/siic.html");

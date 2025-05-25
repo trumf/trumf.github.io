@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: Moving the Blog to 11ty
-date: 2024-05-11
+date: 2025-05-11
 description: Moved the blog away from pure HTML and migrated to 11ty
 ---
 
