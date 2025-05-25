@@ -1,0 +1,29 @@
+#image-fullscreen-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black background */
+  z-index: 10000; /* Ensure it's on top of other content */
+  cursor: pointer; /* Indicates the background can be clicked to close */
+  justify-content: center; /* For centering the image using flexbox */
+  align-items: center; /* For centering the image using flexbox */
+}
+
+#image-fullscreen-modal img {
+  max-width: 90%; /* Max width of the image is 90% of viewport width */
+  max-height: 90%; /* Max height of the image is 90% of viewport height */
+  display: block; /* Behaves like a block for centering, etc. */
+  margin: auto; /* Fallback centering if flex not fully applied */
+  cursor: default; /* Default cursor when over the image itself */
+  border: 3px solid white; /* Optional: adds a white border around the image */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Optional: adds a subtle shadow */
+  transition: transform 0.2s ease-out; /* Optional: for any transform effects */
+}
+
+/* Add this class to images if you want specific targeting, otherwise JS will try to target common article images */
+.zoomable-image {
+  cursor: zoom-in; /* Indicates the image can be clicked to zoom */
+}
