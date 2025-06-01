@@ -1,15 +1,15 @@
 {
-  "title": "trumf.github.io",
-  "description": "My personal website and blog.",
-  "url": "https://trumf.github.io",
+  "title": "Rosenqvist Design",
+  "description": "A personal website and blog.",
+  "url": "https://rosenqvist.design",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "Design, UX, and technology",
     "filename": "feed.xml",
-    "path": "/feed/feed.xml",
+    "path": "/feed.xml",
     "id": "https://rosenqvist.design/"
   },
   "author": {
-    "name": "trumf",
-    "email": "trumf@example.com"
+    "name": "Simon Rosenqvist",
+    "email": ""
   }
 }

@@ -2,7 +2,7 @@
 layout: post.njk
 title: "11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them"
 date: 2025-06-01
-description: "A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty"
+description: "Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty"
 image: /blog/adding-rss-11ty/rss-icon.svg
 imageAlt: "RSS feed icon"
 ---
@@ -46,3 +46,5 @@ The combination of issues was particularly frustrating - the plugin had evolved 
 So I got it working and this post is mostly just a way for me to get rid of the frustration by writing it down. I will say that although the whole issue was probably caused by getting help from an LLM, it was also how it got solved. I would never have gone into the source code to find the deprecated comment, but I could just tell Claude to dig into it and it found the issue pretty quickly.
 
 If you want to see the feed for yourself you can find it here: [rosenqvist.design/feed.xml](https://rosenqvist.design/feed.xml)
+
+**PS:** As I'm writing this, the plugin issue still occasionally resurfaces - the `@11ty/eleventy-plugin-rss` import sometimes fails and requires reinstalling the plugin and clearing npm cache. It seems to be related to some dependency resolution quirks, but the workaround is now familiar: `npm uninstall @11ty/eleventy-plugin-rss`, `npm install @11ty/eleventy-plugin-rss`, `npm cache clean --force`. The RSS feed itself seems to work once the plugin is properly installed, but I cant figure out why it needs constant reinstall...

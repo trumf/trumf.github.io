@@ -4,7 +4,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyRssPlugin, {
     posthtmlRenderOptions: {},
     outputPath: "/feed.xml",
-    base: "https://trumf.github.io/",
+    base: "https://rosenqvist.design/",
     metadata: {
       language: "en",
       title: "Rosenqvist Design",
@@ -13,7 +13,7 @@ export default function (eleventyConfig) {
         name: "Simon Rosenqvist",
         email: "", // Optional
       },
-      feed_url: "https://trumf.github.io/feed.xml", // Absolute url to the feed
+      feed_url: "https://rosenqvist.design/feed.xml", // Absolute url to the feed
     },
   });
 
