@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty" />
+    <title>11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/utilities.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/image-fullscreen.css" />
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them | Simon Rosenqvist">
+    <meta property="og:description" content="A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty">
+    <meta property="og:image" content="/public/images/favicon.svg">
+    <meta property="og:url" content="/blog/adding-rss-11ty/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them | Simon Rosenqvist">
+    <meta name="twitter:description" content="A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty">
+    <meta name="twitter:image" content="/public/images/favicon.svg">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml"
+        title="trumf.github.io">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar-container" class="navbar-container"></nav>
+        
+    </header>
+
+    <main>
+        
+<article class="section_padding">
+    <div class="section_content">
+
+        <div class="post-meta">
+            <time datetime="2025-06-01">2025-06-01</time>
+            
+            <h1 class="display-1">11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them</h1>
+        </div>
+
+        <div class="post-content">
+            <p>I've been following RSS feeds since probably the late oughts so when I moved this site into 11ty I of course wanted to have my own feed. What started as a simple plugin install turned into a debugging process involving dependency management, configuration conflicts, and deprecated APIs.</p>
+<p>I had planned to create my own feed and really dig into how the format works and how to put it together but after a quick look and thinking about how i wanted to spend my evenings i decided to just search for a ready made solution. Just searching &quot;11ty rss&quot; led me to this page <a href="https://www.11ty.dev/docs/plugins/rss/">https://www.11ty.dev/docs/plugins/rss/</a> and it seemed easy enough.</p>
+<h2>Setting Up the 11ty RSS Plugin: Two Installation Methods</h2>
+<p>I'll be honest - these issues were probably caused by using AI to install the plugin. I fed Claude the readme file and the docs and asked it to help me set it up. It gave me some straightforward steps: install the plugin with <code>npm install @11ty/eleventy-plugin-rss</code>, then I got a choice between an easy way and a harder way. Option 1 was using a virtual template where you just add configuration to your Eleventy config file. Option 2 was the manual template method with more control where you add the plugin in your config file and create feed template files in your project directory.</p>
+<p>I went with the &quot;easy&quot; option first, and that's where I ran into problems.</p>
+<h2>Issue #1: &quot;Trying to convert to absolute url with base undefined&quot; Error</h2>
+<p>The first problem showed up as these debug messages: &quot;Trying to convert '/blog/' to be an absolute url with base undefined and failed.&quot; Despite having properly configured <code>metadata.url</code> in the site's metadata file, the RSS plugin just refused to generate the feed.xml file. I tried everything - setting the <code>base</code> URL directly in plugin options, wrapping it in a nested <code>metadata</code> object, double-checking the metadata.json configuration. Nothing worked.</p>
+<p>Eventually I had Claude dig into the plugin's source code and found this comment in <code>absoluteUrl.js</code>: &quot;This is deprecated! Use the Eleventy HTML <code>&lt;base&gt;</code> plugin instead (2.0+)&quot;. Turns out the plugin had evolved way beyond the configuration approaches I were trying, creating this mismatch between what I expected and what actually worked.</p>
+<h2>Issue #2: Duplicate Plugin Configuration in .eleventy.js</h2>
+<p>When I looked at the .eleventy.js file, there were several issues. There was a proper import statement at the top: import eleventyRssPlugin from &quot;@11ty/eleventy-plugin-rss&quot;; but then later in the file there was an unexpected duplication with another copy of the same import statement and a competing plugin configuration block with different settings. Two plugin registrations fighting each other, each with conflicting configurations. The file structure was so mangled that every time I tried to edit it, it just failed.</p>
+<p>At this point I switched to option 2 - the manual template method. Instead of wrestling with all these interconnected problems, I created a <code>feed.njk</code> template with direct control over feed generation. Set the proper permalink to <code>/feed/feed.xml</code>, used <code>metadata.url</code> directly to construct absolute URLs, applied the <code>htmlToAbsoluteUrls</code> filter for content processing, and excluded the template from collections to avoid circularity.</p>
+<h2>Issue #3: RSS Plugin Installed in devDependencies Instead of dependencies</h2>
+<p>And even when I thought I had the configuration issues sorted out, this recurring problem kept happening every few days where the RSS plugin would mysteriously stop working. I'd clear the npm cache and it would work again temporarily, but then break again a few days later. Turns out the plugin had been installed in <code>devDependencies</code> instead of <code>dependencies</code>. Node.js prioritizes <code>dependencies</code> over <code>devDependencies</code> during module resolution, and npm kept getting confused about where to find the package. So while clearing the cache would fix it temporarily, the fundamental problem was that the package wasn't where the system expected it to be.</p>
+<h2>Additional Fix: Changing feed.xml Output Path Configuration</h2>
+<p>There was one more gotcha though. The <code>/feed/feed.xml</code> path was something that just happened when using the LLM to help install it, and at first it seemed like that was the only way it could work. Whenever I tried to change it I just got an error. Turns out the fix was to change both the outputPath in the config (which I had tried) AND also change it in the feed.njk template itself (which I hadn't tried).</p>
+<h2>Lessons Learned: 11ty RSS Plugin Best Practices</h2>
+<p>Looking back, this whole saga taught me a few things. First, Eleventy plugin APIs evolve, and older configuration patterns can become deprecated without much fanfare. Second, build tools are really sensitive to duplication and conflicting settings. And finally, sometimes when plugin complexity exceeds the benefit, just rolling your own template gives you way more control.</p>
+<p>The combination of issues was particularly frustrating - the plugin had evolved its URL handling approach making older configuration methods ineffective, the dependency classification issue wasn't obvious, and the configuration conflicts made everything worse. The recurring nature of that dependency issue was particularly annoying because clearing the cache would fix it temporarily, so I kept thinking I'd solved it when I really hadn't.</p>
+<p>So I got it working and this post is mostly just a way for me to get rid of the frustration by writing it down. I will say that although the whole issue was probably caused by getting help from an LLM, it was also how it got solved. I would never have gone into the source code to find the deprecated comment, but I could just tell Claude to dig into it and it found the issue pretty quickly.</p>
+<p>If you want to see the feed for yourself you can find it here: <a href="https://rosenqvist.design/feed.xml">rosenqvist.design/feed.xml</a></p>
+
+        </div>
+        <a href="/index.html" class="button" style="margin-left: var(--spacing-md); margin-top: var(--spacing-md);">Back
+            Home</a>
+    </div>
+
+</article>
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("/components/navbar.html");
+            $("#footer-container").load("/components/footer.html");
+        });
+    </script>
+    <script src="/js/image-fullscreen.js" defer></script>
+
+</body>
+
+</html>
