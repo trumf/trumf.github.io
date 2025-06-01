@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:base="https://trumf.github.io"
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:base="https://rosenqvist.design"
     xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>trumf.github.io</title>
-        <link>https://trumf.github.io</link>
-        <atom:link href="https://trumf.github.io/feed/feed.xml" rel="self" type="application/rss+xml" />
-        <description>My personal website and blog.</description>
+        <title>Rosenqvist Design</title>
+        <link>https://rosenqvist.design</link>
+        <atom:link href="https://rosenqvist.design/feed.xml" rel="self" type="application/rss+xml" />
+        <description>A personal website and blog.</description>
         <language>en</language>
         <item>
             <title>RSS Feed Test Post</title>
-            <link>https://trumf.github.io/blog/rss-test/</link>
+            <link>https://rosenqvist.design/blog/rss-test/</link>
             <description>&lt;h1&gt;This is a test of the RSS feed&lt;/h1&gt;
 &lt;p&gt;This is some test body content to verify that the RSS feed is working correctly after we fixed the plugin installation issues.&lt;/p&gt;
 &lt;p&gt;If you can see this post in your RSS reader, then everything is working as expected!&lt;/p&gt;
@@ -24,12 +24,12 @@
 &lt;p&gt;This post should appear in both the blog index and the RSS feed once everything is working correctly.&lt;/p&gt;
 </description>
             <pubDate>Sun, 01 Jun 2025 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/rss-test/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/rss-test/</guid>
         </item>
         <item>
             <title>11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them</title>
-            <link>https://trumf.github.io/blog/adding-rss-11ty/</link>
+            <link>https://rosenqvist.design/blog/adding-rss-11ty/</link>
             <description>&lt;p&gt;I&#39;ve been following RSS feeds since probably the late oughts so when I moved this site into 11ty I of course wanted to have my own feed. What started as a simple plugin install turned into a debugging process involving dependency management, configuration conflicts, and deprecated APIs.&lt;/p&gt;
 &lt;p&gt;I had planned to create my own feed and really dig into how the format works and how to put it together but after a quick look and thinking about how i wanted to spend my evenings i decided to just search for a ready made solution. Just searching &amp;quot;11ty rss&amp;quot; led me to this page &lt;a href=&quot;https://www.11ty.dev/docs/plugins/rss/&quot;&gt;https://www.11ty.dev/docs/plugins/rss/&lt;/a&gt; and it seemed easy enough.&lt;/p&gt;
 &lt;h2&gt;Setting Up the 11ty RSS Plugin: Two Installation Methods&lt;/h2&gt;
@@ -50,14 +50,15 @@
 &lt;p&gt;The combination of issues was particularly frustrating - the plugin had evolved its URL handling approach making older configuration methods ineffective, the dependency classification issue wasn&#39;t obvious, and the configuration conflicts made everything worse. The recurring nature of that dependency issue was particularly annoying because clearing the cache would fix it temporarily, so I kept thinking I&#39;d solved it when I really hadn&#39;t.&lt;/p&gt;
 &lt;p&gt;So I got it working and this post is mostly just a way for me to get rid of the frustration by writing it down. I will say that although the whole issue was probably caused by getting help from an LLM, it was also how it got solved. I would never have gone into the source code to find the deprecated comment, but I could just tell Claude to dig into it and it found the issue pretty quickly.&lt;/p&gt;
 &lt;p&gt;If you want to see the feed for yourself you can find it here: &lt;a href=&quot;https://rosenqvist.design/feed.xml&quot;&gt;rosenqvist.design/feed.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PS:&lt;/strong&gt; As I&#39;m writing this, the plugin issue still occasionally resurfaces - the &lt;code&gt;@11ty/eleventy-plugin-rss&lt;/code&gt; import sometimes fails and requires reinstalling the plugin and clearing npm cache. It seems to be related to some dependency resolution quirks, but the workaround is now familiar: &lt;code&gt;npm uninstall @11ty/eleventy-plugin-rss&lt;/code&gt;, &lt;code&gt;npm install @11ty/eleventy-plugin-rss&lt;/code&gt;, &lt;code&gt;npm cache clean --force&lt;/code&gt;. The RSS feed itself seems to work once the plugin is properly installed, but I cant figure out why it needs constant reinstall...&lt;/p&gt;
 </description>
             <pubDate>Sun, 01 Jun 2025 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/adding-rss-11ty/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/adding-rss-11ty/</guid>
         </item>
         <item>
             <title>UX Design&#39;s Role in the Automotive Sales Lifecycle</title>
-            <link>https://trumf.github.io/blog/ux-sales-lifecycle/</link>
+            <link>https://rosenqvist.design/blog/ux-sales-lifecycle/</link>
             <description>&lt;h2&gt;UX Design&#39;s Role in the Automotive Sales Lifecycle&lt;/h2&gt;
 &lt;p&gt;It is quite common that design leaders have trouble justifying the expense of a UX department and the work they do. A lot of of UX work is, in a way, supportive. Since it contributes to outcomes but is (often) dependant on other professions it is important that you are strategic about what value the UX team brings and what their role is.&lt;/p&gt;
 &lt;p&gt;These are my half-baked ideas around how the UX team can contribute to the business here. and yes, the focus is on the business side. I&#39;ve never met anyone who don&#39;t think UX designers make a product better for the customer but i&#39;ve seen people question what effect it has on the bottom line.&lt;/p&gt;
@@ -66,7 +67,7 @@
 &lt;p&gt;The article contained more details than that but this idea was so straight forward and we had a discussion about UX research and UX design earlier this week, and I wanted to write down my perspective on how UX design and research can contribute to a product. This is written with the background of automotive HMI design but can be applied to any industry.&lt;/p&gt;
 &lt;h2&gt;The Customer Lifecycle Model and Product Strategy&lt;/h2&gt;
 &lt;p&gt;You&#39;ve probably heard of the sales funnel before (the blue part in most lifecycle diagrams). After a customer makes a purchase, we enter what&#39;s called the &amp;quot;post-purchase funnel&amp;quot; or customer journey.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/ux-sales-lifecycle/ux-lifecycle.png&quot; alt=&quot;Sales lifecycle model diagram showing a blue sales funnel on the left with multiple stages flowing into green post-purchase phases along the bottom. Curved arrows connect the phases showing customer progression from initial purchase through onboarding, engagement, retention, advocacy, and reactivation. The diagram illustrates how customers move through the traditional sales funnel and then continue through the post-purchase customer journey cycle.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/ux-sales-lifecycle/ux-lifecycle.png&quot; alt=&quot;Sales lifecycle model diagram showing a blue sales funnel on the left with multiple stages flowing into green post-purchase phases along the bottom. Curved arrows connect the phases showing customer progression from initial purchase through onboarding, engagement, retention, advocacy, and reactivation. The diagram illustrates how customers move through the traditional sales funnel and then continue through the post-purchase customer journey cycle.&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;The sales funnel is typically managed by marketing and sales departments, but it&#39;s in the post-purchase phase where UX design can have the most significant impact. The ultimate goal is to sell more cars, and UX can contribute by creating advocates and enabling reactivation. To achieve this, customers need to feel they&#39;re receiving the value they expected from their purchase—or even more value than they anticipated.&lt;/p&gt;
 &lt;h2&gt;Optimizing the Post-Purchase Customer Journey&lt;/h2&gt;
 &lt;h3&gt;Onboarding: The Foundation of Value&lt;/h3&gt;
@@ -98,12 +99,12 @@
 By connecting UX strategy to each phase of the customer journey—from initial attraction through onboarding, engagement, retention, advocacy, and reactivation—design teams can demonstrate clear business value and justify their strategic role in product development. This framework helps organizations build not just better products, but more profitable and sustainable customer relationships.&lt;/p&gt;
 </description>
             <pubDate>Sun, 25 May 2025 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/ux-sales-lifecycle/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/ux-sales-lifecycle/</guid>
         </item>
         <item>
             <title>Moving the Blog to 11ty</title>
-            <link>https://trumf.github.io/blog/moving-to-11ty/</link>
+            <link>https://rosenqvist.design/blog/moving-to-11ty/</link>
             <description>&lt;h2&gt;Moving My Site to Eleventy: Streamlining for Writing and Future Projects&lt;/h2&gt;
 &lt;p&gt;When I first started building my personal site, I made a deliberate choice to go with pure HTML and CSS. My goal to understand how everything fits together without any abstractions. I also saw myself making a lot of cool and unique layouts for each post. It started well, and I put together some posts (although without any amazing layouts). The experience was incredibly rewarding, and I learned a lot about layout, design principles, and the structure of web pages.&lt;/p&gt;
 &lt;p&gt;But after the first couple of posts, it started to feel like a ton of work every time I wanted to put a blog together. It drained my motivation, and even though I learned a lot, I feel like what is holding me back right now is the ability to put pen to paper and actually write things down.&lt;/p&gt;
@@ -119,12 +120,12 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;So that&#39;s where I&#39;m at right now. The focus is on building momentum with writing, updating my portfolio, and setting up an RSS feed. I also have a ton of side-projects running in parallel that I really should start posting about. I&#39;m excited to see where this next phase takes me and if I can keep the motivation alive.&lt;/p&gt;
 </description>
             <pubDate>Sun, 11 May 2025 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/moving-to-11ty/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/moving-to-11ty/</guid>
         </item>
         <item>
             <title>AI hardware products</title>
-            <link>https://trumf.github.io/blog/why-ai-hardware/</link>
+            <link>https://rosenqvist.design/blog/why-ai-hardware/</link>
             <description>&lt;p&gt;I&#39;ve been confused about why we have seen hardware AI products pop up. Earlier this year there was quite a lot of buzz around the &lt;a href=&quot;https://www.rabbit.tech/rabbit-r1&quot;&gt;Rabbit r1&lt;/a&gt;. The fun design from teenage engineering together with hitting the peak of the AI hype made me interested. Even though I wasn&#39;t super excited about buying it or really understood what it was for I wanted to know more.&lt;/p&gt;
 &lt;p&gt;The &lt;a href=&quot;https://humane.com/aipin&quot;&gt;AI pin&lt;/a&gt; was another product that was insanely hyped at the beginning of the year. It&#39;s a small device that you can attach to your shirt. It functions as an assistant who can help you remember things, put things in the calendar, buy things.&lt;/p&gt;
 &lt;div class=&quot;responsive-video&quot;&gt;
@@ -145,12 +146,12 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;The reason I started writing this post was because I read this blog about &lt;a href=&quot;https://fasterandworse.com/complicated-sticks/&quot;&gt;&amp;quot;Complicated Sticks&amp;quot;&lt;/a&gt;. The theses is that these hardware assistants are a type of complicated stick. You could potentially do anything with a stick. The potential is the attractive part. You are buying the potential to have a magic stick that can help you book a trip, not the actual ability to do it.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/why-ai-hardware/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/why-ai-hardware/</guid>
         </item>
         <item>
             <title>How has the role of the UX designer changed?</title>
-            <link>https://trumf.github.io/blog/ux-profession/</link>
+            <link>https://rosenqvist.design/blog/ux-profession/</link>
             <description>&lt;p&gt;When I first learnt about ux design it was a role that did everything. Your job was to do research, make wireframes, hold workshops, make pixel perfect designs. It was a role where you needed to be able to talk with business people in business way, engineers in an engineering way, and with other designers. To me it seemed like daunting amount of skills you had to master.&lt;/p&gt;
 &lt;p&gt;When I actually started working i saw that the research role and the designer role was often split. It makes sense to me. Both of these roles takes a long time to become good at and they also the tasks for each role require a lot of time.&lt;/p&gt;
 &lt;p&gt;As time went on I saw more and more roles become popular. You had UX writers and then soon after that you had content designers. Graphical designers first became UI designers, then UX /UI designers and then maybe they started doing motion design when the big platforms started pushing video. And of course the design system designer.&lt;/p&gt;
@@ -160,26 +161,26 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;h2&gt;Were there as many niched roles before the dotcom crash?&lt;/h2&gt;
 &lt;p&gt;It seems to me that thee were a couple of strands that ended up being lumped into the UX designer role.&lt;/p&gt;
 &lt;p&gt;The first strand come from the marketing agencies. In the 90s the internet exploded and the people who had previously done print design, graphic designers, suddenly got a new medium to work in. Over time we have seen a constant exchange, both ways, between marketing agencies and big tech. Graphic designers have today become (in many instances) brand designers. We have also added motion designers to this mix.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/ux-profession/marektingroles.png&quot; alt=&quot;diagram with the roles that came from marketing&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/ux-profession/marektingroles.png&quot; alt=&quot;diagram with the roles that came from marketing&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Another strand we see from 80s marketing agencies are copy writers. Copy writers have branched out into UX writing and then content designers.&lt;/p&gt;
 &lt;p&gt;The second big influence comes from engineering. If you were a programmer with a knack for figuring out edge cases on the front end you might start to call yourself Interaction designer. We also get a big influx from the ergonomics. Early usability material uses a lot of similar methods as ergonomics.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/ux-profession/programmerroles.png&quot; alt=&quot;Diagram of the roles that came from programmers&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/ux-profession/programmerroles.png&quot; alt=&quot;Diagram of the roles that came from programmers&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;The third one is researchers. Often from behavioral science. Interviews and and observations are staple methods in research. It&#39;s not surprising that academics wanted to see what it was like outside of the university and design was a good place to go. We are mostly talking about qualitative researches, maybe a few who are good at surveys. When i was going through textbooks about research for design it was mostly qualitative methods. Sometimes more quantitative methods were used but since the number of participants generally low and descriptive statistics was enough. I&#39;ve never read anything about how qualitative research was/is used in marketing agencies but if you have any suggestions please let me know.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/ux-profession/researchroles.png&quot; alt=&quot;Diagram of the roles that came from researchers&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/ux-profession/researchroles.png&quot; alt=&quot;Diagram of the roles that came from researchers&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;The last strand I&#39;ve seen is from the &amp;quot;consultant&amp;quot; industry. By that I mean IDEO and the ideas they promoted. A while ago it struck me that IDEO never talks to designers, they are always talking to mangers and directors without a design background. I can&#39;t identify a particular role that comes from this influence but they have given us a lot of ideas and ideological baggage. I&#39;m thinking of the workshop methods and of course the design thinking courses. There are more agancies than IDEO of course but I feel they exemplify this kind of influence.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/ux-profession/Allroles.png&quot; alt=&quot;Diagram with all the roles that have been discussed&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/ux-profession/Allroles.png&quot; alt=&quot;Diagram with all the roles that have been discussed&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;I think I need to stop here for the sake of time and come back to the more current roles in design. As I said in the beginning I don&#39;t have any sources for this and I&#39;m more trying to describe a vibe than actual facts.&lt;/p&gt;
 &lt;p&gt;If you were around for the dotcom crash i would love to hear how things looked before and after and if you have seen the same influences that i have.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/ux-profession/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/ux-profession/</guid>
         </item>
         <item>
             <title>The Evolution of UX Design</title>
-            <link>https://trumf.github.io/blog/ux-design-evolution/</link>
+            <link>https://rosenqvist.design/blog/ux-design-evolution/</link>
             <description>&lt;p&gt;I&#39;m trying to figure out how to deal with all the layoffs in tech and for UX designers. I&#39;m writing this for myself, to myself, to figure out my thoughts where UX design have been and where it&#39;s going and how I can advise the more junior designers on my team.&lt;/p&gt;
-&lt;p&gt;As you may know I&#39;m trying to get an overview for myself on the current state of UX. &lt;a href=&quot;https://trumf.github.io/blog/ux-design-evolution/UXproffesion.html&quot;&gt;Last time&lt;/a&gt; I wrote about all the different roles that got incorporated under &amp;quot;UX Design&amp;quot; by the time I started getting into it. Today I will try to sketch out some current developments.&lt;/p&gt;
+&lt;p&gt;As you may know I&#39;m trying to get an overview for myself on the current state of UX. &lt;a href=&quot;https://rosenqvist.design/blog/ux-design-evolution/UXproffesion.html&quot;&gt;Last time&lt;/a&gt; I wrote about all the different roles that got incorporated under &amp;quot;UX Design&amp;quot; by the time I started getting into it. Today I will try to sketch out some current developments.&lt;/p&gt;
 &lt;h2&gt;Graphic designers became brand designers&lt;/h2&gt;
 &lt;p&gt;I will keep this brief since I mostly work in large enterprise environments and don&#39;t often come in contact with this type design. It seems like there has been a shift to calling yourself Brand designer for may of the people who might earlier have been graphic designers. I&#39;m guessing that there were more and more customers out there that wanted things like logos and other brand assets and slowly people just started calling themselves brand designers. This group of people work as freelancers or in agencies more often than the other groups.&lt;/p&gt;
 &lt;h2&gt;UX designers became Product designers&lt;/h2&gt;
@@ -194,12 +195,12 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;I&#39;ll end here with a reminder that these are very subjective impressions backed up by nothing. If you have a different view or would like to comment then please reach out. It&#39;s easiest on &lt;a href=&quot;https://mastodon.social/@amalgam_&quot;&gt;mastodon&lt;/a&gt;. Thanks for reading.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/ux-design-evolution/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/ux-design-evolution/</guid>
         </item>
         <item>
             <title>How to Become a Design Engineer as a Designer</title>
-            <link>https://trumf.github.io/blog/how-to-become-design-engineer/</link>
+            <link>https://rosenqvist.design/blog/how-to-become-design-engineer/</link>
             <description>&lt;p&gt;Lately, I&#39;ve been writing more code both at work and on my own projects. It got me thinking—maybe I should understand the design engineer role better.&lt;/p&gt;
 &lt;p&gt;A design engineer bridges design and engineering. They can design user interfaces and have the technical skills to code them. They often make prototypes in code, contribute to design systems, and take projects from concept to production, which is why I&#39;m interested in them.&lt;/p&gt;
 &lt;h2&gt;Why Do Most Design Engineers Come from an Engineering Background?&lt;/h2&gt;
@@ -208,7 +209,7 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;h2&gt;Learning to Code Isn&#39;t the Biggest Hurdle&lt;/h2&gt;
 &lt;p&gt;Surprisingly, the actual programming part—writing HTML, CSS, maybe some JavaScript—isn&#39;t the hardest hurdle. There are tons of tutorials out there, and modern design tools are getting closer to how you&#39;d style components in code. On YouTube, you can find loads of tutorials, and if you prefer to read, there are some great blogs and reference sites like &lt;a href=&quot;https://developer.mozilla.org/en-US/&quot;&gt;MDN&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The first real challenge is figuring out the tools. If you&#39;re a UX designer today, you&#39;re probably spending most of your time in Figma. As you move more towards engineering, you&#39;ll need to get used to new tools.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/how-to-become-design-engineer/figma%20ui.png&quot; alt=&quot;The figma UI, a common program for web and UI design&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/how-to-become-design-engineer/figma%20ui.png&quot; alt=&quot;The figma UI, a common program for web and UI design&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Setting up an IDE like VS Code with some plug-ins doesn&#39;t take long but is very different from Figma. Then there&#39;s the whole environment setup and getting your head around version control systems like Git, where you&#39;ll have to type cryptic commands into a terminal just to get things running. For someone who&#39;s never touched the command line, that can be pretty intimidating. Especially for designers who haven&#39;t worked with version handling beyond naming files &amp;quot;final_design_v3_final.psd.&amp;quot;&lt;/p&gt;
 &lt;h2&gt;How Things Work in the Real World&lt;/h2&gt;
 &lt;p&gt;Next up is learning how things are done &amp;quot;in the real world.&amp;quot; Even if you&#39;ve studied hard and done a lot of personal projects, when you get to an enterprise environment, things are often done differently.&lt;/p&gt;
@@ -239,7 +240,7 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;h2&gt;Is it easier for Engineers to move toward Design?&lt;/h2&gt;
 &lt;p&gt;On the flip side, if an engineer wants to move toward design, it might be a bit easier. They can expand design specifications while still closing tickets. They don&#39;t need access to new tools and will still fit into the usual engineering org. They might take longer to finish tasks because they&#39;re spending more time on design, but that&#39;s a similar challenge designers face when they start coding.&lt;/p&gt;
 &lt;p&gt;One thing I&#39;ve noticed is that learning resources for design aren&#39;t as comprehensive as those for coding. They often focus on how to use tools rather than teaching design principles. It&#39;s tough to find resources that delve into topics like advanced typography beyond the basics.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://trumf.github.io/blog/how-to-become-design-engineer/vscode-custom.png&quot; alt=&quot;The UI of Visual Studio code, a common program for editing and writing code&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rosenqvist.design/blog/how-to-become-design-engineer/vscode-custom.png&quot; alt=&quot;The UI of Visual Studio code, a common program for editing and writing code&quot; /&gt;&lt;/p&gt;
 &lt;h2&gt;What to think about for Designers&lt;/h2&gt;
 &lt;p&gt;If you&#39;re a designer wanting to become a design engineer, your best bet might be working freelance or at a smaller company. Startups are probably ideal since you&#39;d need to help out with a variety of tasks anyway.&lt;/p&gt;
 &lt;p&gt;A design engineering role, like any hybrid role, works best if you already have trouble fitting into a mold. If you&#39;ve been working for a while as a designer, it can feel like starting over. You&#39;ll need to augment the skills you already have to stand out.&lt;/p&gt;
@@ -249,12 +250,12 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;So, if you&#39;re thinking about making this move, be prepared for some obstacles, but know that it&#39;s achievable. And if you&#39;re already on this path, I&#39;d love to hear about your experiences.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/how-to-become-design-engineer/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/how-to-become-design-engineer/</guid>
         </item>
         <item>
             <title>How to adapt to AI as a Designer?</title>
-            <link>https://trumf.github.io/blog/design-and-ai/</link>
+            <link>https://rosenqvist.design/blog/design-and-ai/</link>
             <description>&lt;h2&gt;Jakob Nielsen and an &amp;quot;Urgency around AI&amp;quot;&lt;/h2&gt;
 &lt;p&gt;Jakob Nielsen recently wrote that designers need to have urgency about AI. But what does that really mean for our profession, and how should we respond?&lt;/p&gt;
 &lt;p&gt;Nielsen wrote &lt;a href=&quot;https://jakobnielsenphd.substack.com/p/ux-needs-a-sense-of-urgency-about&quot;&gt;a blog post&lt;/a&gt; declaring that designers need to have urgency about AI. When I first read this article, I was in the process of being let go from my job, and many of my design friends were at least being threatened with losing their jobs. Nielsen writes that designers need to learn AI but doesn&#39;t elaborate on what that would mean in practice. It left me with a vague anxiety and stress, and it&#39;s only now that I feel I have the energy to address it.&lt;/p&gt;
@@ -287,12 +288,12 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;Rather than fearing AI or rushing to completely reinvent your skill set, consider how AI can augment your existing abilities and free you to focus on the more uniquely human aspects of design.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/design-and-ai/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/design-and-ai/</guid>
         </item>
         <item>
             <title>Command line and prompt interfaces</title>
-            <link>https://trumf.github.io/blog/cli-and-prompts/</link>
+            <link>https://rosenqvist.design/blog/cli-and-prompts/</link>
             <description>&lt;p&gt;For last couple of decades, we have moved from CLI, the command line interface, to using more and more GUI. For most of us a graphical user interface is faster and it also makes it easier for designers to make functions easy to discover. Now we see a return to the CLI with generative AI we see a return to this prompt driven design.&lt;/p&gt;
 &lt;h2&gt;Types of design for prompts&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.felicis.com/news/prompt-driven-design&quot;&gt;This blog&lt;/a&gt; discusses the trend of prompt driven design. They identify three types of prompt design, navigational core, UX and API.&lt;/p&gt;
@@ -307,12 +308,12 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;Lastly I want to highlight a project that is doing this in a very interesting way from &lt;a href=&quot;https://www.inkandswitch.com/&quot;&gt;Ink &amp;amp; Switch&lt;/a&gt;. Go and read their project notes on how they are trying to design for this new way of editing &lt;a href=&quot;https://www.inkandswitch.com/patchwork/notebook/07/&quot;&gt;together with an AI&lt;/a&gt;. I think this is really cool and great example of how AI can be used to edit text that expands it outside the prompt box while still being very text based.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/cli-and-prompts/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/cli-and-prompts/</guid>
         </item>
         <item>
             <title>The Blunt and Sharp end of AI</title>
-            <link>https://trumf.github.io/blog/blunt-and-sharp-end-of-ai/</link>
+            <link>https://rosenqvist.design/blog/blunt-and-sharp-end-of-ai/</link>
             <description>&lt;p&gt;I read two interesting articles the other day. One about how you build personality into AI and the other about hands on experiences building AI products. They sort of complimented each other and also made me think about something i learned back in university when i studied urban resilience.&lt;/p&gt;
 &lt;h2&gt;AI personality&lt;/h2&gt;
 &lt;p&gt;The first article talks &lt;a href=&quot;https://productify.substack.com/p/ai-models-product-market-fit-and?utm_source=profile&amp;amp;utm_medium=reader2&quot;&gt;about the personality of an AI&lt;/a&gt; and how that can be a selling point in the product market fit. OpenAI is for example more permissive than googles Gemini. This have some guys on twitter up in arms but making a &amp;quot;safe&amp;quot; AI can help attract different kinds of user groups. If a company want a certain tone and to prevent their AI assistant to say controversial stuff you can use Gemini, for others there&#39;s Grok…&lt;/p&gt;
@@ -330,8 +331,8 @@ By connecting UX strategy to each phase of the customer journey—from initial a
 &lt;p&gt;I dont really have a point about this other than there were two articles that made me think and an old concept to tie them together. The blunt end/sharp end is also very useful tool when discussing B2B products, just throwing it out there. Give the articles a read.&lt;/p&gt;
 </description>
             <pubDate>Sat, 30 Mar 2024 07:00:00 GMT</pubDate>
-            <dc:creator>trumf</dc:creator>
-            <guid>https://trumf.github.io/blog/blunt-and-sharp-end-of-ai/</guid>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/blunt-and-sharp-end-of-ai/</guid>
         </item>
     </channel>
 </rss>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty" />
+    <meta name="description" content="Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty" />
     <title>11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them | Simon Rosenqvist</title>
 
     <!-- Styles and Resources -->
@@ -18,7 +18,7 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them | Simon Rosenqvist">
-    <meta property="og:description" content="A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty">
+    <meta property="og:description" content="Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty">
     <meta property="og:image" content="/public/images/favicon.svg">
     <meta property="og:url" content="/blog/adding-rss-11ty/">
     <meta property="og:type" content="website">
@@ -26,12 +26,12 @@
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them | Simon Rosenqvist">
-    <meta name="twitter:description" content="A debugging adventure involving dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty">
+    <meta name="twitter:description" content="Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty">
     <meta name="twitter:image" content="/public/images/favicon.svg">
 
     <!-- RSS Feed -->
     <link rel="alternate" href="/feed.xml" type="application/rss+xml"
-        title="trumf.github.io">
+        title="Rosenqvist Design">
 </head>
 
 <body>
@@ -72,6 +72,7 @@
 <p>The combination of issues was particularly frustrating - the plugin had evolved its URL handling approach making older configuration methods ineffective, the dependency classification issue wasn't obvious, and the configuration conflicts made everything worse. The recurring nature of that dependency issue was particularly annoying because clearing the cache would fix it temporarily, so I kept thinking I'd solved it when I really hadn't.</p>
 <p>So I got it working and this post is mostly just a way for me to get rid of the frustration by writing it down. I will say that although the whole issue was probably caused by getting help from an LLM, it was also how it got solved. I would never have gone into the source code to find the deprecated comment, but I could just tell Claude to dig into it and it found the issue pretty quickly.</p>
 <p>If you want to see the feed for yourself you can find it here: <a href="https://rosenqvist.design/feed.xml">rosenqvist.design/feed.xml</a></p>
+<p><strong>PS:</strong> As I'm writing this, the plugin issue still occasionally resurfaces - the <code>@11ty/eleventy-plugin-rss</code> import sometimes fails and requires reinstalling the plugin and clearing npm cache. It seems to be related to some dependency resolution quirks, but the workaround is now familiar: <code>npm uninstall @11ty/eleventy-plugin-rss</code>, <code>npm install @11ty/eleventy-plugin-rss</code>, <code>npm cache clean --force</code>. The RSS feed itself seems to work once the plugin is properly installed, but I cant figure out why it needs constant reinstall...</p>
 
         </div>
         <a href="/index.html" class="button" style="margin-left: var(--spacing-md); margin-top: var(--spacing-md);">Back
