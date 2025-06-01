@@ -3,6 +3,8 @@ layout: post.njk
 title: How has the role of the UX designer changed?
 date: 2024-03-30
 description: How have the role of the UX designer evloved over the years?
+image: /blog/ux-profession/balazs-ketyi-U008D4Jp2CY-unsplash.png
+imageAlt: Pen and paper, a book of icons is open
 ---
 
 When I first learnt about ux design it was a role that did everything. Your job was to do research, make wireframes, hold workshops, make pixel perfect designs. It was a role where you needed to be able to talk with business people in business way, engineers in an engineering way, and with other designers. To me it seemed like daunting amount of skills you had to master.

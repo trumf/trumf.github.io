@@ -3,6 +3,8 @@ layout: post.njk
 title: Command line and prompt interfaces
 date: 2024-03-30
 description: A blogpost about design patterns for ai and the new types of interactions that are needed and enjoyed
+image: /blog/cli-and-prompts/susan-wilkinson-Dvx_jJW4vHs-unsplash.png
+imageAlt: Swirling colors with blues and yellows
 ---
 
 For last couple of decades, we have moved from CLI, the command line interface, to using more and more GUI. For most of us a graphical user interface is faster and it also makes it easier for designers to make functions easy to discover. Now we see a return to the CLI with generative AI we see a return to this prompt driven design.

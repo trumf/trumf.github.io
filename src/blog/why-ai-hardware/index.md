@@ -3,6 +3,8 @@ layout: post.njk
 title: AI hardware products
 date: 2024-03-30
 description: Why should companies invest in AI hardware products for software solutions? Both Humane's AI pin and Rabbits R1 thought so despite The high costs, complexities, and distribution challenges.
+image: /blog/why-ai-hardware/shubham-dhage-sX4_Do0HmII-unsplash 1.png
+imageAlt: Abstract image of a 3d object. looks like a vase slightly tilted to the side. creamy color
 ---
 
 I've been confused about why we have seen hardware AI products pop up. Earlier this year there was quite a lot of buzz around the [Rabbit r1](https://www.rabbit.tech/rabbit-r1). The fun design from teenage engineering together with hitting the peak of the AI hype made me interested. Even though I wasn't super excited about buying it or really understood what it was for I wanted to know more.

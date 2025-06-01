@@ -1,8 +1,10 @@
 ---
 layout: post.njk
-title: Adapting to AI as a Designer
+title: How to adapt to AI as a Designer?
 date: 2024-03-30
-description: How to adapt to AI as a designer and future-proof your UX career
+description: If we feel urgency about AI what should we do?
+image: /blog/design-and-ai/Untitled-1.png
+imageAlt: A circuit board
 ---
 
 ## Jakob Nielsen and an "Urgency around AI"

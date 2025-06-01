@@ -3,6 +3,8 @@ layout: post.njk
 title: The Blunt and Sharp end of AI
 date: 2024-03-30
 description: What is the blunt and sharp end of organisations and how does it affect the design of AI tools?
+image: /blog/blunt-and-sharp-end-of-ai/Untitled.png
+imageAlt: Grey rocks
 ---
 
 I read two interesting articles the other day. One about how you build personality into AI and the other about hands on experiences building AI products. They sort of complimented each other and also made me think about something i learned back in university when i studied urban resilience.

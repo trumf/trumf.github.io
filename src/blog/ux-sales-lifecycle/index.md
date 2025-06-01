@@ -3,6 +3,8 @@ layout: post.njk
 title: UX Design's Role in the Automotive Sales Lifecycle
 date: 2025-05-25
 description: Understanding how UX design impacts every stage of the customer journey, from initial interest to long-term advocacy in the automotive industry.
+image: /blog/ux-sales-lifecycle/ux-lifecycle.png
+imageAlt: Customer lifecycle model diagram showing a blue sales funnel flowing into green post-purchase phases
 ---
 
 ## UX Design's Role in the Automotive Sales Lifecycle

@@ -3,6 +3,8 @@ layout: post.njk
 title: How to Become a Design Engineer as a Designer
 date: 2024-03-30
 description: Moving from design to design engineering is challenging but achievable. Here's the technical and organizational hurdles to look out for.
+image: /blog/how-to-become-design-engineer/figma ui.png
+imageAlt: A Screenshot of Figmas Interface
 ---
 
 Lately, I've been writing more code both at work and on my own projects. It got me thinking—maybe I should understand the design engineer role better.

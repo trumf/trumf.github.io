@@ -3,6 +3,8 @@ layout: post.njk
 title: The Evolution of UX Design
 date: 2024-03-30
 description: The evolution of UX design roles and responsibilities
+image: /blog/ux-design-evolution/dmitrii-shkurin-NRMrZMuGhwM-unsplash 1.png
+imageAlt: A skyscraper twisting around its own axis
 ---
 
 I'm trying to figure out how to deal with all the layoffs in tech and for UX designers. I'm writing this for myself, to myself, to figure out my thoughts where UX design have been and where it's going and how I can advise the more junior designers on my team.
