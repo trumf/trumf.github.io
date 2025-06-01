@@ -8,6 +8,26 @@
         <description>My personal website and blog.</description>
         <language>en</language>
         <item>
+            <title>RSS Feed Test Post</title>
+            <link>https://trumf.github.io/blog/rss-test/</link>
+            <description>&lt;h1&gt;This is a test of the RSS feed&lt;/h1&gt;
+&lt;p&gt;This is some test body content to verify that the RSS feed is working correctly after we fixed the plugin installation issues.&lt;/p&gt;
+&lt;p&gt;If you can see this post in your RSS reader, then everything is working as expected!&lt;/p&gt;
+&lt;p&gt;The RSS feed should be available at: &lt;a href=&quot;https://rosenqvist.design/feed.xml&quot;&gt;rosenqvist.design/feed.xml&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Test Content&lt;/h2&gt;
+&lt;p&gt;Here&#39;s some additional content to make sure the feed has enough text to work with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This is a bullet point&lt;/li&gt;
+&lt;li&gt;Another test item&lt;/li&gt;
+&lt;li&gt;Testing RSS functionality&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post should appear in both the blog index and the RSS feed once everything is working correctly.&lt;/p&gt;
+</description>
+            <pubDate>Sun, 01 Jun 2025 07:00:00 GMT</pubDate>
+            <dc:creator>trumf</dc:creator>
+            <guid>https://trumf.github.io/blog/rss-test/</guid>
+        </item>
+        <item>
             <title>11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them</title>
             <link>https://trumf.github.io/blog/adding-rss-11ty/</link>
             <description>&lt;p&gt;I&#39;ve been following RSS feeds since probably the late oughts so when I moved this site into 11ty I of course wanted to have my own feed. What started as a simple plugin install turned into a debugging process involving dependency management, configuration conflicts, and deprecated APIs.&lt;/p&gt;

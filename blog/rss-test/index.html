@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple test post to verify the RSS feed is working correctly after fixing the plugin issues" />
+    <title>RSS Feed Test Post | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/utilities.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/image-fullscreen.css" />
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="RSS Feed Test Post | Simon Rosenqvist">
+    <meta property="og:description" content="A simple test post to verify the RSS feed is working correctly after fixing the plugin issues">
+    <meta property="og:image" content="/public/images/favicon.svg">
+    <meta property="og:url" content="/blog/rss-test/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="RSS Feed Test Post | Simon Rosenqvist">
+    <meta name="twitter:description" content="A simple test post to verify the RSS feed is working correctly after fixing the plugin issues">
+    <meta name="twitter:image" content="/public/images/favicon.svg">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml"
+        title="trumf.github.io">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar-container" class="navbar-container"></nav>
+        
+    </header>
+
+    <main>
+        
+<article class="section_padding">
+    <div class="section_content">
+
+        <div class="post-meta">
+            <time datetime="2025-06-01">2025-06-01</time>
+            
+            <h1 class="display-1">RSS Feed Test Post</h1>
+        </div>
+
+        <div class="post-content">
+            <h1>This is a test of the RSS feed</h1>
+<p>This is some test body content to verify that the RSS feed is working correctly after we fixed the plugin installation issues.</p>
+<p>If you can see this post in your RSS reader, then everything is working as expected!</p>
+<p>The RSS feed should be available at: <a href="https://rosenqvist.design/feed.xml">rosenqvist.design/feed.xml</a></p>
+<h2>Test Content</h2>
+<p>Here's some additional content to make sure the feed has enough text to work with:</p>
+<ul>
+<li>This is a bullet point</li>
+<li>Another test item</li>
+<li>Testing RSS functionality</li>
+</ul>
+<p>This post should appear in both the blog index and the RSS feed once everything is working correctly.</p>
+
+        </div>
+        <a href="/index.html" class="button" style="margin-left: var(--spacing-md); margin-top: var(--spacing-md);">Back
+            Home</a>
+    </div>
+
+</article>
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("/components/navbar.html");
+            $("#footer-container").load("/components/footer.html");
+        });
+    </script>
+    <script src="/js/image-fullscreen.js" defer></script>
+
+</body>
+
+</html>
