@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen Measurement Converter</title>
+  <style>
+    /*─────────────────────────────────────────────────
+        VARIABLES
+      ─────────────────────────────────────────────────*/
+    :root {
+      /* Brand & semantic colors */
+      --color-primary: #120e0e;
+      --color-primary-light: #2a2021;
+      --color-secondary: #2c8287;
+      --color-neutral-100: #f8f9fa;
+      --color-neutral-300: #e9ecef;
+      --color-neutral-900: #212529;
+
+      --bg-page: var(--color-neutral-100);
+      --bg-card: #fff;
+      --text-primary: var(--color-neutral-900);
+      --text-secondary: #6c757d;
+      --border: var(--color-neutral-300);
+      --shadow: rgba(0, 0, 0, 0.1);
+
+      /* Typography */
+      --font-base: 1rem;
+      --font-sm: 0.875rem;
+      --font-xl: 1.875rem;
+      --font-2xl: 2.25rem;
+      --ff: "Inter", system-ui, sans-serif;
+
+      /* Spacing */
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 2rem;
+      --radius: 8px;
+    }
+
+    /*─────────────────────────────────────────────────
+        RESET & BASE
+      ─────────────────────────────────────────────────*/
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font: var(--font-base) / 1.6 var(--ff);
+      color: var(--text-primary);
+      background: var(--bg-page);
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: var(--space-md);
+    }
+
+    /*─────────────────────────────────────────────────
+        TYPOGRAPHY
+      ─────────────────────────────────────────────────*/
+    h1,
+    h2 {
+      margin: var(--space-md) 0 var(--space-sm);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+    }
+
+    h1 {
+      font-size: var(--font-2xl);
+      text-align: center;
+      color: var(--color-primary);
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -0.5em;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg,
+          var(--color-primary),
+          var(--color-secondary));
+      border-radius: 4px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-xl);
+      color: var(--text-primary);
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 15px 0 10px 0;
+      color: var(--text-secondary);
+    }
+
+    .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-right: var(--space-sm);
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: 50%;
+      font-size: var(--font-sm);
+    }
+
+    /*─────────────────────────────────────────────────
+        CARDS & FEEDBACK
+      ─────────────────────────────────────────────────*/
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 4px var(--shadow);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-color: var(--color-secondary);
+    }
+
+    .feedback {
+      position: fixed;
+      bottom: var(--space-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      min-width: 300px;
+      max-width: 90%;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      font-weight: 500;
+      animation: slideInUp 0.3s forwards, fadeOut 0.5s forwards 4s;
+    }
+
+    .feedback.success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #10b981;
+    }
+
+    .feedback.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+    }
+
+    @keyframes slideInUp {
+      from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /*─────────────────────────────────────────────────
+        FORMS & BUTTONS
+      ─────────────────────────────────────────────────*/
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: var(--space-sm);
+    }
+
+    label {
+      margin-bottom: calc(var(--space-sm) / 2);
+      font-size: var(--font-sm);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font: var(--font-sm) / 1 var(--ff);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--color-secondary);
+      box-shadow: 0 0 0 3px rgba(44, 130, 135, 0.2);
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .helper-text {
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.3);
+      margin-top: -0.5em;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      font: var(--font-sm) / 1 var(--ff);
+      font-weight: 500;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--color-primary);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(105, 105, 105, 0.3);
+      transition: background 0.2s, transform 0.1s;
+      min-width: 148px;
+    }
+
+    .btn:hover {
+      background: var(--color-primary-light);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--color-secondary);
+      outline-offset: 2px;
+    }
+
+    /* Utility for right-aligned actions */
+    .text-right {
+      text-align: right;
+    }
+
+    /*─────────────────────────────────────────────────
+        RESULTS & CONVERSION GRID
+      ─────────────────────────────────────────────────*/
+    .result {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      min-width: 90px;
+      font-weight: 500;
+      background: rgba(44, 130, 135, 0.1);
+      border-radius: 4px;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .conversion-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .conversion-input-row {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: flex-end;
+    }
+
+    .conversion-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      flex: 1;
+    }
+
+    .results-container {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-sm);
+      width: 100%;
+    }
+
+    /* three-column layout on larger screens */
+    @media (min-width: 600px) {
+      .conversion-row {
+        grid-template-columns: 200px 1fr auto;
+      }
+    }
+
+    @media (max-width: 410px) {
+      .conversion-input-row {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .conversion-input-group {
+        width: 100%;
+      }
+
+      .results-container {
+        width: 100%;
+      }
+    }
+
+    /*─────────────────────────────────────────────────
+        COMMON CONVERSIONS
+      ─────────────────────────────────────────────────*/
+    .common-conversions {
+      display: grid;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    @media (min-width: 600px) {
+      .common-conversions {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .result-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .result-box span:first-child {
+      width: 80px;
+      color: var(--text-secondary);
+      font-size: var(--font-sm);
+      font-weight: 500;
+    }
+
+    /*─────────────────────────────────────────────────
+        MISC
+      ─────────────────────────────────────────────────*/
+    .footer {
+      text-align: center;
+      font-size: var(--font-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-lg);
+    }
+
+    ::selection {
+      background: rgba(44, 130, 135, 0.3);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 style="margin-bottom: 3rem">Screen Measurement Converter</h1>
+
+    <div id="feedback" class="feedback"></div>
+
+    <!-- Section 1: Input Screen Dimensions -->
+    <div class="card">
+      <h2><span class="number">1</span>Enter Screen Size</h2>
+
+      <div class="input-group">
+        <label for="screenMm">Screen Width (mm):</label>
+        <input type="number" id="screenMm" step="0.01" value="248.6" />
+      </div>
+
+      <div class="input-group">
+        <label for="screenPx">Screen Width (px):</label>
+        <input type="number" id="screenPx" step="1" value="2360" />
+      </div>
+
+      <div class="input-group">
+        <label for="viewingDistance">Viewing Distance (cm):</label>
+        <p class="helper-text">needed for arc minutes</p>
+        <input type="number" id="viewingDistance" step="1" value="60" />
+      </div>
+
+      <div class="text-right">
+        <button class="btn" id="calculateBtn" onclick="calculateRatio()">
+          Compute Ratio
+        </button>
+      </div>
+    </div>
+
+    <!-- Section 2: Convert any px <-> mm -->
+    <div class="card">
+      <h2><span class="number">2</span>Convert Measurements</h2>
+
+      <!-- px -> mm & Arc Min-->
+      <div class="conversion-row">
+        <label for="inputPx">Pixels (px):</label>
+        <div class="conversion-input-row">
+          <div class="conversion-input-group">
+            <input type="number" id="inputPx" step="1" value="20" />
+            <div class="results-container">
+              <span id="convertedMm" class="result">-</span>
+              <span id="convertedPxToArcMin" class="result">-</span>
+            </div>
+          </div>
+          <button class="btn conversion-btn" onclick="convertPxToMm(), convertPxToArcMin()">
+            Convert
+          </button>
+        </div>
+      </div>
+
+      <!-- mm -> px & Arc Min-->
+      <div class="conversion-row">
+        <label for="inputMm">Millimeters (mm):</label>
+        <div class="conversion-input-row">
+          <div class="conversion-input-group">
+            <input type="number" id="inputMm" step="0.01" value="5" />
+            <div class="results-container">
+              <span id="convertedPx" class="result">-</span>
+              <span id="convertedMmToArcMin" class="result">-</span>
+            </div>
+          </div>
+          <button class="btn conversion-btn" onclick="convertMmToPx(), convertMmtoArcMin()">
+            Convert
+          </button>
+        </div>
+      </div>
+
+      <!-- arcmin -> px & mm-->
+      <div class="conversion-row">
+        <label for="inputArcMin">Arc Minutes:</label>
+        <div class="conversion-input-row">
+          <div class="conversion-input-group">
+            <input type="number" id="inputArcMin" step="0.1" value="20" />
+            <div class="results-container">
+              <span id="convertedArcMinPx" class="result">-</span>
+              <span id="convertedArcMinMm" class="result">-</span>
+            </div>
+          </div>
+          <button class="btn conversion-btn" onclick="convertArcMinToPx()">
+            Convert
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Results for 16px, 40px, 100px -->
+    <div class="card">
+      <h2><span class="number">3</span>Common Conversions</h2>
+
+      <div class="common-conversions">
+        <div>
+          <h3>Pixels to mm</h3>
+          <div class="result-box">
+            <span>16 px:</span>
+            <span id="mm16" class="result">-</span>
+          </div>
+
+          <div class="result-box">
+            <span>40 px:</span>
+            <span id="mm40" class="result">-</span>
+          </div>
+
+          <div class="result-box">
+            <span>100 px:</span>
+            <span id="mm100" class="result">-</span>
+          </div>
+        </div>
+
+        <div>
+          <h3>mm to Pixels</h3>
+          <div class="result-box">
+            <span>1 mm:</span>
+            <span id="px1mm" class="result">-</span>
+          </div>
+
+          <div class="result-box">
+            <span>5 mm:</span>
+            <span id="px5mm" class="result">-</span>
+          </div>
+
+          <div class="result-box">
+            <span>10 mm:</span>
+            <span id="px10mm" class="result">-</span>
+          </div>
+        </div>
+        <div>
+          <h3>Arc Minutes</h3>
+          <div class="result-box">
+            <span>12 arcmin:</span>
+            <span id="arcmin12" class="result">-</span>
+          </div>
+
+          <div class="result-box">
+            <span>16 arcmin:</span>
+            <span id="arcmin16" class="result">-</span>
+          </div>
+
+          <div class="result-box">
+            <span>20 arcmin:</span>
+            <span id="arcmin20" class="result">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      Screen Measurement Converter | For designers and developers
+    </div>
+  </div>
+
+  <script>
+    let mmPerPx = 0; // Will hold the ratio after user clicks "Compute Ratio"
+    let viewingDistanceCm = 0; // Will hold the viewing distance in cm
+
+    function showFeedback(message, isError = false) {
+      const feedback = document.getElementById("feedback");
+      feedback.textContent = message;
+      feedback.style.display = "block";
+
+      if (isError) {
+        feedback.className = "feedback error";
+      } else {
+        feedback.className = "feedback success";
+      }
+
+      // Reset animation
+      feedback.style.animation = "none";
+      feedback.offsetHeight; // Trigger reflow
+      feedback.style.animation =
+        "slideInUp 0.3s forwards, fadeOut 0.5s forwards";
+      feedback.style.animationDelay = "0s, 4s";
+    }
+
+    function calculateRatio() {
+      // Get user inputs
+      const screenMm = parseFloat(document.getElementById("screenMm").value);
+      const screenPx = parseFloat(document.getElementById("screenPx").value);
+      const distance = parseFloat(
+        document.getElementById("viewingDistance").value
+      );
+
+      if (isNaN(screenPx) || isNaN(screenMm) || isNaN(distance)) {
+        showFeedback("Please enter valid numbers for all measurements", true);
+        return;
+      }
+
+      if (screenPx <= 0 || screenMm <= 0 || distance <= 0) {
+        showFeedback(
+          "Please enter positive values for all measurements",
+          true
+        );
+        return;
+      }
+
+      // Compute mm per pixel
+      mmPerPx = screenMm / screenPx;
+
+      // Store viewing distance in cm, convert to mm for calculations
+      viewingDistanceCm = distance;
+      const viewingDistanceMm = viewingDistanceCm * 10;
+
+      // Display common pixel to mm conversions
+      document.getElementById("mm16").textContent =
+        (16 * mmPerPx).toFixed(2) + " mm";
+      document.getElementById("mm40").textContent =
+        (40 * mmPerPx).toFixed(2) + " mm";
+      document.getElementById("mm100").textContent =
+        (100 * mmPerPx).toFixed(2) + " mm";
+
+      // Display common mm to pixel conversions
+      document.getElementById("px1mm").textContent =
+        (1 / mmPerPx).toFixed(2) + " px";
+      document.getElementById("px5mm").textContent =
+        (5 / mmPerPx).toFixed(2) + " px";
+      document.getElementById("px10mm").textContent =
+        (10 / mmPerPx).toFixed(2) + " px";
+
+      // Calculate common arc minute sizes
+      // Convert arc minutes to radians, then use the formula: size = 2 * distance * tan(angle/2)
+      const calcArcMinSize = (arcMin) => {
+        const angleInRadians = (arcMin / 60) * (Math.PI / 180);
+        const sizeInMm = 2 * viewingDistanceMm * Math.tan(angleInRadians / 2);
+        const sizeInPx = sizeInMm / mmPerPx;
+        return { mm: sizeInMm.toFixed(2), px: sizeInPx.toFixed(2) };
+      };
+
+      // Display arc minute conversions
+      const arcmin12 = calcArcMinSize(12);
+      const arcmin16 = calcArcMinSize(16);
+      const arcmin20 = calcArcMinSize(20);
+
+      document.getElementById("arcmin12").textContent =
+        arcmin12.px + " px (" + arcmin12.mm + " mm)";
+      document.getElementById("arcmin16").textContent =
+        arcmin16.px + " px (" + arcmin16.mm + " mm)";
+      document.getElementById("arcmin20").textContent =
+        arcmin20.px + " px (" + arcmin20.mm + " mm)";
+
+      // Highlight the results by briefly changing background
+      const results = document.querySelectorAll(".result");
+      results.forEach((result) => {
+        result.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+        setTimeout(() => {
+          result.style.backgroundColor = "rgba(44,130,135,0.1)";
+        }, 1000);
+      });
+
+      showFeedback(
+        "Ratio calculated: 1 pixel = " + mmPerPx.toFixed(4) + " mm"
+      );
+    }
+
+    function convertPxToMm() {
+      const pxValue = parseFloat(document.getElementById("inputPx").value);
+
+      if (isNaN(pxValue)) {
+        showFeedback("Please enter a valid number for pixels", true);
+        return;
+      }
+
+      if (mmPerPx === 0) {
+        showFeedback("Please compute the ratio first (step 1)", true);
+        document.getElementById("calculateBtn").style.backgroundColor =
+          "#ef4444";
+        setTimeout(() => {
+          document.getElementById("calculateBtn").style.backgroundColor =
+            "var(--color-primary)";
+        }, 1500);
+        return;
+      }
+
+      if (pxValue < 0) {
+        showFeedback("Pixel values must be positive", true);
+        return;
+      }
+
+      const result = pxValue * mmPerPx;
+      const resultElement = document.getElementById("convertedMm");
+      resultElement.textContent = result.toFixed(2) + " mm";
+
+      // Highlight the result
+      resultElement.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+      setTimeout(() => {
+        resultElement.style.backgroundColor = "rgba(44,130,135,0.1)";
+      }, 1000);
+    }
+
+    function convertMmToPx() {
+      const mmValue = parseFloat(document.getElementById("inputMm").value);
+
+      if (isNaN(mmValue)) {
+        showFeedback("Please enter a valid number for millimeters", true);
+        return;
+      }
+
+      if (mmPerPx === 0) {
+        showFeedback("Please compute the ratio first (step 1)", true);
+        document.getElementById("calculateBtn").style.backgroundColor =
+          "#ef4444";
+        setTimeout(() => {
+          document.getElementById("calculateBtn").style.backgroundColor =
+            "var(--color-primary)";
+        }, 1500);
+        return;
+      }
+
+      if (mmValue < 0) {
+        showFeedback("Millimeter values must be positive", true);
+        return;
+      }
+
+      const result = mmValue / mmPerPx;
+      const resultElement = document.getElementById("convertedPx");
+      resultElement.textContent = result.toFixed(2) + " px";
+
+      // Highlight the result
+      resultElement.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+      setTimeout(() => {
+        resultElement.style.backgroundColor = "rgba(44,130,135,0.1)";
+      }, 1000);
+    }
+
+    function convertMmtoArcMin() {
+      const mmValue = parseFloat(document.getElementById("inputMm").value);
+
+      if (isNaN(mmValue)) {
+        showFeedback("Please enter a valid number for millimeters", true);
+        return;
+      }
+
+      if (mmPerPx === 0 || viewingDistanceCm === 0) {
+        showFeedback("Please compute the ratio first (step 1)", true);
+        document.getElementById("calculateBtn").style.backgroundColor =
+          "#ef4444";
+        setTimeout(() => {
+          document.getElementById("calculateBtn").style.backgroundColor =
+            "var(--color-primary)";
+        }, 1500);
+        return;
+      }
+
+      if (mmValue < 0) {
+        showFeedback("Millimeter values must be positive", true);
+        return;
+      }
+
+      // Convert viewing distance to mm
+      const viewingDistanceMm = viewingDistanceCm * 10;
+
+      // Calculate angle in radians using the formula:
+      // angle = 2 * arctan(size / (2 * distance))
+      const angleInRadians = 2 * Math.atan(mmValue / (2 * viewingDistanceMm));
+
+      // Convert angle to arc minutes
+      // 1 radian = (180/π) degrees, 1 degree = 60 arc minutes
+      const angleInArcMin = angleInRadians * (180 / Math.PI) * 60;
+
+      const resultElement = document.getElementById("convertedMmToArcMin");
+      resultElement.textContent = angleInArcMin.toFixed(2) + " Arc Min";
+
+      // Highlight the result
+      resultElement.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+      setTimeout(() => {
+        resultElement.style.backgroundColor = "rgba(44,130,135,0.1)";
+      }, 1000);
+    }
+
+    // Listen for Enter key on inputs
+    document
+      .getElementById("screenMm")
+      .addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          calculateRatio();
+        }
+      });
+
+    document
+      .getElementById("screenPx")
+      .addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          calculateRatio();
+        }
+      });
+
+    document
+      .getElementById("inputPx")
+      .addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          convertPxToMm();
+        }
+      });
+
+    document
+      .getElementById("inputMm")
+      .addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          convertMmToPx();
+        }
+      });
+
+    // Fix color variable reference in JavaScript
+    // Function to convert arc minutes to pixels and mm
+    function convertArcMinToPx() {
+      const arcMinValue = parseFloat(
+        document.getElementById("inputArcMin").value
+      );
+
+      if (isNaN(arcMinValue)) {
+        showFeedback("Please enter a valid number for arc minutes", true);
+        return;
+      }
+
+      if (mmPerPx === 0 || viewingDistanceCm === 0) {
+        showFeedback("Please compute the ratio first (step 1)", true);
+        document.getElementById("calculateBtn").style.backgroundColor =
+          "#ef4444";
+        setTimeout(() => {
+          document.getElementById("calculateBtn").style.backgroundColor =
+            "var(--color-primary)";
+        }, 1500);
+        return;
+      }
+
+      if (arcMinValue < 0) {
+        showFeedback("Arc minute values must be positive", true);
+        return;
+      }
+
+      // Convert viewing distance to mm
+      const viewingDistanceMm = viewingDistanceCm * 10;
+
+      // Calculate size in mm using the formula:
+      // size = 2 * distance * tan(angle/2)
+      // For small angles, we can use the approximation: tan(angle) ≈ angle in radians
+      // 1 arc minute = (1/60) degrees = (1/60) * (π/180) radians
+      const angleInRadians = (arcMinValue / 60) * (Math.PI / 180);
+      const sizeInMm = 2 * viewingDistanceMm * Math.tan(angleInRadians / 2);
+
+      // Calculate size in pixels
+      const sizeInPx = sizeInMm / mmPerPx;
+
+      const pxResultElement = document.getElementById("convertedArcMinPx");
+      const mmResultElement = document.getElementById("convertedArcMinMm");
+
+      pxResultElement.textContent = sizeInPx.toFixed(2) + " px";
+      mmResultElement.textContent = sizeInMm.toFixed(2) + " mm";
+
+      // Highlight the results
+      pxResultElement.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+      mmResultElement.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+      setTimeout(() => {
+        pxResultElement.style.backgroundColor = "rgba(44,130,135,0.1)";
+        mmResultElement.style.backgroundColor = "rgba(44,130,135,0.1)";
+      }, 1000);
+    }
+
+    // Function to convert pixels to arc minutes
+    function convertPxToArcMin() {
+      const pxValue = parseFloat(document.getElementById("inputPx").value);
+
+      if (isNaN(pxValue)) {
+        showFeedback("Please enter a valid number for pixels", true);
+        return;
+      }
+
+      if (mmPerPx === 0 || viewingDistanceCm === 0) {
+        showFeedback("Please compute the ratio first (step 1)", true);
+        document.getElementById("calculateBtn").style.backgroundColor =
+          "#ef4444";
+        setTimeout(() => {
+          document.getElementById("calculateBtn").style.backgroundColor =
+            "var(--color-primary)";
+        }, 1500);
+        return;
+      }
+
+      if (pxValue < 0) {
+        showFeedback("Pixel values must be positive", true);
+        return;
+      }
+
+      // Convert pixels to mm
+      const sizeInMm = pxValue * mmPerPx;
+
+      // Convert viewing distance to mm
+      const viewingDistanceMm = viewingDistanceCm * 10;
+
+      // Calculate angle in radians using the formula:
+      // angle = 2 * arctan(size / (2 * distance))
+      const angleInRadians =
+        2 * Math.atan(sizeInMm / (2 * viewingDistanceMm));
+
+      // Convert angle to arc minutes
+      // 1 radian = (180/π) degrees, 1 degree = 60 arc minutes
+      const angleInArcMin = angleInRadians * (180 / Math.PI) * 60;
+
+      const resultElement = document.getElementById("convertedPxToArcMin");
+      resultElement.textContent = angleInArcMin.toFixed(2) + " Arc Min";
+
+      // Highlight the result
+      resultElement.style.backgroundColor = "rgba(99, 102, 241, 0.3)";
+      setTimeout(() => {
+        resultElement.style.backgroundColor = "rgba(44,130,135,0.1)";
+      }, 1000);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Add event listeners for the new inputs
+      document
+        .getElementById("inputArcMin")
+        .addEventListener("keyup", function (event) {
+          if (event.key === "Enter") {
+            convertArcMinToPx();
+          }
+        });
+    });
+  </script>
+</body>
+
+</html>

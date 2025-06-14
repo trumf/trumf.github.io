@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A collection of useful design and development tools for designers and developers" />
+    <title>Design Tools | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/utilities.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/image-fullscreen.css" />
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Design Tools | Simon Rosenqvist">
+    <meta property="og:description" content="A collection of useful design and development tools for designers and developers">
+    <meta property="og:image" content="/public/images/favicon.svg">
+    <meta property="og:url" content="/jigs-tools/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Design Tools | Simon Rosenqvist">
+    <meta name="twitter:description" content="A collection of useful design and development tools for designers and developers">
+    <meta name="twitter:image" content="/public/images/favicon.svg">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml"
+        title="Rosenqvist Design">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar-container" class="navbar-container"></nav>
+        
+        <div class="hero-text">
+            <h1 class="display-1">Design Tools</h1>
+        </div>
+        
+    </header>
+
+    <main>
+        
+<div class="container">
+    <section class="tools-intro">
+        <p class="lead">
+            A collection of practical tools I've built to help with design and development tasks.
+            These tools are designed to be simple, focused, and useful for everyday work.
+        </p>
+    </section>
+
+    <section class="tools-grid">
+        <div class="tool-card">
+            <h2>Screen Measurement Converter</h2>
+            <p>
+                Convert between pixels, millimeters, and arc minutes for precise screen measurements.
+                Perfect for designers and developers working on physical displays.
+            </p>
+            <a href="/jigs-tools/angularsizetool.html" class="btn">Use Tool</a>
+        </div>
+
+        <!-- Add more tool cards here as you create new tools -->
+        <!-- Example:
+    <div class="tool-card">
+      <h2>Tool Name</h2>
+      <p>Description of what the tool does and who it's for.</p>
+      <a href="/path/to/tool.html" class="btn">Use Tool</a>
+    </div>
+    -->
+    </section>
+</div>
+
+<style>
+    .tools-intro {
+        margin-bottom: 2rem;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .tool-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tool-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-card h2 {
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        font-size: 1.5rem;
+    }
+
+    .tool-card p {
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        background: var(--color-primary);
+        color: white;
+        text-decoration: none;
+        border-radius: var(--radius);
+        font-weight: 500;
+        transition: background 0.2s;
+    }
+
+    .btn:hover {
+        background: var(--color-primary-light);
+    }
+
+    @media (max-width: 768px) {
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("/components/navbar.html");
+            $("#footer-container").load("/components/footer.html");
+        });
+    </script>
+    <script src="/js/image-fullscreen.js" defer></script>
+
+</body>
+
+</html>
