@@ -8,7 +8,8 @@
     "build": "eleventy",
     "serve": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "publish": "./publish.sh"
+    "publish": "./publish.sh",
+    "fix-rss": "npm uninstall @11ty/eleventy-plugin-rss && npm install @11ty/eleventy-plugin-rss && npm cache clean --force && echo 'RSS plugin reinstalled successfully!'"
   },
   "repository": {
     "type": "git",

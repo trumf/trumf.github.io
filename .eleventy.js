@@ -41,6 +41,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/portfolio.html");
   eleventyConfig.addPassthroughCopy("./cases/siic.html");
   eleventyConfig.addPassthroughCopy("./cases/volvo.html");
+  eleventyConfig.addPassthroughCopy("src/jigs-tools/angularsizetool.html");
 
   // Add passthrough copy for blog post images - COMMENTED OUT
   // eleventyConfig.addPassthroughCopy("src/blog/**/*.+(jpg|jpeg|png|gif|svg|webp)");

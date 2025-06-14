@@ -1,0 +1,100 @@
+---
+layout: base.njk
+title: Design Tools
+description: A collection of useful design and development tools for designers and developers
+hero: Design Tools
+---
+
+<div class="container">
+    <section class="tools-intro">
+        <p class="lead">
+            A collection of practical tools I've built to help with design and development tasks.
+            These tools are designed to be simple, focused, and useful for everyday work.
+        </p>
+    </section>
+
+    <section class="tools-grid">
+        <div class="tool-card">
+            <h2>Screen Measurement Converter</h2>
+            <p>
+                Convert between pixels, millimeters, and arc minutes for precise screen measurements.
+                Perfect for designers and developers working on physical displays.
+            </p>
+            <a href="/jigs-tools/angularsizetool.html" class="btn">Use Tool</a>
+        </div>
+
+        <!-- Add more tool cards here as you create new tools -->
+        <!-- Example:
+    <div class="tool-card">
+      <h2>Tool Name</h2>
+      <p>Description of what the tool does and who it's for.</p>
+      <a href="/path/to/tool.html" class="btn">Use Tool</a>
+    </div>
+    -->
+    </section>
+</div>
+
+<style>
+    .tools-intro {
+        margin-bottom: 2rem;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .tool-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tool-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-card h2 {
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        font-size: 1.5rem;
+    }
+
+    .tool-card p {
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        background: var(--color-primary);
+        color: white;
+        text-decoration: none;
+        border-radius: var(--radius);
+        font-weight: 500;
+        transition: background 0.2s;
+    }
+
+    .btn:hover {
+        background: var(--color-primary-light);
+    }
+
+    @media (max-width: 768px) {
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
