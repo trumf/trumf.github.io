@@ -8,6 +8,57 @@
         <description>A personal website and blog.</description>
         <language>en</language>
         <item>
+            <title>Jigs, Not Tools</title>
+            <link>https://rosenqvist.design/blog/jigs-for-craft/</link>
+            <description>&lt;p&gt;A while ago, I came across a blog post by PJ Oneri about the difference between jigs and tools. It struck a chord with me.&lt;/p&gt;
+&lt;p&gt;In other craft disciplines—woodworking, machining, even ceramics—it&#39;s common to make jigs. A jig is something that a craftsman makes for themselves to solve a particular problem. It&#39;s something a maker builds for themselves to solve a specific problem, often a one-off or repetitive task. A jig is personal and quickly made.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jigs are the custom tools that craftspeople create to enable them to do great work. In woodworking it’s often used to help make cuts with optimal precision. But, really, it can be used for anything. Jigs are what allow craftspeople to deliver quality predictably and faster.&lt;/p&gt;
+&lt;p&gt;Jigs are “fine, I’ll make it myself” made manifest. The tool they need doesn’t exist or is too expensive or is too much of a pain in the ass. So a jig is born. The craftsperson has a job to do and they’re not going to let a tool not existing stop them.&lt;/p&gt;
+&lt;cite&gt;&lt;a href=&quot;https://pjonori.blog/posts/crafts-and-tools-and-jigs/&quot;&gt;- PJ Oneri, Crafts and Tools and Jigs&lt;/a&gt;&lt;/cite&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reading PJ&#39;s post made me realize: I&#39;ve started building a lot of jigs too. Little scripts, templates, checklists—small things that help me solve my own problems, not meant to scale or be shipped but just meant to solve repetitive tasks.&lt;/p&gt;
+&lt;p&gt;I&#39;m thinking that I will start sharing them as examples of what you can create to help you in your day-to-day job as a designer.&lt;/p&gt;
+&lt;h2&gt;The Measurement Converter&lt;/h2&gt;
+&lt;p&gt;Over the past few years, I&#39;ve spent a lot of time working in the automotive industry. One thing that comes up again and again in that context is: how big does this icon or text need to be?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://rosenqvist.design/angularsizetool/&quot; style=&quot;display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: var(--text-lg);&quot;&gt;Screen Measurement converter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In automotive, you&#39;re almost always designing for multiple displays at once, and it&#39;s a heavily regulated environment. Certain visual elements, especially safety-critical ones, must meet strict size requirements in order for a vehicle to be legally sold in various markets.&lt;/p&gt;
+&lt;p&gt;There are two key ISO standards that typically guide this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ISO 15008&lt;/strong&gt; – This one provides recommended minimum sizes for text and graphical elements. It expresses these sizes in arc minutes, which depend on viewing distance. It&#39;s technically a recommendation, but most OEMs follow it closely to avoid legal risk and ensure good usability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ISO 2575&lt;/strong&gt; – This one defines concrete physical size requirements for telltales. These are the small warning symbols on the dashboard, and their size is supposed to be 75mm² measured in millimeters, not pixels.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As a digital designer, my Figma designs are measured in px. But compliance standards are written in arc minutes and millimeters. To bridge that gap, I needed an easy way to calculate:&lt;/p&gt;
+&lt;p&gt;• How many millimeters an element will be, based on pixel size and screen DPI&lt;/p&gt;
+&lt;p&gt;• How many arc minutes it subtends, based on viewing distance&lt;/p&gt;
+&lt;p&gt;And vice versa&lt;/p&gt;
+&lt;p&gt;During the design phase of a car project, the specs of screens and their positions change often. Many teams are working in parallel to get things to align, so you need to be able to give ballpark figures quickly. You also need to set hard limits for what is feasible from both a design side and regulation side.&lt;/p&gt;
+&lt;p&gt;In the past, I&#39;ve built solutions for this using Python scripts and Excel sheets. Both work—but recently, I&#39;ve found that building a small HTML page is often the fastest and most flexible way to share these kinds of utilities.&lt;/p&gt;
+&lt;p&gt;I think i was also a little inspired by &lt;a href=&quot;https://blog.jim-nielsen.com/2025/lots-of-little-html-pages/&quot;&gt;Jim Nielsen&lt;/a&gt; and his small HTML pages approach.&lt;/p&gt;
+&lt;p&gt;This little jig is vibe-coded as an artifact in claude and the only thing I&#39;ve fixed is to adjust the colors a bit and make sure it works for mobile sizes. Since it&#39;s all in one HTML file, I can email it, drop it in a Slack chat, or embed it in Confluence. People don&#39;t need to install anything, and it&#39;s more visual and self-explanatory than a spreadsheet.&lt;/p&gt;
+&lt;p&gt;Since it&#39;s a webpage created on my own computer in my own time, I can also take it with me. I can hang it on the wall of any workshop I join in the future, and it can help me improve the craft wherever I go.&lt;/p&gt;
+&lt;h2&gt;More jigs and tools to come&lt;/h2&gt;
+&lt;p&gt;I will share some more jigs in the future once I do some minimal cleanup on them. Whether or not this particular jig is useful to you, I hope you take away this: it&#39;s worth building jigs. Little tools for your own workflow. Not to scale, not to sell, not to impress anyone—just to help you work smarter.&lt;/p&gt;
+&lt;p&gt;My advice is to make them portable and standalone so you can take them with you in your toolbox. Make them with what you have at hand.&lt;/p&gt;
+&lt;p&gt;Also, if you make a jig, please share it as an example. The odds are that people don&#39;t have your exact problem (you would build tools for that), but they might have similar problems. Showing them some examples can make them go home and weld together something that suits them personally.&lt;/p&gt;
+&lt;p&gt;Please check out my jig and PJ&#39;s blog post, and if you have your own jigs, I would love to hear about them.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://rosenqvist.design/angularsizetool/&quot; style=&quot;display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: var(--text-lg);&quot;&gt;Screen Measurement converter&lt;/a&gt;&lt;/p&gt;
+</description>
+            <pubDate>Mon, 16 Jun 2025 07:00:00 GMT</pubDate>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.design/blog/jigs-for-craft/</guid>
+        </item>
+        <item>
             <title>11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them</title>
             <link>https://rosenqvist.design/blog/adding-rss-11ty/</link>
             <description>&lt;p&gt;I&#39;ve been following RSS feeds since probably the late oughts so when I moved this site into 11ty I of course wanted to have my own feed. What started as a simple plugin install turned into a debugging process involving dependency management, configuration conflicts, and deprecated APIs.&lt;/p&gt;

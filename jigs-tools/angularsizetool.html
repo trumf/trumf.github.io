@@ -360,6 +360,12 @@
       font-size: var(--font-sm);
       color: var(--text-secondary);
       margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+      /* Add some minimum height to make vertical centering visible */
     }
 
     ::selection {
@@ -517,9 +523,14 @@
         </div>
       </div>
     </div>
-    <div class="footer">
+    <footer class="footer">
       Screen Measurement Converter | For designers and developers
-    </div>
+
+      <a href="https://librecounter.org/referer/show" target="_blank">
+        <img src="https://librecounter.org/outline-brown.svg" referrerpolicy="unsafe-url"
+          style="width: 32px; height: 32px" />
+      </a>
+    </footer>
   </div>
 
   <script>
