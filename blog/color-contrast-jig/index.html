@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="How I created a visual tool to explore color relationships and solve contrast requirements in automotive interface design" />
+    <title>Building a Color Contrast Design Jig | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/utilities.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/image-fullscreen.css" />
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Building a Color Contrast Design Jig | Simon Rosenqvist">
+    <meta property="og:description" content="How I created a visual tool to explore color relationships and solve contrast requirements in automotive interface design">
+    <meta property="og:image" content="/public/images/favicon.svg">
+    <meta property="og:url" content="/blog/color-contrast-jig/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Building a Color Contrast Design Jig | Simon Rosenqvist">
+    <meta name="twitter:description" content="How I created a visual tool to explore color relationships and solve contrast requirements in automotive interface design">
+    <meta name="twitter:image" content="/public/images/favicon.svg">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml"
+        title="Rosenqvist Design">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar-container" class="navbar-container"></nav>
+        
+    </header>
+
+    <main>
+        
+<article class="section_padding">
+    <div class="section_content">
+
+        <div class="post-meta">
+            <time datetime="2025-06-23">2025-06-23</time>
+            
+            <h1 class="display-1">Building a Color Contrast Design Jig</h1>
+        </div>
+
+        <div class="post-content">
+            <p>When a driver glances at their dashboard at 70mph, every millisecond of recognition matters—and that's where color contrast becomes critical.</p>
+<p>Today I will talk about another jig I've created to help me in my daily design work. You can read more about <a href="/blog/jigs-for-craft/">jigs in my recent post here</a>.</p>
+<h2>The Problem with Traditional Contrast Checkers</h2>
+<p>When creating interfaces it is good practice to check that your background and foreground colors pass a contrast check. How to measure contrast is defined in WCAG and there are several color contrast checkers out there for both WCAG and APCA which is another algorithm that is meant to be more perceptually accurate. APCA is also better if you are designing dark mode interfaces, as the algorithm will give you a more accurate result for what is readable and what is not.</p>
+<p>But all tools I've found take an exact color (as a hex value or something) and compare it to another exact color. This is great if you want to validate two colors but if you are exploring and trying to find a palette that will work you might need to adjust all colors again if some of them don't have sufficient contrast. This creates a time-consuming iterative process.</p>
+<p>I needed a way to get an overview of how the colors relate to each other. More like a map than turn-by-turn directions, so I could see the general direction I should be heading.</p>
+<p><a href="https://rosenqvist.design/contrast-toy">The contrast toy is my attempt at doing that</a></p>
+<p>It works by comparing a background color to all the hues. Since you see all the hues you only need to adjust lightness and saturation to try to find a color that could work.</p>
+<h2>Real-World Application: The Tesla Light Theme Challenge</h2>
+<p>Back in 20... Tesla released a car with light theme UI. This was something that had never been seen in automotive interfaces before and since then it has been something that has been asked for in all car UIs.</p>
+<p>When you are designing for automotive interfaces you need to follow a whole bunch of regulations on top of just creating a good UX. One of those regulations is about the color of telltales (the little icons that show the state of the car). Some telltales are required to have a certain color. Red and green is usually no problem but yellow is not a great color on light backgrounds.</p>
+<h2>The Natural Lightness Problem</h2>
+<p>All hues, or more accurately all colors, have a natural lightness range. Some colors like yellow or turquoise only look yellow and turquoise when they are very bright. If you take a nice yellow and reduce the lightness it will turn into a muddy brown (same hue, different color).</p>
+<p>You can't get a light color like yellow to have sufficient contrast against a light background.</p>
+<p>Fortunately there are some ways around this. The regulation actually says that the telltales need to be yellow OR AMBER. None of these colors are defined but amber can be described as more towards the orange range of hues and this lets you inch your way over the contrast requirements. The other way, that is described in the regulations, is that you can add a border to the telltale and then you are allowed to measure the border value vs the background.</p>
+<p>We ended up using a combination of both methods to ensure good contrast as well as darkening the &quot;light theme&quot; background which helped with the contrast as well. By the way, if you have a background that sits somewhere in the middle of lightness values then you will have problems getting contrast both to dark colors and to light colors. Not recommended.</p>
+<h2>The jig allowed me to see the whole picture</h2>
+<p>This jig helped me explore color relationships much faster than checking individual colors against each other so I could sketch things out with this and then validate them with other contrast tools. The visual overview allowed me to quickly identify which hue ranges would work for different contrast requirements, saving hours of trial-and-error testing.</p>
+<p>If you have a problem that you think you will run into again, create your personal jig and add it to your personal toolbox. The time invested in building specialized tools pays dividends when you encounter similar challenges in future projects.</p>
+<p>The automotive industry's strict regulatory requirements combined with evolving design trends like light themes create unique constraints that standard tools don't always address effectively. Sometimes the solution is building exactly what you need rather than adapting existing tools to fit your workflow.</p>
+
+        </div>
+        <a href="/index.html" class="button" style="margin-left: var(--spacing-md); margin-top: var(--spacing-md);">Back
+            Home</a>
+    </div>
+
+</article>
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#navbar-container").load("/components/navbar.html");
+            $("#footer-container").load("/components/footer.html");
+        });
+    </script>
+    <script src="/js/image-fullscreen.js" defer></script>
+
+</body>
+
+</html>
