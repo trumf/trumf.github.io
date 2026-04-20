@@ -2,9 +2,9 @@
 layout: post.njk
 title: "Accident Models"
 date: 2025-07-31
-description: "Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty"
-image: /blog/adding-rss-11ty/rss-icon.svg
-imageAlt: "RSS feed icon"
+description: "A tour of accident models—from blame-focused ‘bad worker’ thinking to Safety-II and resilience engineering—with practical implications for designing safer automotive interfaces."
+image: /blog/Accident-models/ethan-ball-6hTwwfY5NKE-unsplash.jpg
+imageAlt: "Black-and-white photo of a wooden artist mannequin lying on its side"
 ---
 
 A while ago I held an introductionary lecture at work about accident models. While I was at university i took a couple of courses in accident managament as part of my Cognitive Science degree. Since we were working in Automotive, which is an industry with log ties to Human Factors, I thought it would be good if they had some background in these topics.
