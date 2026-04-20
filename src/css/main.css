@@ -1,5 +1,5 @@
 @import url("reset.css");
-@import url("https://fonts.googleapis.com/css?family=Inter:400");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("utilities.css");
 
 :root {
@@ -109,8 +109,6 @@
   --dark-text-tertiary: #949494;
 }
 
-/* Dark mode preference handling (commented out for now as light is the default) */
-/*
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-primary: var(--dark-bg-primary);
@@ -120,9 +118,13 @@
     --text-primary: var(--dark-text-primary);
     --text-secondary: var(--dark-text-secondary);
     --text-tertiary: var(--dark-text-tertiary);
+    --card-border: #2a2a2a;
+    --card-shadow: rgba(0, 0, 0, 0.6);
+    --navbar-text: var(--dark-text-primary);
+    --color-neutral-200: #2c2c2c;
+    --color-neutral-100: #1f1f1f;
   }
 }
-*/
 
 /* -----  typography ----- */
 
@@ -222,6 +224,17 @@ h5 {
   margin-bottom: var(--spacing-sm);
 }
 
+/* Section title accent */
+.section_content h2::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-primary);
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
 /* Text variants */
 .text-lead {
   font-size: var(--text-lg);
@@ -270,8 +283,8 @@ a:visited {
 
 a:hover,
 a:active {
-  color: var(--text-link-hover);
-  text-decoration: underline; /* Add underline on hover for better usability */
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 a:focus-visible {
@@ -562,9 +575,6 @@ body {
   }
 }
 
-
-}
-
 /* ------- common styles ------- */
 
 .bg_black {
@@ -665,6 +675,8 @@ svg {
 .hero-text {
   color: var(--text-primary);
   display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
   padding: 10% 15%;
   width: 100%;
   max-width: 1280px;
@@ -673,6 +685,34 @@ svg {
 .hero-text h1 {
   line-height: 115%;
   padding-top: 4rem;
+}
+
+.hero-text .text-lead {
+  max-width: 50ch;
+  margin-bottom: 0;
+}
+
+.hero-text .about__contact {
+  gap: var(--spacing-md);
+}
+
+.hero-text .about__contact a {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-text .about__contact a:hover {
+  color: var(--color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-text .about__contact img,
+  .contact-icon img {
+    filter: brightness(0) invert(1);
+  }
 }
 
 .about__contact {
@@ -712,7 +752,10 @@ svg {
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 4px var(--card-shadow);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
   border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
@@ -825,25 +868,23 @@ svg {
 .blog-card {
   background: var(--bg-card);
   border-radius: var(--border-radius-md);
-  box-shadow: 0 2px 4px var(--card-shadow);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 1px 3px var(--card-shadow);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
     border-color 0.3s ease-in-out;
-  border: 1px solid transparent;
-  background-clip: padding-box;
-  background-origin: padding-box;
-  box-shadow: 0 2px 4px var(--card-shadow), 0 0 0 1px var(--card-border);
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-width: 350px;
 }
 
 .blog-card:hover,
 .blog-card:focus-within {
+  transform: translateY(-2px);
   border-color: var(--color-secondary-light);
-  box-shadow: 0 2px 4px var(--card-shadow),
-    0 0 0 1px var(--color-secondary-light);
+  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 /* Post card (can be horizontal on larger screens) */
@@ -852,7 +893,10 @@ svg {
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 4px var(--card-shadow);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
   border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
@@ -888,14 +932,21 @@ svg {
   transform: scale(1.05);
 }
 
+.post-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.post-header h1 {
+  margin-bottom: var(--spacing-sm);
+}
+
 .post-meta {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-sm);
   font-size: var(--text-sm);
-  padding: 0 var(--spacing-sm);
+  color: var(--text-tertiary);
 }
 
 .post-content {
@@ -960,7 +1011,10 @@ svg {
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 4px var(--card-shadow);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
   border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
@@ -1138,6 +1192,26 @@ svg {
   font-size: 16px;
   line-height: 19px;
   color: var(--text-tertiary);
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
 /* Focus state for accessibility */
@@ -1362,17 +1436,27 @@ button:focus-visible {
   color: var(--text-primary);
 }
 
+a.nav-brand,
+a.nav-brand:link,
+a.nav-brand:visited {
+  color: var(--text-primary);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+a.nav-brand:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
 .navbar-nav a,
 .nav-link {
   color: var(--text-primary);
   text-decoration: none !important;
   transition: opacity 0.2s ease;
-}
-
-/* Prevent the logo/brand text from wrapping */
-.navbar a h4.nav-link {
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .navbar-nav a:hover {

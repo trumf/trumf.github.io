@@ -37,8 +37,7 @@ export default function (eleventyConfig) {
     "src/js": "js",
   });
 
-  // Add this line: Explicitly copy portfolio.html without processing
-  eleventyConfig.addPassthroughCopy("src/portfolio.html");
+  // portfolio.html now uses the base layout (no longer passthrough)
   eleventyConfig.addPassthroughCopy("./cases/siic.html");
   eleventyConfig.addPassthroughCopy("./cases/volvo.html");
   eleventyConfig.addPassthroughCopy("src/jigs-tools/angularsizetool.html");
