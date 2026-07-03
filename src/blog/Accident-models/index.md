@@ -2,6 +2,7 @@
 layout: post.njk
 title: "Accident Models"
 date: 2025-07-31
+tags: ["Human Factors", "Automotive"]
 description: "A tour of accident models—from blame-focused ‘bad worker’ thinking to Safety-II and resilience engineering—with practical implications for designing safer automotive interfaces."
 image: /blog/Accident-models/ethan-ball-6hTwwfY5NKE-unsplash.jpg
 imageAlt: "Black-and-white photo of a wooden artist mannequin lying on its side"

@@ -1,0 +1,74 @@
+---
+layout: base.njk
+title: "Design Leadership — Product, CX & Brand"
+description: "Simon Rosenqvist — design leader working across product design, customer experience, and brand. Writing on design leadership, tools, and craft."
+---
+
+<div class="hero-text">
+  <p class="hero-kicker">Simon Rosenqvist</p>
+  <h1 class="display-1">
+    Design leadership across product, customer experience, and brand.
+  </h1>
+  <p class="text-lead">
+    I lead design teams and build the tools they work with — grounded in
+    cognitive science, proven in automotive, fintech, and music. This is where
+    I write about the work.
+  </p>
+  <p class="hero-links">
+    <a href="/work/">Selected work</a>
+    <a href="/about/">About me</a>
+  </p>
+</div>
+
+<section class="section_padding">
+  <div class="section_content">
+    {% set posts = collections.post | reverse %}
+    {% set featured = posts | first %}
+
+    <h2 class="section-label">Latest</h2>
+    <a href="{{ featured.url }}" class="post-feature">
+      {% if featured.data.image %}
+      <div class="post-feature-image">
+        <img src="{{ featured.data.image }}" alt="{{ featured.data.imageAlt }}" loading="eager">
+      </div>
+      {% endif %}
+      <div class="post-feature-content">
+        <div class="post-meta-line">
+          <time datetime="{{ featured.date | dateToISO }}">{{ featured.date | readableDate }}</time>
+          {% if featured.data.tags %}
+          <span class="post-tags">
+            {%- for tag in featured.data.tags %}<span class="post-tag">{{ tag }}</span>{% endfor -%}
+          </span>
+          {% endif %}
+        </div>
+        <h3 class="post-feature-title">{{ featured.data.title }}</h3>
+        {% if featured.data.description %}
+        <p class="post-feature-description">{{ featured.data.description }}</p>
+        {% endif %}
+        <span class="post-read-more">Read the post</span>
+      </div>
+    </a>
+
+    <h2 class="section-label">Writing</h2>
+    <div class="post-list">
+      {% for post in posts %}
+      {% if not loop.first %}
+      <a href="{{ post.url }}" class="post-list-item">
+        <div class="post-meta-line">
+          <time datetime="{{ post.date | dateToISO }}">{{ post.date | readableDate }}</time>
+          {% if post.data.tags %}
+          <span class="post-tags">
+            {%- for tag in post.data.tags %}<span class="post-tag">{{ tag }}</span>{% endfor -%}
+          </span>
+          {% endif %}
+        </div>
+        <h3 class="post-list-title">{{ post.data.title }}</h3>
+        {% if post.data.description %}
+        <p class="post-list-description">{{ post.data.description }}</p>
+        {% endif %}
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

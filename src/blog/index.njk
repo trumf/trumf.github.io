@@ -1,38 +1,29 @@
 ---
 layout: base.njk
 title: Blog
-description: Blog posts and articles by Simon Rosenqvist on design, technology, AI, and work
-hero: Blog posts
+description: Blog posts and articles by Simon Rosenqvist on design leadership, technology, AI, and craft
+hero: Writing
 ---
 
 <section class="section_padding">
     <div class="section_content">
-        <div class="blog-grid">
-            {%- for post in collections.post | reverse -%}
-            <a href="{{ post.url }}" class="blog-card">
-                {% if post.data.image %}
-                <div class="card-image">
-                    <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}" loading="lazy">
-                </div>
-                {% endif %}
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">{{ post.date | dateToISO }}</span>
-                        {% if post.data.tags %}
-                        <div class="tags">
-                            {% for tag in post.data.tags %}
-                            <span class="tag">{{ tag }}</span>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    <h3 class="card-title">{{ post.data.title }}</h3>
-                    {% if post.data.description %}
-                    <p class="card-description">{{ post.data.description }}</p>
+        <div class="post-list">
+            {% for post in collections.post | reverse %}
+            <a href="{{ post.url }}" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="{{ post.date | dateToISO }}">{{ post.date | readableDate }}</time>
+                    {% if post.data.tags %}
+                    <span class="post-tags">
+                        {%- for tag in post.data.tags %}<span class="post-tag">{{ tag }}</span>{% endfor -%}
+                    </span>
                     {% endif %}
                 </div>
+                <h3 class="post-list-title">{{ post.data.title }}</h3>
+                {% if post.data.description %}
+                <p class="post-list-description">{{ post.data.description }}</p>
+                {% endif %}
             </a>
-            {%- endfor -%}
+            {% endfor %}
         </div>
     </div>
 </section>

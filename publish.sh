@@ -94,4 +94,4 @@ echo "🔄 Returning to $CURRENT_BRANCH branch..."
 git checkout "$CURRENT_BRANCH"
 
 echo "✅ Publishing complete! Your site should be live shortly at your GitHub Pages URL."
-echo "🌐 Typically: https://rosenqvist.design"
+echo "🌐 Typically: https://rosenqvist.xyz"

@@ -2,12 +2,12 @@
   "title": "Rosenqvist Design",
   "language": "en",
   "description": "A personal website and blog.",
-  "url": "https://rosenqvist.design",
+  "url": "https://rosenqvist.xyz",
   "feed": {
     "subtitle": "Design, UX, and technology",
     "filename": "feed.xml",
     "path": "/feed.xml",
-    "id": "https://rosenqvist.design/"
+    "id": "https://rosenqvist.xyz/"
   },
   "author": {
     "name": "Simon Rosenqvist",

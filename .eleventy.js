@@ -4,7 +4,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyRssPlugin, {
     posthtmlRenderOptions: {},
     outputPath: "/feed.xml",
-    base: "https://rosenqvist.design/",
+    base: "https://rosenqvist.xyz/",
     metadata: {
       language: "en",
       title: "Rosenqvist Design",
@@ -13,7 +13,7 @@ export default function (eleventyConfig) {
         name: "Simon Rosenqvist",
         email: "", // Optional
       },
-      feed_url: "https://rosenqvist.design/feed.xml", // Absolute url to the feed
+      feed_url: "https://rosenqvist.xyz/feed.xml", // Absolute url to the feed
     },
   });
 
@@ -27,19 +27,11 @@ export default function (eleventyConfig) {
     "src/public": ".",
   });
 
-  // Copy the components directory to the output
-  eleventyConfig.addPassthroughCopy({
-    "src/components": "components",
-  });
-
   // Copy the js directory to the output
   eleventyConfig.addPassthroughCopy({
     "src/js": "js",
   });
 
-  // portfolio.html now uses the base layout (no longer passthrough)
-  eleventyConfig.addPassthroughCopy("./cases/siic.html");
-  eleventyConfig.addPassthroughCopy("./cases/volvo.html");
   eleventyConfig.addPassthroughCopy("src/jigs-tools/angularsizetool.html");
 
   // Add passthrough copy for blog post images - COMMENTED OUT
@@ -53,6 +45,16 @@ export default function (eleventyConfig) {
   // Add dateToISO filter
   eleventyConfig.addFilter("dateToISO", function (date) {
     return new Date(date).toISOString().split("T")[0];
+  });
+
+  // Human-readable date, e.g. "23 June 2025"
+  eleventyConfig.addFilter("readableDate", function (date) {
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
   });
 
   // Configure collections

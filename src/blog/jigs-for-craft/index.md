@@ -2,6 +2,7 @@
 layout: post.njk
 title: "Jigs, Not Tools"
 date: 2025-06-16
+tags: ["Jigs", "Craft"]
 description: "Building personal utilities instead of general tools - why jigs matter for designers"
 image: /blog/jigs-for-craft/converterscreenshot.png
 imageAlt: "Workshop jig icon"
@@ -26,7 +27,7 @@ I'm thinking that I will start sharing them as examples of what you can create t
 
 Over the past few years, I've spent a lot of time working in the automotive industry. One thing that comes up again and again in that context is: how big does this icon or text need to be?
 
-<a href="https://rosenqvist.design/angularsizetool/" style="display: flex;
+<a href="/angularsizetool/" style="display: flex;
     width: 100%;
     justify-content: center;
     font-size: var(--text-lg);">Screen Measurement converter</a>
@@ -67,7 +68,7 @@ Also, if you make a jig, please share it as an example. The odds are that people
 
 Please check out my jig and PJ's blog post, and if you have your own jigs, I would love to hear about them.
 
-<a href="https://rosenqvist.design/angularsizetool/" style="display: flex;
+<a href="/angularsizetool/" style="display: flex;
     width: 100%;
     justify-content: center;
     font-size: var(--text-lg);">Screen Measurement converter</a>

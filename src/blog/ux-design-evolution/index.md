@@ -2,6 +2,7 @@
 layout: post.njk
 title: The Evolution of UX Design
 date: 2024-03-30
+tags: ["UX", "Product"]
 description: The evolution of UX design roles and responsibilities
 image: /blog/ux-design-evolution/dmitrii-shkurin-NRMrZMuGhwM-unsplash 1.png
 imageAlt: A skyscraper twisting around its own axis

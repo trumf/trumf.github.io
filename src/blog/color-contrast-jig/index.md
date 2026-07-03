@@ -2,6 +2,7 @@
 layout: post.njk
 title: "Building a Color Contrast Design Jig"
 date: 2025-06-23
+tags: ["Jigs", "Automotive"]
 description: "How I created a visual tool to explore color relationships and solve contrast requirements in automotive interface design"
 image: /blog/color-contrast-jig/contrast-tool.png
 imageAlt: "Color contrast visualization tool"
@@ -19,7 +20,7 @@ But all tools I've found take an exact color (as a hex value or something) and c
 
 I needed a way to get an overview of how the colors relate to each other. More like a map than turn-by-turn directions, so I could see the general direction I should be heading.
 
-[The contrast toy is my attempt at doing that](https://rosenqvist.design/contrast-toy)
+[The contrast toy is my attempt at doing that](/contrast-toy/)
 
 It works by comparing a background color to all the hues. Since you see all the hues you only need to adjust lightness and saturation to try to find a color that could work.
 

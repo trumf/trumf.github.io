@@ -2,6 +2,7 @@
 layout: post.njk
 title: How to adapt to AI as a Designer?
 date: 2024-03-30
+tags: ["AI", "Design"]
 description: If we feel urgency about AI what should we do?
 image: /blog/design-and-ai/Untitled-1.png
 imageAlt: A circuit board

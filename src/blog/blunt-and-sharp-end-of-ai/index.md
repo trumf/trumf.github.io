@@ -2,6 +2,7 @@
 layout: post.njk
 title: The Blunt and Sharp end of AI
 date: 2024-03-30
+tags: ["AI", "Product"]
 description: What is the blunt and sharp end of organisations and how does it affect the design of AI tools?
 image: /blog/blunt-and-sharp-end-of-ai/Untitled.png
 imageAlt: Grey rocks

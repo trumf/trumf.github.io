@@ -2,6 +2,7 @@
 layout: post.njk
 title: Command line and prompt interfaces
 date: 2024-03-30
+tags: ["AI", "Design"]
 description: A blogpost about design patterns for ai and the new types of interactions that are needed and enjoyed
 image: /blog/cli-and-prompts/susan-wilkinson-Dvx_jJW4vHs-unsplash.png
 imageAlt: Swirling colors with blues and yellows

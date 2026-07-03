@@ -2,6 +2,7 @@
 layout: post.njk
 title: Moving the Blog to 11ty
 date: 2025-05-11
+tags: ["Web", "Meta"]
 description: Moved the blog away from pure HTML and migrated to 11ty
 image: /blog/moving-to-11ty/11ty-image.png
 imageAlt: The logo of eleventy

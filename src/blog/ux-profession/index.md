@@ -2,6 +2,7 @@
 layout: post.njk
 title: How has the role of the UX designer changed?
 date: 2024-03-30
+tags: ["UX"]
 description: How have the role of the UX designer evloved over the years?
 image: /blog/ux-profession/balazs-ketyi-U008D4Jp2CY-unsplash.png
 imageAlt: Pen and paper, a book of icons is open
