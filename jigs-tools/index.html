@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,25 +9,26 @@
     <title>Design Tools | Simon Rosenqvist</title>
 
     <!-- Styles and Resources -->
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/utilities.css" />
     <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/image-fullscreen.css" />
-    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon-light.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg">
 
     <!-- Open Graph Meta Tags -->
+    
     <meta property="og:title" content="Design Tools | Simon Rosenqvist">
     <meta property="og:description" content="A collection of useful design and development tools for designers and developers">
-    <meta property="og:image" content="/public/images/favicon.svg">
-    <meta property="og:url" content="/jigs-tools/">
+    <meta property="og:image" content="https://rosenqvist.xyz/public/images/favicon.svg">
+    <meta property="og:url" content="https://rosenqvist.xyz/jigs-tools/">
     <meta property="og:type" content="website">
+    
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Design Tools | Simon Rosenqvist">
     <meta name="twitter:description" content="A collection of useful design and development tools for designers and developers">
-    <meta name="twitter:image" content="/public/images/favicon.svg">
+    <meta name="twitter:image" content="https://rosenqvist.xyz/public/images/favicon.svg">
 
     <!-- RSS Feed -->
     <link rel="alternate" href="/feed.xml" type="application/rss+xml"
@@ -36,7 +37,19 @@
 
 <body>
     <header>
-        <nav id="navbar-container" class="navbar-container"></nav>
+        <nav class="navbar-container">
+            <!-- Navbar Component -->
+<div class="navbar">
+    <a href="/" class="nav-brand">Rosenqvist</a>
+
+    <ul class="navbar-nav">
+        <li class="nav-item"><a href="/" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="/work/" class="nav-link">Work</a></li>
+        <li class="nav-item"><a href="/about/" class="nav-link">About</a></li>
+    </ul>
+</div>
+
+        </nav>
         
         <div class="hero-text">
             <h1 class="display-1">Design Tools</h1>
@@ -142,18 +155,44 @@
     </main>
 
     <footer role="contentinfo" class="footer_padding bg_black">
-        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <!-- Footer Component -->
+<div class="footer-wrapper">
+    <div class="footer__contact">
+        <h3>Get in touch:</h3>
+        <a class="contact-icon nav-link" href="mailto:info@rosenqvist.design">
+            <img src="/public/images/email.svg" alt="email"
+                style="width: 24px; height: 24px; filter: brightness(0) invert(1);" />
+            info@rosenqvist.design
+        </a>
+        <a class="contact-icon nav-link" href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank">
+            <img src="/public/images/linkedIn_icon.svg" alt="Linkedin"
+                style="width: 24px; height: 24px; filter: brightness(0) invert(1);" />
+            LinkedIn
+        </a>
+        <a class="contact-icon nav-link" href="https://mastodon.social/@amalgam_" target="_blank">
+            <img src="/public/images/mastodon-logo-purple.svg" alt="Mastodon" />
+            Mastodon
+        </a>
+        <a class="contact-icon nav-link" href="/feed.xml" target="_blank">
+            <img src="/public/images/rss-icon.svg" alt="RSS" />
+            RSS
+        </a>
+        <a class="nav-link" href="/jigs-tools/">Design tools</a>
+    </div>
+
+    <div class="copyright">
+        <p style="white-space: nowrap">©2025, Simon Rosenqvist</p>
+        <a href="https://librecounter.org/referer/show" target="_blank">
+            <img src="https://librecounter.org/outline-white.svg" referrerpolicy="unsafe-url"
+                style="width: 32px; height: 32px" />
+        </a>
+    </div>
+</div>
+        </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#navbar-container").load("/components/navbar.html");
-            $("#footer-container").load("/components/footer.html");
-        });
-    </script>
     <script src="/js/image-fullscreen.js" defer></script>
-
 </body>
 
 </html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A tour of accident models—from blame-focused ‘bad worker’ thinking to Safety-II and resilience engineering—with practical implications for designing safer automotive interfaces." />
+    <title>Accident Models | Simon Rosenqvist</title>
+
+    <!-- Styles and Resources -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/image-fullscreen.css" />
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon-light.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg">
+
+    <!-- Open Graph Meta Tags -->
+    
+    <meta property="og:title" content="Accident Models | Simon Rosenqvist">
+    <meta property="og:description" content="A tour of accident models—from blame-focused ‘bad worker’ thinking to Safety-II and resilience engineering—with practical implications for designing safer automotive interfaces.">
+    <meta property="og:image" content="https://rosenqvist.xyz/blog/Accident-models/ethan-ball-6hTwwfY5NKE-unsplash.jpg">
+    <meta property="og:url" content="https://rosenqvist.xyz/blog/Accident-models/">
+    <meta property="og:type" content="article">
+    
+    <meta property="article:published_time" content="2025-07-31">
+    <meta property="article:author" content="Simon Rosenqvist">
+    
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Accident Models | Simon Rosenqvist">
+    <meta name="twitter:description" content="A tour of accident models—from blame-focused ‘bad worker’ thinking to Safety-II and resilience engineering—with practical implications for designing safer automotive interfaces.">
+    <meta name="twitter:image" content="https://rosenqvist.xyz/blog/Accident-models/ethan-ball-6hTwwfY5NKE-unsplash.jpg">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml"
+        title="Rosenqvist Design">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar-container">
+            <!-- Navbar Component -->
+<div class="navbar">
+    <a href="/" class="nav-brand">Rosenqvist</a>
+
+    <ul class="navbar-nav">
+        <li class="nav-item"><a href="/" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="/work/" class="nav-link">Work</a></li>
+        <li class="nav-item"><a href="/about/" class="nav-link">About</a></li>
+    </ul>
+</div>
+
+        </nav>
+        
+    </header>
+
+    <main>
+        
+<article class="section_padding">
+    <div class="section_content">
+
+        <header class="post-header">
+            <h1 class="display-1">Accident Models</h1>
+            <div class="post-meta">
+                <time datetime="2025-07-31">31 July 2025</time>
+                
+                <div class="tags">
+                    
+                    <span class="tag">Human Factors</span>
+                    
+                    <span class="tag">Automotive</span>
+                    
+                </div>
+                
+            </div>
+        </header>
+
+        <div class="post-content">
+            <p>A while ago I held an introductionary lecture at work about accident models. While I was at university i took a couple of courses in accident managament as part of my Cognitive Science degree. Since we were working in Automotive, which is an industry with log ties to Human Factors, I thought it would be good if they had some background in these topics.</p>
+<p>The introduction below is incomplete and I advice you to look up these topics on your own. It is also argumentative since I wanted to make a point in how we should approach interface design to avoid accidents.</p>
+<h2>The &quot;Bad Worker&quot; Era: A Dangerous Oversimplification (1800s-1940s)</h2>
+<p>Early accident models centered on a deceptively simple idea: some people are just more accident-prone than others. This &quot;Bad Worker&quot; model suggested that certain individuals possess inherent personality traits, physical characteristics, or psychological tendencies that make them natural accident magnets.</p>
+<p>Why did this model persist for so long? It offered several appealing characteristics:</p>
+<ul>
+<li><strong>Simplicity</strong>: Easy to understand and implement</li>
+<li><strong>Cost-effectiveness</strong>: Cheaper to blame individuals than fix systems</li>
+<li><strong>Legal convenience</strong>: Shifted liability away from employers</li>
+<li><strong>Statistical support</strong>: Data did show accident concentration among certain individuals</li>
+</ul>
+<p>Despite its initial appeal, the &quot;Bad Worker&quot; model proved fatally flawed:</p>
+<p><strong>1. Victim Blaming</strong></p>
+<ul>
+<li>Ignored workplace hazards, poor equipment, and inadequate training</li>
+<li>Shifted responsibility away from management</li>
+<li>Prevented investment in safer working conditions</li>
+</ul>
+<p><strong>2. Oversimplified Causation</strong></p>
+<ul>
+<li>Ignored environmental factors: lighting, noise, temperature, time pressure</li>
+<li>Overlooked organizational factors: training, supervision, safety culture</li>
+<li>Failed to consider equipment design and maintenance issues</li>
+</ul>
+<p><strong>3. Statistical Misinterpretation</strong></p>
+<ul>
+<li>High accident rates often resulted from high-risk job assignments, not personal traits</li>
+<li>New workers naturally have more accidents initially</li>
+<li>Some workers were simply assigned to more dangerous roles</li>
+</ul>
+<p><strong>4. Lack of Predictive Power</strong></p>
+<ul>
+<li>&quot;Accident-prone&quot; workers often became safe workers in better environments</li>
+<li>&quot;Safe&quot; workers had accidents when placed in hazardous conditions</li>
+<li>Personal characteristics were poor predictors of future accident involvement</li>
+</ul>
+<h2>Linear Models of Causation</h2>
+<h3>The Domino Effect Model (Heinrich, 1931)</h3>
+<p>In the 1930s the &quot;blame the klutz&quot; model of accidents were wearing thin since it was obvious that something more rigourus was needed.</p>
+<p>Heinrich's breakthrough insight was viewing accidents not as random events, but as predictable sequences. His Domino Effect Model proposed that:</p>
+<ul>
+<li>Accidents result from a chain of linked events</li>
+<li>Each event sets up the next, like falling dominoes</li>
+<li>Breaking any single link stops the entire sequence</li>
+<li>Investigation should trace back through the sequence to find intervention points</li>
+</ul>
+<p>This model introduced crucial concepts:</p>
+<p><strong>Systematic Accident Analysis</strong></p>
+<ul>
+<li>Accidents aren't random—they follow predictable patterns</li>
+<li>Every accident has multiple contributing factors</li>
+<li>Investigation should trace back through the sequence</li>
+</ul>
+<p><strong>Hierarchical Causation</strong></p>
+<ul>
+<li>Immediate causes vs. root causes</li>
+<li>Surface symptoms vs. underlying problems</li>
+<li>Led to modern &quot;proximate cause&quot; and &quot;root cause&quot; thinking</li>
+</ul>
+<h3>Root Cause Analysis: The &quot;5 Whys&quot; Technique (1970s)</h3>
+<p>Today you might have heard of &quot;Root Causes&quot; and how you need to investigate and get to the bottom of something before we act. Root Cuase analysis builds on this linear Domino framework and is widely used all over the world.</p>
+<p>While doing a root cause analysis you might have encoutnered the &quot;5 Why's&quot; technique. I've even seen it used as a UX research tool during interview studies and discovery focused studies. The approach uses a super simple technique: keep asking &quot;why&quot; until you reach actionable causes.</p>
+<p>The Root Cause Analysis framework categorises causes into 3 levels:</p>
+<p><strong>1. Surface Level - Immediate Causes</strong></p>
+<ul>
+<li>Unsafe acts: Human errors, violations, poor decisions</li>
+<li>Unsafe conditions: Equipment failures, environmental hazards</li>
+</ul>
+<p><strong>2. Intermediate Level - Underlying Causes</strong></p>
+<ul>
+<li>Job factors: Inadequate procedures, poor tool design, time pressure</li>
+<li>Personal factors: Lack of knowledge, physical limitations, stress</li>
+</ul>
+<p><strong>3. Deep Level - Root Causes</strong></p>
+<ul>
+<li>Organizational factors: Poor safety culture, inadequate resources, conflicting priorities</li>
+<li>Management systems: Deficient policies, training programs, maintenance systems</li>
+</ul>
+<p>The key insight: good root cause analysis identifies issues with processes, organization, communication, and leadership—not just individual failings.</p>
+<h2>Defense in Depth: The Power of Barriers</h2>
+<p>Rather than focusing solely on causes, engineers began designing barriers—physical or procedural &quot;breakers&quot; that interrupt accident sequences. These barriers fall into four distinct categories, each with unique strengths and limitations:</p>
+<h2>The Paradigm Shift: From Safety-I to Safety-II</h2>
+<h3>The Limitations of Traditional Thinking</h3>
+<p>Safety-I represents the traditional approach that dominated thinking for decades. But as systems grew more complex, fundamental flaws became apparent:</p>
+<ul>
+<li>Most work succeeds despite systems being &quot;imperfect&quot;</li>
+<li>Variability in performance is normal and often beneficial</li>
+<li>People adapt continuously to make systems work</li>
+<li>Accidents are rare, but everyday success is common</li>
+</ul>
+<h3>Characteristics of Safety-I vs. Safety-II</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Safety-I</th>
+<th>Safety-II</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Focus</strong></td>
+<td>What went wrong</td>
+<td>What goes right</td>
+</tr>
+<tr>
+<td><strong>Approach</strong></td>
+<td>Failure-focused, reactive</td>
+<td>Success-focused, proactive</td>
+</tr>
+<tr>
+<td><strong>Causality</strong></td>
+<td>Linear chains</td>
+<td>Non-linear interactions</td>
+</tr>
+<tr>
+<td><strong>View of People</strong></td>
+<td>Sources of error</td>
+<td>Sources of adaptability</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Compliance equals safety</td>
+<td>Variability enables success</td>
+</tr>
+<tr>
+<td><strong>Method</strong></td>
+<td>Root cause analysis</td>
+<td>Understanding normal work</td>
+</tr>
+</tbody>
+</table>
+<h3>What Safety-II Brings to the Table</h3>
+<p><strong>1. Understanding Success, Not Just Failure</strong></p>
+<ul>
+<li>Primary question: &quot;How do things go right?&quot;</li>
+<li>Focus on everyday work and normal operations</li>
+<li>Learn from what works, not just what fails</li>
+</ul>
+<p><strong>2. Performance Variability as Normal</strong></p>
+<ul>
+<li>Variability is inevitable and often necessary</li>
+<li>People adjust and adapt to make systems work</li>
+</ul>
+<p><strong>3. Work-as-Done vs. Work-as-Imagined</strong></p>
+<ul>
+<li>Work-as-Imagined: How we think work should be performed (procedures, protocols)</li>
+<li>Work-as-Done: How work actually happens in practice</li>
+<li>The gap between these is where both success and failure emerge</li>
+</ul>
+<p><strong>4. Proactive Safety Management</strong></p>
+<ul>
+<li>Anticipate and prepare for future challenges</li>
+<li>Monitor for early warning signs</li>
+<li>Build adaptive capacity before problems occur</li>
+</ul>
+<p><strong>5. System-Level Thinking</strong></p>
+<ul>
+<li>Focus on interactions and relationships</li>
+<li>Non-linear causality and feedback loops</li>
+</ul>
+<h2>Embracing Complexity: Normal Accidents and Resilience</h2>
+<h3>Normal Accidents Theory</h3>
+<p>Charles Perrow introduced a sobering reality: some accidents are inevitable in complex systems. Two key factors create this inevitability:</p>
+<ul>
+<li><strong>Interactive complexity</strong>: Parts interact in unexpected ways</li>
+<li><strong>Tight coupling</strong>: Failures cascade rapidly through the system</li>
+</ul>
+<p>Examples include nuclear plants, air traffic control, and modern software systems. The implication: perfect safety is impossible in complex systems—some accidents are &quot;normal,&quot; built into the system's DNA.</p>
+<h3>Resilience Engineering (2005 onward)</h3>
+<p>Rather than seeking perfection, resilience engineering focuses on a system's ability to adapt and maintain function under stress.</p>
+<p><strong>Defining Resilience:</strong>
+&quot;The intrinsic ability of a system to adjust its functioning prior to, during, or following changes and disturbances, so that it can sustain required operations under both expected and unexpected conditions.&quot;</p>
+<h3>The Four Cornerstones of Resilience</h3>
+<p><strong>1. Responding (The Actual)</strong></p>
+<ul>
+<li>What to do when something happens</li>
+<li>Immediate reaction to current disturbances</li>
+<li>Crisis management and emergency response</li>
+</ul>
+<p><strong>2. Monitoring (The Critical)</strong></p>
+<ul>
+<li>What to look for in current operations</li>
+<li>Tracking performance indicators and early warnings</li>
+<li>Situational awareness and pattern recognition</li>
+</ul>
+<p><strong>3. Learning (The Factual)</strong></p>
+<ul>
+<li>What has happened and why</li>
+<li>Understanding from both successes and failures</li>
+<li>Building knowledge for future adaptations</li>
+</ul>
+<p><strong>4. Anticipating (The Potential)</strong></p>
+<ul>
+<li>What could happen in the future</li>
+<li>Preparing for potential disruptions and opportunities</li>
+<li>Strategic foresight and scenario planning</li>
+</ul>
+<h3>Creating Resilience: Practical Approaches</h3>
+<p><strong>1. Develop Sensing Capabilities</strong></p>
+<ul>
+<li>Early warning systems for detecting drift</li>
+<li>Multiple perspectives on system performance</li>
+<li>Regular &quot;pulse checks&quot; on system health</li>
+</ul>
+<p><strong>2. Build Adaptive Capacity</strong></p>
+<ul>
+<li>Cross-training and flexible role assignments</li>
+<li>Redundancy in skills, not just equipment</li>
+<li>Decision-making authority at appropriate levels</li>
+</ul>
+<p><strong>3. Foster Learning Culture</strong></p>
+<ul>
+<li>Psychological safety for reporting concerns</li>
+<li>Regular debriefs on both successes and near-misses</li>
+<li>Knowledge sharing across organizational levels</li>
+</ul>
+<p><strong>4. Prepare for Uncertainty</strong></p>
+<ul>
+<li>Scenario planning and stress testing</li>
+<li>Resource reserves for unexpected demands</li>
+<li>Flexible procedures that allow adaptation</li>
+</ul>
+<p><strong>5. Design for Graceful Degradation</strong></p>
+<ul>
+<li>Fail-safe mechanisms that maintain core functions</li>
+<li>Prioritization of critical vs. non-critical operations</li>
+<li>Rapid recovery protocols</li>
+</ul>
+<h2>Human Cognition and Action in Safety</h2>
+<p>Understanding how people process information and make decisions is crucial for effective safety design. Human cognition involves four key stages:</p>
+<h3>Memory</h3>
+<p>How prior experience shapes responses to current situations. Design implication: Provide cues that align with existing mental models.</p>
+<h3>Attention</h3>
+<p>Limited cognitive resource that becomes further constrained under stress. Design implication: Minimize distractions and highlight critical information clearly.</p>
+<h3>Decision</h3>
+<p>The process of choosing among alternatives, often using mental shortcuts (heuristics) under time pressure. Design implication: Reduce ambiguity through good defaults and clear options.</p>
+<h3>Action</h3>
+<p>Translating decisions into physical behavior. Design implication: Ensure controls map intuitively to their effects and provide timely feedback.</p>
+<h2>Practical Implications for Automotive Design</h2>
+<p>These accident models offer concrete guidance for creating safer, more resilient automotive systems:</p>
+<h3>For System Design</h3>
+<ul>
+<li><strong>Build in flexibility and adaptability</strong>: Don't assume perfect conditions</li>
+<li><strong>Design for humans to succeed</strong>: Support natural cognitive processes</li>
+<li><strong>Enable performance variability</strong>: Allow adaptation within safe boundaries</li>
+</ul>
+<h3>For Training</h3>
+<ul>
+<li><strong>Develop adaptive expertise</strong>: Emphasize understanding over rule-following</li>
+<li><strong>Practice unexpected situations</strong>: Build skills for novel scenarios</li>
+<li><strong>Focus on principles</strong>: Help users understand why, not just what</li>
+</ul>
+<h3>For Management</h3>
+<ul>
+<li><strong>Monitor work-as-done vs. work-as-imagined</strong>: Understand the reality gap</li>
+<li><strong>Encourage appropriate risk-taking</strong>: Innovation requires some uncertainty</li>
+<li><strong>Invest in capabilities</strong>: Build adaptive capacity, not just barriers</li>
+</ul>
+<h3>For Assessment</h3>
+<ul>
+<li><strong>Measure positive performance</strong>: Track what goes right</li>
+<li><strong>Use leading indicators</strong>: Don't wait for failures to act</li>
+<li><strong>Assess adaptive capacity</strong>: Can the system handle variability?</li>
+</ul>
+<h2>Key Takeaways: Design Principles for Safety</h2>
+<ol>
+<li><strong>Don't blame users</strong>: Errors point to design opportunities, not user deficiencies</li>
+<li><strong>Design multiple barriers</strong>: Defense in depth prevents accidents through redundancy</li>
+<li><strong>Study success patterns</strong>: Learn from when things go right, not just failures</li>
+<li><strong>Accept complexity</strong>: Modern systems can't be made perfectly predictable</li>
+<li><strong>Build for resilience</strong>: Help users succeed despite variability (fatigue, stress, degraded sensors)</li>
+<li><strong>Design for learning</strong>: The better users understand your system, the more resilient they become</li>
+</ol>
+<h2>Looking Forward</h2>
+<p>Our journey from the &quot;Bad Worker&quot; model to resilience engineering reveals that safety is never about a single fix. It emerges from understanding complex interactions, layering imperfect defenses, and empowering people to adapt successfully.</p>
+<p>As automotive systems become increasingly automated and connected, these lessons become even more critical. The future of automotive safety lies not in eliminating human variability, but in designing systems that work with human strengths and compensate for human limitations.</p>
+<p>The evolution continues, and the next chapter promises even more sophisticated approaches to keeping us safe on the road.</p>
+
+        </div>
+        <a href="/" class="button" style="margin-top: var(--spacing-lg);">Back Home</a>
+    </div>
+
+</article>
+
+    </main>
+
+    <footer role="contentinfo" class="footer_padding bg_black">
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <!-- Footer Component -->
+<div class="footer-wrapper">
+    <div class="footer__contact">
+        <h3>Get in touch:</h3>
+        <a class="contact-icon nav-link" href="mailto:info@rosenqvist.design">
+            <img src="/public/images/email.svg" alt="email"
+                style="width: 24px; height: 24px; filter: brightness(0) invert(1);" />
+            info@rosenqvist.design
+        </a>
+        <a class="contact-icon nav-link" href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank">
+            <img src="/public/images/linkedIn_icon.svg" alt="Linkedin"
+                style="width: 24px; height: 24px; filter: brightness(0) invert(1);" />
+            LinkedIn
+        </a>
+        <a class="contact-icon nav-link" href="https://mastodon.social/@amalgam_" target="_blank">
+            <img src="/public/images/mastodon-logo-purple.svg" alt="Mastodon" />
+            Mastodon
+        </a>
+        <a class="contact-icon nav-link" href="/feed.xml" target="_blank">
+            <img src="/public/images/rss-icon.svg" alt="RSS" />
+            RSS
+        </a>
+        <a class="nav-link" href="/jigs-tools/">Design tools</a>
+    </div>
+
+    <div class="copyright">
+        <p style="white-space: nowrap">©2025, Simon Rosenqvist</p>
+        <a href="https://librecounter.org/referer/show" target="_blank">
+            <img src="https://librecounter.org/outline-white.svg" referrerpolicy="unsafe-url"
+                style="width: 32px; height: 32px" />
+        </a>
+    </div>
+</div>
+        </div>
+    </footer>
+
+    <script src="/js/image-fullscreen.js" defer></script>
+</body>
+
+</html>

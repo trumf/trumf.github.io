@@ -1,33 +1,34 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Blog posts and articles by Simon Rosenqvist on design, technology, AI, and work" />
+    <meta name="description" content="Blog posts and articles by Simon Rosenqvist on design leadership, technology, AI, and craft" />
     <title>Blog | Simon Rosenqvist</title>
 
     <!-- Styles and Resources -->
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/utilities.css" />
     <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/image-fullscreen.css" />
-    <link rel="icon" type="image/x-icon" href="/public/images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon-light.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" href="/public/images/favicon.svg">
 
     <!-- Open Graph Meta Tags -->
+    
     <meta property="og:title" content="Blog | Simon Rosenqvist">
-    <meta property="og:description" content="Blog posts and articles by Simon Rosenqvist on design, technology, AI, and work">
-    <meta property="og:image" content="/public/images/favicon.svg">
-    <meta property="og:url" content="/blog/">
+    <meta property="og:description" content="Blog posts and articles by Simon Rosenqvist on design leadership, technology, AI, and craft">
+    <meta property="og:image" content="https://rosenqvist.xyz/public/images/favicon.svg">
+    <meta property="og:url" content="https://rosenqvist.xyz/blog/">
     <meta property="og:type" content="website">
+    
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blog | Simon Rosenqvist">
-    <meta name="twitter:description" content="Blog posts and articles by Simon Rosenqvist on design, technology, AI, and work">
-    <meta name="twitter:image" content="/public/images/favicon.svg">
+    <meta name="twitter:description" content="Blog posts and articles by Simon Rosenqvist on design leadership, technology, AI, and craft">
+    <meta name="twitter:image" content="https://rosenqvist.xyz/public/images/favicon.svg">
 
     <!-- RSS Feed -->
     <link rel="alternate" href="/feed.xml" type="application/rss+xml"
@@ -36,10 +37,22 @@
 
 <body>
     <header>
-        <nav id="navbar-container" class="navbar-container"></nav>
+        <nav class="navbar-container">
+            <!-- Navbar Component -->
+<div class="navbar">
+    <a href="/" class="nav-brand">Rosenqvist</a>
+
+    <ul class="navbar-nav">
+        <li class="nav-item"><a href="/" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="/work/" class="nav-link">Work</a></li>
+        <li class="nav-item"><a href="/about/" class="nav-link">About</a></li>
+    </ul>
+</div>
+
+        </nav>
         
         <div class="hero-text">
-            <h1 class="display-1">Blog posts</h1>
+            <h1 class="display-1">Writing</h1>
         </div>
         
     </header>
@@ -48,216 +61,222 @@
         
 <section class="section_padding">
     <div class="section_content">
-        <div class="blog-grid"><a href="/blog/color-contrast-jig/" class="blog-card">
-                
-                <div class="card-image">
-                    <img src="/blog/color-contrast-jig/contrast-tool.png" alt="Color contrast visualization tool" loading="lazy">
-                </div>
-                
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2025-06-23</span>
-                        
-                    </div>
-                    <h3 class="card-title">Building a Color Contrast Design Jig</h3>
+        <div class="post-list">
+            
+            <a href="/blog/Accident-models/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2025-07-31">31 July 2025</time>
                     
-                    <p class="card-description">How I created a visual tool to explore color relationships and solve contrast requirements in automotive interface design</p>
+                    <span class="post-tags"><span class="post-tag">Human Factors</span><span class="post-tag">Automotive</span></span>
                     
                 </div>
-            </a><a href="/blog/jigs-for-craft/" class="blog-card">
+                <h3 class="post-list-title">Accident Models</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/jigs-for-craft/converterscreenshot.png" alt="Workshop jig icon" loading="lazy">
-                </div>
+                <p class="post-list-description">A tour of accident models—from blame-focused ‘bad worker’ thinking to Safety-II and resilience engineering—with practical implications for designing safer automotive interfaces.</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2025-06-16</span>
-                        
-                    </div>
-                    <h3 class="card-title">Jigs, Not Tools</h3>
+            </a>
+            
+            <a href="/blog/color-contrast-jig/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2025-06-23">23 June 2025</time>
                     
-                    <p class="card-description">Building personal utilities instead of general tools - why jigs matter for designers</p>
+                    <span class="post-tags"><span class="post-tag">Jigs</span><span class="post-tag">Automotive</span></span>
                     
                 </div>
-            </a><a href="/blog/adding-rss-11ty/" class="blog-card">
+                <h3 class="post-list-title">Building a Color Contrast Design Jig</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/adding-rss-11ty/rss-icon.svg" alt="RSS feed icon" loading="lazy">
-                </div>
+                <p class="post-list-description">How I created a visual tool to explore color relationships and solve contrast requirements in automotive interface design</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2025-06-01</span>
-                        
-                    </div>
-                    <h3 class="card-title">11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them</h3>
+            </a>
+            
+            <a href="/blog/jigs-for-craft/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2025-06-16">16 June 2025</time>
                     
-                    <p class="card-description">Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty</p>
+                    <span class="post-tags"><span class="post-tag">Jigs</span><span class="post-tag">Craft</span></span>
                     
                 </div>
-            </a><a href="/blog/ux-sales-lifecycle/" class="blog-card">
+                <h3 class="post-list-title">Jigs, Not Tools</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/ux-sales-lifecycle/ux-lifecycle.png" alt="Customer lifecycle model diagram showing a blue sales funnel flowing into green post-purchase phases" loading="lazy">
-                </div>
+                <p class="post-list-description">Building personal utilities instead of general tools - why jigs matter for designers</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2025-05-25</span>
-                        
-                    </div>
-                    <h3 class="card-title">UX Design&#39;s Role in the Automotive Sales Lifecycle</h3>
+            </a>
+            
+            <a href="/blog/adding-rss-11ty/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2025-06-01">1 June 2025</time>
                     
-                    <p class="card-description">Understanding how UX design impacts every stage of the customer journey, from initial interest to long-term advocacy in the automotive industry.</p>
+                    <span class="post-tags"><span class="post-tag">Web</span><span class="post-tag">Meta</span></span>
                     
                 </div>
-            </a><a href="/blog/moving-to-11ty/" class="blog-card">
+                <h3 class="post-list-title">11ty RSS Feed Setup: Three Plugin Problems and How I Fixed Them</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/moving-to-11ty/11ty-image.png" alt="The logo of eleventy" loading="lazy">
-                </div>
+                <p class="post-list-description">Dependency management, configuration conflicts, and deprecated APIs while setting up RSS feeds in 11ty</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2025-05-11</span>
-                        
-                    </div>
-                    <h3 class="card-title">Moving the Blog to 11ty</h3>
+            </a>
+            
+            <a href="/blog/ux-sales-lifecycle/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2025-05-25">25 May 2025</time>
                     
-                    <p class="card-description">Moved the blog away from pure HTML and migrated to 11ty</p>
+                    <span class="post-tags"><span class="post-tag">UX</span><span class="post-tag">Automotive</span></span>
                     
                 </div>
-            </a><a href="/blog/why-ai-hardware/" class="blog-card">
+                <h3 class="post-list-title">UX Design&#39;s Role in the Automotive Sales Lifecycle</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/why-ai-hardware/shubham-dhage-sX4_Do0HmII-unsplash 1.png" alt="Abstract image of a 3d object. looks like a vase slightly tilted to the side. creamy color" loading="lazy">
-                </div>
+                <p class="post-list-description">Understanding how UX design impacts every stage of the customer journey, from initial interest to long-term advocacy in the automotive industry.</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">AI hardware products</h3>
+            </a>
+            
+            <a href="/blog/moving-to-11ty/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2025-05-11">11 May 2025</time>
                     
-                    <p class="card-description">Why should companies invest in AI hardware products for software solutions? Both Humane&#39;s AI pin and Rabbits R1 thought so despite The high costs, complexities, and distribution challenges.</p>
+                    <span class="post-tags"><span class="post-tag">Web</span><span class="post-tag">Meta</span></span>
                     
                 </div>
-            </a><a href="/blog/ux-profession/" class="blog-card">
+                <h3 class="post-list-title">Moving the Blog to 11ty</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/ux-profession/balazs-ketyi-U008D4Jp2CY-unsplash.png" alt="Pen and paper, a book of icons is open" loading="lazy">
-                </div>
+                <p class="post-list-description">Moved the blog away from pure HTML and migrated to 11ty</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">How has the role of the UX designer changed?</h3>
+            </a>
+            
+            <a href="/blog/why-ai-hardware/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
                     
-                    <p class="card-description">How have the role of the UX designer evloved over the years?</p>
+                    <span class="post-tags"><span class="post-tag">AI</span><span class="post-tag">Product</span><span class="post-tag">Hardware</span></span>
                     
                 </div>
-            </a><a href="/blog/ux-design-evolution/" class="blog-card">
+                <h3 class="post-list-title">AI hardware products</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/ux-design-evolution/dmitrii-shkurin-NRMrZMuGhwM-unsplash 1.png" alt="A skyscraper twisting around its own axis" loading="lazy">
-                </div>
+                <p class="post-list-description">Why should companies invest in AI hardware products for software solutions? Both Humane&#39;s AI pin and Rabbits R1 thought so despite The high costs, complexities, and distribution challenges.</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">The Evolution of UX Design</h3>
+            </a>
+            
+            <a href="/blog/ux-profession/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
                     
-                    <p class="card-description">The evolution of UX design roles and responsibilities</p>
+                    <span class="post-tags"><span class="post-tag">UX</span></span>
                     
                 </div>
-            </a><a href="/blog/how-to-become-design-engineer/" class="blog-card">
+                <h3 class="post-list-title">How has the role of the UX designer changed?</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/how-to-become-design-engineer/figma ui.png" alt="A Screenshot of Figmas Interface" loading="lazy">
-                </div>
+                <p class="post-list-description">How have the role of the UX designer evloved over the years?</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">How to Become a Design Engineer as a Designer</h3>
+            </a>
+            
+            <a href="/blog/ux-design-evolution/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
                     
-                    <p class="card-description">Moving from design to design engineering is challenging but achievable. Here&#39;s the technical and organizational hurdles to look out for.</p>
+                    <span class="post-tags"><span class="post-tag">UX</span><span class="post-tag">Product</span></span>
                     
                 </div>
-            </a><a href="/blog/design-and-ai/" class="blog-card">
+                <h3 class="post-list-title">The Evolution of UX Design</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/design-and-ai/Untitled-1.png" alt="A circuit board" loading="lazy">
-                </div>
+                <p class="post-list-description">The evolution of UX design roles and responsibilities</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">How to adapt to AI as a Designer?</h3>
+            </a>
+            
+            <a href="/blog/how-to-become-design-engineer/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
                     
-                    <p class="card-description">If we feel urgency about AI what should we do?</p>
+                    <span class="post-tags"><span class="post-tag">UX</span><span class="post-tag">Engineering</span></span>
                     
                 </div>
-            </a><a href="/blog/cli-and-prompts/" class="blog-card">
+                <h3 class="post-list-title">How to Become a Design Engineer as a Designer</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/cli-and-prompts/susan-wilkinson-Dvx_jJW4vHs-unsplash.png" alt="Swirling colors with blues and yellows" loading="lazy">
-                </div>
+                <p class="post-list-description">Moving from design to design engineering is challenging but achievable. Here&#39;s the technical and organizational hurdles to look out for.</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">Command line and prompt interfaces</h3>
+            </a>
+            
+            <a href="/blog/design-and-ai/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
                     
-                    <p class="card-description">A blogpost about design patterns for ai and the new types of interactions that are needed and enjoyed</p>
+                    <span class="post-tags"><span class="post-tag">AI</span><span class="post-tag">Design</span></span>
                     
                 </div>
-            </a><a href="/blog/blunt-and-sharp-end-of-ai/" class="blog-card">
+                <h3 class="post-list-title">How to adapt to AI as a Designer?</h3>
                 
-                <div class="card-image">
-                    <img src="/blog/blunt-and-sharp-end-of-ai/Untitled.png" alt="Grey rocks" loading="lazy">
-                </div>
+                <p class="post-list-description">If we feel urgency about AI what should we do?</p>
                 
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="date">2024-03-30</span>
-                        
-                    </div>
-                    <h3 class="card-title">The Blunt and Sharp end of AI</h3>
+            </a>
+            
+            <a href="/blog/cli-and-prompts/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
                     
-                    <p class="card-description">What is the blunt and sharp end of organisations and how does it affect the design of AI tools?</p>
+                    <span class="post-tags"><span class="post-tag">AI</span><span class="post-tag">Design</span></span>
                     
                 </div>
-            </a></div>
+                <h3 class="post-list-title">Command line and prompt interfaces</h3>
+                
+                <p class="post-list-description">A blogpost about design patterns for ai and the new types of interactions that are needed and enjoyed</p>
+                
+            </a>
+            
+            <a href="/blog/blunt-and-sharp-end-of-ai/" class="post-list-item">
+                <div class="post-meta-line">
+                    <time datetime="2024-03-30">30 March 2024</time>
+                    
+                    <span class="post-tags"><span class="post-tag">AI</span><span class="post-tag">Product</span></span>
+                    
+                </div>
+                <h3 class="post-list-title">The Blunt and Sharp end of AI</h3>
+                
+                <p class="post-list-description">What is the blunt and sharp end of organisations and how does it affect the design of AI tools?</p>
+                
+            </a>
+            
+        </div>
     </div>
 </section>
+
     </main>
 
     <footer role="contentinfo" class="footer_padding bg_black">
-        <div id="footer-container" style="width: 100%; display: flex; justify-content: center;"></div>
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <!-- Footer Component -->
+<div class="footer-wrapper">
+    <div class="footer__contact">
+        <h3>Get in touch:</h3>
+        <a class="contact-icon nav-link" href="mailto:info@rosenqvist.design">
+            <img src="/public/images/email.svg" alt="email"
+                style="width: 24px; height: 24px; filter: brightness(0) invert(1);" />
+            info@rosenqvist.design
+        </a>
+        <a class="contact-icon nav-link" href="https://www.linkedin.com/in/simon-rosenqvist/" target="_blank">
+            <img src="/public/images/linkedIn_icon.svg" alt="Linkedin"
+                style="width: 24px; height: 24px; filter: brightness(0) invert(1);" />
+            LinkedIn
+        </a>
+        <a class="contact-icon nav-link" href="https://mastodon.social/@amalgam_" target="_blank">
+            <img src="/public/images/mastodon-logo-purple.svg" alt="Mastodon" />
+            Mastodon
+        </a>
+        <a class="contact-icon nav-link" href="/feed.xml" target="_blank">
+            <img src="/public/images/rss-icon.svg" alt="RSS" />
+            RSS
+        </a>
+        <a class="nav-link" href="/jigs-tools/">Design tools</a>
+    </div>
+
+    <div class="copyright">
+        <p style="white-space: nowrap">©2025, Simon Rosenqvist</p>
+        <a href="https://librecounter.org/referer/show" target="_blank">
+            <img src="https://librecounter.org/outline-white.svg" referrerpolicy="unsafe-url"
+                style="width: 32px; height: 32px" />
+        </a>
+    </div>
+</div>
+        </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#navbar-container").load("/components/navbar.html");
-            $("#footer-container").load("/components/footer.html");
-        });
-    </script>
     <script src="/js/image-fullscreen.js" defer></script>
-
 </body>
 
 </html>
