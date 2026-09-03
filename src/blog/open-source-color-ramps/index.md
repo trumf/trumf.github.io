@@ -4,6 +4,8 @@ title: "Comparing Color Ramps Across Open-Source Design Systems"
 date: 2026-09-03
 tags: ["Design", "Color"]
 description: "I plotted Tailwind, Radix, Material UI, Bootstrap, Ant Design and other design system color tokens in OKLCH to see how their palettes are actually constructed."
+image: /blog/open-source-color-ramps/primitive-colors-overview-1080.png
+imageAlt: "13 open-source design system color palettes plotted in OKLCH space, showing the orbital shape of each ramp"
 draft: true
 ---
 
@@ -41,6 +43,11 @@ That leaves an interesting question:
 
 I wanted to see how some well-known open-source design systems approached this, so I vibecoded a little visualizer that plots their color tokens in OKLCH space.
 
+<figure class="post-media post-media--hero">
+  <img src="primitive-colors-overview-1080.png" alt="13 open-source design system color palettes — IBM Carbon, Ant Design, Open Color, GitHub Primer, Microsoft Fluent 2, Adobe Spectrum, Material UI, Radix, Tailwind, Chakra UI, USWDS, Mantine, and Bootstrap — each plotted as an orbital shape in OKLCH space">
+  <figcaption>all the primitive colors from the 13 design systems i checked. Viewed from above the distance from the center becomes the chroma and the position on the circle is the hue</figcaption>
+</figure>
+
 The first version was basically a one-shot. I gave the agent the idea and the data sources and it produced most of the visualization in one go. I spent some more time afterwards tweaking the interaction and adding functionality, but I was still pretty impressed by how far it got from the initial prompt.
 
 For the visualizations, I converted all of the colors into **OKLCH**.
@@ -51,6 +58,7 @@ And once you plot them like this, some fairly different approaches start to appe
 
 ### Some color ramps are surprisingly sharp
 
+<div class="post-media-grid">
 <figure class="post-media">
   <video autoplay loop muted playsinline>
     <source src="antdesign-primitives-orbit.webm" type="video/webm">
@@ -64,6 +72,7 @@ And once you plot them like this, some fairly different approaches start to appe
   </video>
   <figcaption>Bootstrap</figcaption>
 </figure>
+</div>
 
 Look at how sharp the ramps are in Bootstrap and Ant Design.
 
@@ -71,6 +80,7 @@ Chroma is represented by the distance from the center axis, and in both systems 
 
 Compare that with Tailwind and Adobe Spectrum:
 
+<div class="post-media-grid">
 <figure class="post-media">
   <video autoplay loop muted playsinline>
     <source src="tailwind-primitives-orbit.webm" type="video/webm">
@@ -84,6 +94,7 @@ Compare that with Tailwind and Adobe Spectrum:
   </video>
   <figcaption>Adobe Spectrum</figcaption>
 </figure>
+</div>
 
 Tailwind has more colors and more steps in each ramp, but the shape is also noticeably gentler. Chroma increases and decreases more gradually.
 
@@ -109,23 +120,21 @@ This is where comparing hue against lightness becomes interesting.
 
 <figure class="post-media">
   <img src="bootstrap-primitives-h-vs-l.png" alt="Bootstrap color ramps plotted as hue vs lightness — relatively straight lines showing hue stays stable across the ramp">
-  <figcaption>Bootstrap — hue vs lightness</figcaption>
+  <figcaption>Bootstrap — hue vs lightness. The yellows and oranges go pretty much straight down</figcaption>
 </figure>
 
 <figure class="post-media">
   <img src="material-primitives-h-vs-l.png" alt="Material UI color ramps plotted as hue vs lightness — much more dramatic hue shifts, especially in yellow and orange">
-  <figcaption>Material UI — hue vs lightness</figcaption>
+  <figcaption>Material UI — hue vs lightness. Some of the yellows and oranges veer off to the left as they get darker</figcaption>
 </figure>
 
 Bootstrap's ramps are relatively straight when it comes to hue. As the colors become lighter or darker, the hue stays fairly stable.
 
-Material UI is doing something much more aggressive.
+Material UI is doing something much more aggressive. Look particularly at yellow and the two orange ramps. The hue changes quite dramatically as the colors move through different levels of lightness.
 
-Look particularly at yellow and the two orange ramps. The hue changes quite dramatically as the colors move through different levels of lightness.
+Those long lines extending toward the left are mostly the ends of the ramps approaching neutral colors. Once chroma gets very low, hue becomes less meaningful, so those points end up moving toward the edge of the visualization in the OKLCH space.
 
-Those long lines extending toward the left are mostly the ends of the ramps approaching neutral colors. Once chroma gets very low, hue becomes less meaningful, so those points end up moving toward the edge of the visualization.
-
-Still, the overall pattern is clear: some systems treat a color ramp mostly as a change in lightness and chroma, while others are quite happy to shift hue along the way.
+Still, the overall pattern is clear: some systems treat a color ramp mostly as a change in lightness and chroma, while others are quite happy to shift hue along the way. Especially for yellows.
 
 ## The side profile is also strangely satisfying
 
@@ -133,22 +142,22 @@ I also started looking at the ramps from the side, plotting lightness against ch
 
 <figure class="post-media">
   <img src="bootstrap-primitives-l-vs-c.png" alt="Bootstrap color ramps plotted as lightness vs chroma">
-  <figcaption>Bootstrap — lightness vs chroma</figcaption>
+  <figcaption>Bootstrap — lightness vs chroma. arrows going straight out</figcaption>
 </figure>
 
 <figure class="post-media">
   <img src="mantine-primitives-l-vs-c.png" alt="Mantine color ramps plotted as lightness vs chroma">
-  <figcaption>Mantine — lightness vs chroma</figcaption>
+  <figcaption>Mantine — lightness vs chroma. like a wave cresting at the top. Mantine doesnt have darker primitive colors.</figcaption>
 </figure>
 
 <figure class="post-media">
   <img src="uswds-primitives-l-vs-c.png" alt="USWDS color ramps plotted as lightness vs chroma">
-  <figcaption>USWDS — lightness vs chroma</figcaption>
+  <figcaption>USWDS — lightness vs chroma. lighter hues (like yellows) have a higher midpoint compared to darker hues (like purples)</figcaption>
 </figure>
 
 <figure class="post-media">
   <img src="radix-primitives-l-vs-c.png" alt="Radix color ramps plotted as lightness vs chroma">
-  <figcaption>Radix — lightness vs chroma</figcaption>
+  <figcaption>Radix — lightness vs chroma. Also clear light/dark midpoint difference and a nice lower chroma "shelf". Very consistent lightness values.</figcaption>
 </figure>
 
 I'm not entirely sure how much I'm learning from this view yet.
