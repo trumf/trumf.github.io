@@ -77,6 +77,8 @@ export default function (eleventyConfig) {
       "gif",
       "svg",
       "webp",
+      "webm",
+      "mp4",
     ],
     passthroughFileCopy: true,
 
