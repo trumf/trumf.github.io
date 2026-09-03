@@ -8,6 +8,123 @@
         <description>A personal website and blog.</description>
         <language>en</language>
         <item>
+            <title>Comparing Color Ramps Across Open-Source Design Systems</title>
+            <link>https://rosenqvist.xyz/blog/open-source-color-ramps/</link>
+            <description>&lt;p&gt;We&#39;re redoing our design system again.&lt;/p&gt;
+&lt;p&gt;I&#39;ve done this a couple of times by now, but this time I wanted to get a better overview of how our approach compares with what other companies are doing — or, more specifically, what other open-source design systems are doing.&lt;/p&gt;
+&lt;p&gt;One of the things I&#39;ve been looking at is color.&lt;/p&gt;
+&lt;p&gt;Most design token systems have some version of a &lt;strong&gt;primitive layer&lt;/strong&gt; and a &lt;strong&gt;semantic layer&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The primitive layer is usually made up of color ramps: red 100–900, blue 100–900, grey 100–900, and so on.&lt;/p&gt;
+&lt;p&gt;The semantic layer then gives those colors meaning. &lt;code&gt;error&lt;/code&gt;, for example, might reference &lt;code&gt;red-600&lt;/code&gt;, while &lt;code&gt;surface-subtle&lt;/code&gt; might reference &lt;code&gt;grey-100&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This separation is useful for a couple of reasons. It makes it easier to build a harmonious color system, since a relatively small set of primitives gets reused throughout the product. It also makes things like themes much easier to manage.&lt;/p&gt;
+&lt;p&gt;Your semantic tokens can stay the same while their primitive references change underneath them.&lt;/p&gt;
+&lt;p&gt;So in light mode:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;background-primary → grey-50&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And in dark mode:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;background-primary → grey-950&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The component doesn&#39;t need to know anything changed.&lt;/p&gt;
+&lt;p&gt;That leaves an interesting question:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What should the primitive colors actually look like?&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;Comparing primitive color systems&lt;/h2&gt;
+&lt;p&gt;I wanted to see how some well-known open-source design systems approached this, so I vibecoded a little visualizer that plots their color tokens in OKLCH space.&lt;/p&gt;
+&lt;figure class=&quot;post-media post-media--hero&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/primitive-colors-overview-1080.png&quot; alt=&quot;13 open-source design system color palettes — IBM Carbon, Ant Design, Open Color, GitHub Primer, Microsoft Fluent 2, Adobe Spectrum, Material UI, Radix, Tailwind, Chakra UI, USWDS, Mantine, and Bootstrap — each plotted as an orbital shape in OKLCH space&quot; /&gt;
+  &lt;figcaption&gt;all the primitive colors from the 13 design systems i checked. Viewed from above the distance from the center becomes the chroma and the position on the circle is the hue&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The first version was basically a one-shot. I gave the agent the idea and the data sources and it produced most of the visualization in one go. I spent some more time afterwards tweaking the interaction and adding functionality, but I was still pretty impressed by how far it got from the initial prompt.&lt;/p&gt;
+&lt;p&gt;For the visualizations, I converted all of the colors into &lt;strong&gt;OKLCH&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I chose OKLCH because it gives me a much more useful common frame of reference than looking at hex or RGB values. Here, what I&#39;m interested in isn&#39;t really the individual values themselves. I want to see the &lt;strong&gt;relationship between the colors&lt;/strong&gt;: how their lightness, chroma and hue change as you move along a ramp.&lt;/p&gt;
+&lt;p&gt;And once you plot them like this, some fairly different approaches start to appear.&lt;/p&gt;
+&lt;h3&gt;Some color ramps are surprisingly sharp&lt;/h3&gt;
+&lt;div class=&quot;post-media-grid&quot;&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;video autoplay=&quot;&quot; loop=&quot;&quot; muted=&quot;&quot; playsinline=&quot;&quot;&gt;
+    &lt;source src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/antdesign-primitives-orbit.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;/video&gt;
+  &lt;figcaption&gt;Ant Design&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;video autoplay=&quot;&quot; loop=&quot;&quot; muted=&quot;&quot; playsinline=&quot;&quot;&gt;
+    &lt;source src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/bootstrap-primitives-orbit.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;/video&gt;
+  &lt;figcaption&gt;Bootstrap&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p&gt;Look at how sharp the ramps are in Bootstrap and Ant Design.&lt;/p&gt;
+&lt;p&gt;Chroma is represented by the distance from the center axis, and in both systems the ramps push outward very quickly around the middle. Their most saturated colors form a pretty pronounced point.&lt;/p&gt;
+&lt;p&gt;Compare that with Tailwind and Adobe Spectrum:&lt;/p&gt;
+&lt;div class=&quot;post-media-grid&quot;&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;video autoplay=&quot;&quot; loop=&quot;&quot; muted=&quot;&quot; playsinline=&quot;&quot;&gt;
+    &lt;source src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/tailwind-primitives-orbit.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;/video&gt;
+  &lt;figcaption&gt;Tailwind&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;video autoplay=&quot;&quot; loop=&quot;&quot; muted=&quot;&quot; playsinline=&quot;&quot;&gt;
+    &lt;source src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/spectrum-primitives-orbit.webm&quot; type=&quot;video/webm&quot; /&gt;
+  &lt;/video&gt;
+  &lt;figcaption&gt;Adobe Spectrum&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p&gt;Tailwind has more colors and more steps in each ramp, but the shape is also noticeably gentler. Chroma increases and decreases more gradually.&lt;/p&gt;
+&lt;p&gt;Spectrum shows something similar.&lt;/p&gt;
+&lt;p&gt;I&#39;m not sure there is necessarily a &lt;em&gt;correct&lt;/em&gt; shape here, but these systems are clearly making different choices about how quickly saturation should increase as you move toward the middle of the scale.&lt;/p&gt;
+&lt;p&gt;And I find it interesting that you can see those choices immediately when the colors are plotted spatially.&lt;/p&gt;
+&lt;h2&gt;Yellow refuses to behave&lt;/h2&gt;
+&lt;p&gt;Another thing that becomes obvious in these visualizations is that the ramps aren&#39;t symmetrical.&lt;/p&gt;
+&lt;p&gt;The yellow side tends to sit higher in lightness than the opposite side of the hue spectrum.&lt;/p&gt;
+&lt;p&gt;That makes sense once you think about how color works perceptually.&lt;/p&gt;
+&lt;p&gt;You can make a blue very dark and it will still read as blue. If you make a yellow equally dark, it very quickly starts looking brown.&lt;/p&gt;
+&lt;p&gt;So maintaining the &lt;em&gt;perception&lt;/em&gt; of yellow across a scale often requires manipulating more than just lightness. You also start shifting hue and chroma.&lt;/p&gt;
+&lt;p&gt;This is where comparing hue against lightness becomes interesting.&lt;/p&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/bootstrap-primitives-h-vs-l.png&quot; alt=&quot;Bootstrap color ramps plotted as hue vs lightness — relatively straight lines showing hue stays stable across the ramp&quot; /&gt;
+  &lt;figcaption&gt;Bootstrap — hue vs lightness. The yellows and oranges go pretty much straight down&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/material-primitives-h-vs-l.png&quot; alt=&quot;Material UI color ramps plotted as hue vs lightness — much more dramatic hue shifts, especially in yellow and orange&quot; /&gt;
+  &lt;figcaption&gt;Material UI — hue vs lightness. Yellow and orange ramps veer sharply left as they get darker, shifting hue to preserve perceptual color.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Bootstrap&#39;s ramps are relatively straight when it comes to hue. As the colors become lighter or darker, the hue stays fairly stable.&lt;/p&gt;
+&lt;p&gt;Material UI is doing something much more aggressive. Look particularly at yellow and the two orange ramps. The hue changes quite dramatically as the colors move through different levels of lightness.&lt;/p&gt;
+&lt;p&gt;Those long lines extending toward the left are mostly the ends of the ramps approaching neutral colors. Once chroma gets very low, hue becomes less meaningful, so those points end up moving toward the edge of the visualization in the OKLCH space.&lt;/p&gt;
+&lt;p&gt;Still, the overall pattern is clear: some systems treat a color ramp mostly as a change in lightness and chroma, while others are quite happy to shift hue along the way. Especially for yellows.&lt;/p&gt;
+&lt;h2&gt;The side profile is also strangely satisfying&lt;/h2&gt;
+&lt;p&gt;I also started looking at the ramps from the side, plotting lightness against chroma.&lt;/p&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/bootstrap-primitives-l-vs-c.png&quot; alt=&quot;Bootstrap color ramps plotted as lightness vs chroma&quot; /&gt;
+  &lt;figcaption&gt;Bootstrap — lightness vs chroma. arrows going straight out&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/mantine-primitives-l-vs-c.png&quot; alt=&quot;Mantine color ramps plotted as lightness vs chroma&quot; /&gt;
+  &lt;figcaption&gt;Mantine — lightness vs chroma. like a wave cresting at the top. Mantine doesnt have darker primitive colors.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/uswds-primitives-l-vs-c.png&quot; alt=&quot;USWDS color ramps plotted as lightness vs chroma&quot; /&gt;
+  &lt;figcaption&gt;USWDS — lightness vs chroma. lighter hues (like yellows) have a higher midpoint compared to darker hues (like purples)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class=&quot;post-media&quot;&gt;
+  &lt;img src=&quot;https://rosenqvist.xyz/blog/open-source-color-ramps/radix-primitives-l-vs-c.png&quot; alt=&quot;Radix color ramps plotted as lightness vs chroma&quot; /&gt;
+  &lt;figcaption&gt;Radix — lightness vs chroma. Also clear light/dark midpoint difference and a nice lower chroma &quot;shelf&quot;. Very consistent lightness values.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;I&#39;m not entirely sure how much I&#39;m learning from this view yet.&lt;/p&gt;
+&lt;p&gt;But it is nice to look at.&lt;/p&gt;
+&lt;p&gt;And there are some interesting differences.&lt;/p&gt;
+&lt;p&gt;You can see how quickly different systems introduce chroma, where saturation peaks, whether the peak sits around the middle of the ramp or is shifted toward lighter or darker colors, and how quickly the colors collapse back toward neutral at either end.&lt;/p&gt;
+&lt;p&gt;Radix, Mantine, Bootstrap and USWDS all end up producing noticeably different silhouettes.&lt;/p&gt;
+&lt;p&gt;That is probably the thing I find most interesting about this little exercise.&lt;/p&gt;
+&lt;p&gt;When you use these systems in a UI, their palettes can feel broadly similar: some blues, some reds, some neutrals, a bunch of steps in between.&lt;/p&gt;
+&lt;p&gt;But once you remove the interface and plot the underlying color decisions, you can see that the systems are actually making quite different choices about what a color ramp &lt;em&gt;is&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I&#39;m still exploring what, if anything, we should take from these patterns for our own design system.&lt;/p&gt;
+&lt;p&gt;But at the very least, plotting the colors makes something that is normally hidden inside token files much easier to reason about.&lt;/p&gt;
+&lt;p&gt;And it produces some very pretty shapes along the way.&lt;/p&gt;
+</description>
+            <pubDate>Thu, 03 Sep 2026 24:00:00 GMT</pubDate>
+            <dc:creator>Simon Rosenqvist</dc:creator>
+            <guid>https://rosenqvist.xyz/blog/open-source-color-ramps/</guid>
+        </item>
+        <item>
             <title>Accident Models</title>
             <link>https://rosenqvist.xyz/blog/Accident-models/</link>
             <description>&lt;p&gt;A while ago I held an introductionary lecture at work about accident models. While I was at university i took a couple of courses in accident managament as part of my Cognitive Science degree. Since we were working in Automotive, which is an industry with log ties to Human Factors, I thought it would be good if they had some background in these topics.&lt;/p&gt;

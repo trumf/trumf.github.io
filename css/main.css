@@ -1125,6 +1125,55 @@ svg {
 
 /* ------ blog ------- */
 
+/* Images and videos inside post content */
+.post-content figure.post-media {
+  margin: var(--spacing-lg) 0;
+}
+
+.post-content figure.post-media img,
+.post-content figure.post-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--card-border);
+}
+
+/* Side-by-side media pairs, single column on narrow screens */
+.post-content .post-media-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.post-content .post-media-grid .post-media {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .post-content .post-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero/overview images that have their own background — remove border, allow wider */
+.post-content figure.post-media--hero {
+  margin-left: calc(var(--spacing-lg) * -1);
+  margin-right: calc(var(--spacing-lg) * -1);
+}
+
+.post-content figure.post-media--hero img {
+  border: none;
+}
+
+.post-content figure.post-media figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--font-family-mono);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
 .paragraph-wrapper {
   display: flex;
   flex-direction: column;
