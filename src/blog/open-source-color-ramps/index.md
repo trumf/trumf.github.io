@@ -6,7 +6,6 @@ tags: ["Design", "Color"]
 description: "I plotted Tailwind, Radix, Material UI, Bootstrap, Ant Design and other design system color tokens in OKLCH to see how their palettes are actually constructed."
 image: /blog/open-source-color-ramps/primitive-colors-overview-1080.png
 imageAlt: "13 open-source design system color palettes plotted in OKLCH space, showing the orbital shape of each ramp"
-draft: true
 ---
 
 We're redoing our design system again.
@@ -125,7 +124,7 @@ This is where comparing hue against lightness becomes interesting.
 
 <figure class="post-media">
   <img src="material-primitives-h-vs-l.png" alt="Material UI color ramps plotted as hue vs lightness — much more dramatic hue shifts, especially in yellow and orange">
-  <figcaption>Material UI — hue vs lightness. Some of the yellows and oranges veer off to the left as they get darker</figcaption>
+  <figcaption>Material UI — hue vs lightness. Yellow and orange ramps veer sharply left as they get darker, shifting hue to preserve perceptual color.</figcaption>
 </figure>
 
 Bootstrap's ramps are relatively straight when it comes to hue. As the colors become lighter or darker, the hue stays fairly stable.
