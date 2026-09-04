@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "Comparing Color Ramps Across Open-Source Design Systems"
-date: 2026-09-03
+date: 2026-09-03T12:00:00
 tags: ["Design", "Color"]
 description: "I plotted Tailwind, Radix, Material UI, Bootstrap, Ant Design and other design system color tokens in OKLCH to see how their palettes are actually constructed."
 image: /blog/open-source-color-ramps/primitive-colors-overview-1080.png
